@@ -1,3 +1,4 @@
+package Vistas;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
