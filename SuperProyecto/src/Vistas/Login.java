@@ -110,7 +110,7 @@ public class Login {
 				}
 			
 				if(new String(txtpassword.getPassword()).isEmpty()){
-					JOptionPane.showMessageDialog(frame, "ERROR: La contraseña esta vacia");
+					JOptionPane.showMessageDialog(frame, "ERROR: La contraseï¿½a esta vacia");
 					escorrecto=false;
 					
 				}
