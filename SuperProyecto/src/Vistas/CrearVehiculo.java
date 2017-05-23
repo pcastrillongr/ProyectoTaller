@@ -87,13 +87,13 @@ public class CrearVehiculo {
 		lblPuertas.setBounds(25, 214, 90, 14);
 		frame3.getContentPane().add(lblPuertas);
 		
-		lbltipodiesel.setBounds(201, 77, 120, 14);
+		lbltipodiesel.setBounds(201, 49, 120, 14);
 		frame3.getContentPane().add(lbltipodiesel);
 		
-		lblanio.setBounds(201, 126, 120, 14);
+		lblanio.setBounds(201, 89, 120, 14);
 		frame3.getContentPane().add(lblanio);
 		
-		lblcv.setBounds(245, 167, 66, 14);
+		lblcv.setBounds(221, 126, 66, 14);
 		frame3.getContentPane().add(lblcv);
 		
 
@@ -113,23 +113,23 @@ public class CrearVehiculo {
 		frame3.getContentPane().add(txtpuertas);
 		txtpuertas.setColumns(10);
 		
-		txttipo.setBounds(323, 71, 97, 26);
+		txttipo.setBounds(323, 43, 97, 26);
 		frame3.getContentPane().add(txttipo);
 		txttipo.setColumns(10);
 		
-		txtanio.setBounds(323, 120, 97, 26);
+		txtanio.setBounds(312, 83, 97, 26);
 		frame3.getContentPane().add(txtanio);
 		txtanio.setColumns(10);
 		
 		
-		txtcv.setBounds(323, 161, 97, 26);
+		txtcv.setBounds(310, 120, 97, 26);
 		frame3.getContentPane().add(txtcv);
 		txtcv.setColumns(10);
 		
-		btncrear.setBounds(245, 208, 161, 64);
+		btncrear.setBounds(234, 189, 161, 64);
 		frame3.getContentPane().add(btncrear);
 		
-		txtmatricula = new JTextField();
+		
 		txtmatricula.setBounds(99, 71, 90, 26);
 		frame3.getContentPane().add(txtmatricula);
 		txtmatricula.setColumns(10);
@@ -237,7 +237,7 @@ public class CrearVehiculo {
 					if(escorrecto){
 						
 						
-						if(txttipo.getText().toUpperCase()!="Gasoil"||txttipo.getText().toUpperCase()!="Gasolina"){
+						if(txttipo.getText().toUpperCase().equals("GASOIL")||txttipo.getText().toUpperCase().equals("GASOLINA")){
 							
 							JOptionPane.showMessageDialog(frame3, "ERROR: Inserte Gasoil o Gasolina");
 						}
