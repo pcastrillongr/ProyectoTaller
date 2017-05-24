@@ -304,6 +304,11 @@ public class CrearVehiculo {
 						coche.setTipoGas(txttipo.getText());
 
 
+
+
+						coche.setAnioMatriculacion((int) spinner.getValue());
+						coche.setCv((short) numero2);
+
 						coche.setAnioMatriculacion((short) numero);
 						coche.setCv((short) numero2);
 
@@ -313,6 +318,10 @@ public class CrearVehiculo {
 						
 						Container.getListaVehiculos().add(coche);
 
+
+		
+
+							JOptionPane.showMessageDialog(frame3, "VEHICULO ANHADIDO");
 						
 						Container.getListaVehiculos().add(coche);
 
