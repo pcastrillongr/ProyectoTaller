@@ -10,10 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.JList;
 
 public class Presupuesto {
 
-	private JFrame frame5;
+	private JFrame frame7;
 	private JLabel lblFInicio; 
 	private JLabel lblFEntrega; 
 	private JLabel lblNumeroDeReparacion; 
@@ -26,8 +27,9 @@ public class Presupuesto {
 	private JTextField txtFechaInicio;
 	private JTextField txtFechaFinalizacion;
 	private JTextField txtPresupuesto;
-	private JTextField txtEstado;
 	private JLabel lblNumeroid;
+	private JList list;
+	private String[]estados={"No Reparado","Reparado y esperando al cliente","Reparado y entregado"};
 
 	/**
 	 * Launch the application.
@@ -37,7 +39,7 @@ public class Presupuesto {
 			public void run() {
 				try {
 					Presupuesto window = new Presupuesto();
-					window.frame5.setVisible(true);
+					window.frame7.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -49,7 +51,7 @@ public class Presupuesto {
 	 * Create the application.
 	 */
 	public Presupuesto() {
-		frame5 = new JFrame();		
+		frame7 = new JFrame();		
 		lblFInicio = new JLabel("Fecha Inicio");
 		lblFEntrega = new JLabel("Fecha Entrega");
 		lblNumeroDeReparacion = new JLabel("Numero de Reparacion");
@@ -62,9 +64,8 @@ public class Presupuesto {
 	    txtFechaInicio = new JTextField();
 	    txtFechaFinalizacion = new JTextField();
 	    txtPresupuesto = new JTextField();
-	    txtEstado = new JTextField();
 	    lblNumeroid = new JLabel("");		
-	    
+	    list = new JList(estados);
 		initialize();
 	}
 
@@ -78,65 +79,62 @@ public class Presupuesto {
 	}
 	
 	public void propiedades(){
-		frame5.setBounds(100, 100, 450, 300);
-		frame5.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame5.getContentPane().setLayout(null);
+		frame7.setBounds(100, 100, 450, 300);
+		frame7.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame7.getContentPane().setLayout(null);
 		
-		lblFInicio.setBounds(10, 48, 77, 14);
-		frame5.getContentPane().add(lblFInicio);
+		lblFInicio.setBounds(10, 36, 77, 14);
+		frame7.getContentPane().add(lblFInicio);
 		
-		lblFEntrega.setBounds(111, 48, 77, 14);
-		frame5.getContentPane().add(lblFEntrega);
+		lblFEntrega.setBounds(10, 86, 77, 14);
+		frame7.getContentPane().add(lblFEntrega);
 		
 		lblNumeroDeReparacion.setBounds(10, 11, 114, 14);
-		frame5.getContentPane().add(lblNumeroDeReparacion);
+		frame7.getContentPane().add(lblNumeroDeReparacion);
 		
-		lblPresupuesto.setBounds(204, 48, 69, 14);
-		frame5.getContentPane().add(lblPresupuesto);
+		lblPresupuesto.setBounds(111, 36, 81, 14);
+		frame7.getContentPane().add(lblPresupuesto);
 		
-		lblEstado.setBounds(294, 48, 46, 14);
-		frame5.getContentPane().add(lblEstado);
+		lblEstado.setBounds(240, 36, 46, 14);
+		frame7.getContentPane().add(lblEstado);
 		
 		lblComentario.setBounds(20, 134, 69, 14);
-		frame5.getContentPane().add(lblComentario);
+		frame7.getContentPane().add(lblComentario);
 		
 		txtComentario.setBounds(20, 152, 204, 98);
-		frame5.getContentPane().add(txtComentario);
+		frame7.getContentPane().add(txtComentario);
 		
 		btnEditar.setBounds(234, 183, 89, 67);
-		frame5.getContentPane().add(btnEditar);
+		frame7.getContentPane().add(btnEditar);
 		btnVolver.setBounds(333, 183, 89, 67);
-		frame5.getContentPane().add(btnVolver);
+		frame7.getContentPane().add(btnVolver);
 		
 		
-		txtFechaInicio.setBounds(10, 67, 86, 20);
-		frame5.getContentPane().add(txtFechaInicio);
+		txtFechaInicio.setBounds(10, 55, 86, 20);
+		frame7.getContentPane().add(txtFechaInicio);
 		txtFechaInicio.setColumns(10);
 		
 		
-		txtFechaFinalizacion.setBounds(107, 67, 86, 20);
-		frame5.getContentPane().add(txtFechaFinalizacion);
+		txtFechaFinalizacion.setBounds(10, 103, 86, 20);
+		frame7.getContentPane().add(txtFechaFinalizacion);
 		txtFechaFinalizacion.setColumns(10);
 		
 		
-		txtPresupuesto.setBounds(198, 67, 86, 20);
-		frame5.getContentPane().add(txtPresupuesto);
+		txtPresupuesto.setBounds(111, 55, 86, 20);
+		frame7.getContentPane().add(txtPresupuesto);
 		txtPresupuesto.setColumns(10);
 		
 		
-		txtEstado.setBounds(294, 67, 86, 20);
-		frame5.getContentPane().add(txtEstado);
-		txtEstado.setColumns(10);
-		
-		
 		lblNumeroid.setBounds(134, 11, 46, 14);
-		frame5.getContentPane().add(lblNumeroid);
-	
+		frame7.getContentPane().add(lblNumeroid);
+		
+		
+		list.setBounds(238, 57, 184, 60);
+		frame7.getContentPane().add(list);
+	    
 	}
 	
 	public void eventos(){
 		
 	}
-	
-
 }
