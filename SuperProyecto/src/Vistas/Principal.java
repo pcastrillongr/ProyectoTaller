@@ -62,6 +62,14 @@ public class Principal {
 			}
 		});
 		
+		
+		btnbuscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Buscar window2 = new Buscar();
+				 window2.getFrame4().setVisible(true);
+			}
+		});
 	}
 	public JFrame getFrame2() {
 		return frame2;

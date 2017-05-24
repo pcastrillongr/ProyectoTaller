@@ -10,6 +10,8 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
+import Models.Cliente;
+import Models.Container;
 import Models.Vehiculo;
 
 public class CrearVehiculo {
@@ -28,7 +30,9 @@ public class CrearVehiculo {
 	private JTextField txtpuertas;
 	private JTextField txttipo;
 	private JTextField txtcv;
+
 	private JButton btncrear;
+
 	private Vehiculo coche;
 	private JLabel lblColor;
 	private JTextField txtcolor;
@@ -300,12 +304,22 @@ public class CrearVehiculo {
 						coche.setModelo(txtmodelo.getText());
 						coche.setNumPuertas((byte) numero);
 						coche.setTipoGas(txttipo.getText());
+<<<<<<< HEAD
 						coche.setAnioMatriculacion((int) spinner.getValue());
 						coche.setCv((short) numero3);
+=======
+						coche.setAnioMatriculacion((short) numero);
+						coche.setCv((short) numero2);
+>>>>>>> branch 'master' of https://github.com/pcastrillongr/ProyectoTaller.git
 						coche.setColor(txtcolor.getText());
 						
+<<<<<<< HEAD
 						
 							//Container.getListaVehiculos().add(coche);
+=======
+						try{
+							Container.getListaVehiculos().add(coche);
+>>>>>>> branch 'master' of https://github.com/pcastrillongr/ProyectoTaller.git
 							JOptionPane.showMessageDialog(frame3, "VEHICULO ANHADIDO");
 						
 						
