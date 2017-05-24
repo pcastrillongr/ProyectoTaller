@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -138,6 +140,12 @@ public class Buscar {
 		btnBuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				try{
+					if(Container.getListaVehiculos().size() > 0)
+						JOptionPane.showMessageDialog(getFrame4(), "FUNCIONA. HABEMUS VEHÍCULOS");
+				}catch(Exception ListaVehículosVacia){
+					JOptionPane.showMessageDialog(getFrame4(), "LA LISTA DE VEHÍCULOS ESTÁ VACÍA");
+				}
 				
 			}
 		});

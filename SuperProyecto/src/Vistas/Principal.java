@@ -27,7 +27,6 @@ public class Principal {
 
 
 	private void initialize() {
-
 		propiedades();
 		eventos();
 	}
@@ -48,8 +47,6 @@ public class Principal {
 	}
 
 	private void eventos() {
-
-		
 		btncrear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

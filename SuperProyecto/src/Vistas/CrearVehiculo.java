@@ -249,7 +249,7 @@ public class CrearVehiculo {
 						}
 					}
 					
-					//año
+					
 					
 					
 				
@@ -257,9 +257,9 @@ public class CrearVehiculo {
 					//CV
 					
 					
-					int numero3=0;
+					int numero2=0;
 			 		try{
-						numero3=Integer.parseInt(new String(txtcv.getText()));
+						numero2=Integer.parseInt(new String(txtcv.getText()));
 						
 					}catch(Exception e2){
 						
@@ -271,7 +271,7 @@ public class CrearVehiculo {
 					
 					if(escorrecto)
 					{
-						if(numero3<=0){
+						if(numero2<=0){
 							JOptionPane.showMessageDialog(frame3, "ERROR: Los CV deben ser >0");
 
 						}
@@ -287,8 +287,6 @@ public class CrearVehiculo {
 			 			
 			 			JOptionPane.showMessageDialog(frame3, "ERROR: Inserte un color ");
 			 		}
-					
-					
 			 		else{
 			 			
 			 			contador+=1;
@@ -304,24 +302,21 @@ public class CrearVehiculo {
 						coche.setModelo(txtmodelo.getText());
 						coche.setNumPuertas((byte) numero);
 						coche.setTipoGas(txttipo.getText());
-<<<<<<< HEAD
-						coche.setAnioMatriculacion((int) spinner.getValue());
-						coche.setCv((short) numero3);
-=======
+
+
 						coche.setAnioMatriculacion((short) numero);
 						coche.setCv((short) numero2);
->>>>>>> branch 'master' of https://github.com/pcastrillongr/ProyectoTaller.git
+
 						coche.setColor(txtcolor.getText());
 						
-<<<<<<< HEAD
+
 						
-							//Container.getListaVehiculos().add(coche);
-=======
-						try{
-							Container.getListaVehiculos().add(coche);
->>>>>>> branch 'master' of https://github.com/pcastrillongr/ProyectoTaller.git
-							JOptionPane.showMessageDialog(frame3, "VEHICULO ANHADIDO");
+						Container.getListaVehiculos().add(coche);
+
 						
+						Container.getListaVehiculos().add(coche);
+
+							
 						
 						
 					}
