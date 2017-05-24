@@ -25,8 +25,10 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.ScrollPane;
 import java.awt.List;
+
 import javax.swing.SwingConstants;
 
+import java.awt.Choice;
 public class CrearVehiculo {
 
 	private JFrame frame3;
@@ -90,6 +92,7 @@ public class CrearVehiculo {
 		color = new String[] { "Rojo", "Azul", "Verde", "Marrón", "Negro", "Blanco", "Veige", "Amarillo", "Lila",
 				"Gris" };
 		spinnerpuertas = new JSpinner();
+		spinnerpuertas.setModel(new SpinnerNumberModel(2, 2, 7, 1));
 		listmarca = new JList(marca);
 		listcolor = new JList(color);
 		listtipo = new JList(tipo);
@@ -174,6 +177,7 @@ public class CrearVehiculo {
 		spinnerpuertas.setBounds(99, 208, 89, 28);
 		frame3.getContentPane().add(spinnerpuertas);
 
+
 		
 		btnempleado.setBounds(9, 261, 123, 64);
 		frame3.getContentPane().add(btnempleado);
@@ -193,6 +197,8 @@ public class CrearVehiculo {
 
 		lblanio.setBounds(200, 77, 133, 14);
 		lblanio.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+
+
 
 	}
 
@@ -348,6 +354,8 @@ public class CrearVehiculo {
 			 		//CREACION 
 			 	}
 			 });
+
+		
 
 	}
 }
