@@ -12,16 +12,27 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Propietario {
 
-	private JFrame frmPropietario;
+	private JFrame frmPropietario; 
 	private JTextField textNombre;
 	private JTextField textApellido;
-	private JTextField textDNI;
-	private JTextField textTeléfono;
-	private JTextField textEmail;
-	private JTextField textDirección;
+	private JTextField textDNI; 
+	private JTextField textTeléfono; 
+	private JTextField textEmail; 
+	private JTextField textDirección; 
+	private JLabel labelPropietario; 
+	private JLabel labelNombre;   
+	 private JLabel labelApellido; 
+	private JLabel labelDNI;
+	private JLabel labelTeléfono;
+	private JLabel labelEmail;
+	private JLabel labelDirección;
+	private JButton buttonVolver; 
+	private JButton buttonCrear;
 
 	/**
 	 * Launch the application.
@@ -43,72 +54,67 @@ public class Propietario {
 	 * Create the application.
 	 */
 	public Propietario() {
+		
+	 labelPropietario = new JLabel("PROPIETARIO");
+	  labelNombre = new JLabel("Nombre");
+	  textNombre = new JTextField();
+	  textApellido = new JTextField();
+	   labelApellido = new JLabel("Apellido");
+	    labelDNI = new JLabel("DNI");
+	    textDNI = new JTextField();
+	    labelTeléfono = new JLabel("Tel\u00E9fono");
+	    textTeléfono = new JTextField();
+	    labelEmail = new JLabel("E-Mail");
+	    textEmail = new JTextField();
+	    labelDirección = new JLabel("Direcci\u00F3n");
+	    textDirección = new JTextField();
+	    buttonVolver = new JButton("VOLVER");
+	   
+	     buttonCrear = new JButton("CREAR");
+	
+	 	frmPropietario = new JFrame();
+		
+		
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	
 	private void initialize() {
-		frmPropietario = new JFrame();
-		frmPropietario.setTitle("PROPIETARIO");
-		frmPropietario.setBounds(100, 100, 450, 300);
-		frmPropietario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	propiedades();
+	eventos();
+	}
+
+	public void propiedades(){
 		
-		JLabel labelPropietario = new JLabel("PROPIETARIO");
 		labelPropietario.setBounds(180, 11, 83, 26);
-		
-		JLabel labelNombre = new JLabel("Nombre");
 		labelNombre.setBounds(20, 46, 53, 14);
-		
-		textNombre = new JTextField();
 		textNombre.setBounds(91, 43, 86, 20);
 		textNombre.setColumns(10);
-		
-		textApellido = new JTextField();
 		textApellido.setBounds(91, 74, 86, 20);
 		textApellido.setColumns(10);
-		
-		JLabel labelApellido = new JLabel("Apellido");
 		labelApellido.setBounds(20, 77, 37, 14);
-		
-		JLabel labelDNI = new JLabel("DNI");
 		labelDNI.setBounds(30, 112, 43, 25);
-		
-		textDNI = new JTextField();
 		textDNI.setBounds(91, 114, 86, 20);
 		textDNI.setColumns(10);
-		
-		JLabel labelTeléfono = new JLabel("Tel\u00E9fono");
 		labelTeléfono.setBounds(20, 151, 42, 14);
-		
-		textTeléfono = new JTextField();
 		textTeléfono.setBounds(91, 148, 86, 20);
 		textTeléfono.setColumns(10);
-		
-		JLabel labelEmail = new JLabel("E-Mail");
 		labelEmail.setBounds(250, 60, 41, 17);
-		
-		textEmail = new JTextField();
 		textEmail.setBounds(301, 58, 86, 20);
 		textEmail.setColumns(10);
-		
-		JLabel labelDirección = new JLabel("Direcci\u00F3n");
 		labelDirección.setBounds(248, 117, 43, 14);
-		
-		textDirección = new JTextField();
 		textDirección.setBounds(301, 114, 86, 20);
 		textDirección.setColumns(10);
-		
-		JButton buttonVolver = new JButton("VOLVER");
 		buttonVolver.setBounds(299, 189, 94, 50);
-		
-		JButton buttonCrear = new JButton("CREAR");
 		buttonCrear.setBounds(91, 190, 94, 48);
-		buttonCrear.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		frmPropietario.setTitle("PROPIETARIO");
+		frmPropietario.setBounds(100, 100, 450, 300);
+		frmPropietario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
+		
+
 		frmPropietario.getContentPane().setLayout(null);
 		frmPropietario.getContentPane().add(labelPropietario);
 		frmPropietario.getContentPane().add(labelNombre);
@@ -126,4 +132,20 @@ public class Propietario {
 		frmPropietario.getContentPane().add(buttonVolver);
 		frmPropietario.getContentPane().add(buttonCrear);
 	}
-}
+	
+	
+	public void eventos() {
+	     buttonCrear.addMouseListener(new MouseAdapter() {
+		     	@Override
+		     	public void mouseClicked(MouseEvent arg0) {
+		     	}
+		     });
+	     buttonVolver.addMouseListener(new MouseAdapter() {
+		    	@Override
+		    	public void mouseClicked(MouseEvent e) {
+		    	}
+		    }); 
+	     
+	}
+	}
+
