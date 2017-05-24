@@ -205,7 +205,7 @@ public class CrearVehiculo {
 			 			
 			 			contador+=1;
 			 		}
-			 		2
+			 		
 			 		
 			 		
 			 		
