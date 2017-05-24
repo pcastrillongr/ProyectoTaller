@@ -2,6 +2,8 @@ package Vistas;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -183,16 +185,21 @@ public class CrearVehiculo {
 			 		 */
 			 		
 			 		//matricula
-			 		
+			 		 Pattern pat = Pattern.compile("^[0-9]{4}[a-zA-Z]{3}$");
+			 	    Matcher mat = pat.matcher(txtmatricula.getText());
+			 	    
 			 		if(txtmatricula.getText().isEmpty())
 			 		{
 			 			
 			 			JOptionPane.showMessageDialog(frame3, "ERROR: Inserte una matricula correcta");
 			 		}
-			 		else{
-			 			
-			 			contador+=1;
-			 		}
+			 		 if (!mat.matches()) {
+			 			JOptionPane.showMessageDialog(frame3, "ERROR: Inserte una matricula correcta");
+				 		}
+			 		 else{
+			 			 contador+=1;
+			 		 }
+			 		
 			 		
 			 	//marca
 			 		
@@ -221,29 +228,10 @@ public class CrearVehiculo {
 			 			contador+=1;
 			 		}
 			 		
-			 		//puertas 
-			 		int numero=0;
-			 		try{
-						numero=Integer.parseInt(new String((String) spinner.getValue()));
-						
-					}catch(Exception e2){
-						
-						JOptionPane.showMessageDialog(frame3, "ERROR: Las puertas deben ser numericas");
-						escorrecto=false;
-						
-					
-					}
-					
-					if(escorrecto)
-					{
-						if(numero<2||numero>5){
-							JOptionPane.showMessageDialog(frame3, "ERROR: Introduzca un numero correcto de puertas");
-
-						}
-						else{
-							contador+=1;
-						}
-					}
+			 		//puertas no necesita validacion
+			 		
+			 		//anho matriculacion tampoco
+			 		
 					
 					//tipo gasoil
 					String tipo=(String) listtipo.getSelectedValue();
@@ -302,7 +290,7 @@ public class CrearVehiculo {
 			 			contador+=1;
 			 		}
 					
-					if(contador==7)
+					if(contador==6)
 					{
 						
 						coche=new Vehiculo();
@@ -310,7 +298,7 @@ public class CrearVehiculo {
 						coche.setMatricula(txtmatricula.getText());
 						coche.setMarca(marca);
 						coche.setModelo(txtmodelo.getText());
-						coche.setNumPuertas((byte) numero);
+						coche.setNumPuertas((int) spinnerpuertas.getValue());
 						coche.setTipoGas(tipo);
 
 
@@ -319,7 +307,7 @@ public class CrearVehiculo {
 						coche.setAnioMatriculacion((int) spinner.getValue());
 						coche.setCv((short) numero2);
 
-						coche.setAnioMatriculacion((short) numero);
+						coche.setAnioMatriculacion((int) spinner.getValue());
 						
 
 						coche.setColor(color);
@@ -339,10 +327,7 @@ public class CrearVehiculo {
 						
 						
 					}
-					else{
-						
-						JOptionPane.showMessageDialog(frame3, "el contador no vale");
-					}
+					
 			 		
 					
 			 		

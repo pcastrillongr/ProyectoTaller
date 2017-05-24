@@ -6,15 +6,15 @@ public class Vehiculo {
 	private String matricula;
 	private String marca;
 	private String modelo;
-	private byte numPuertas;
+	private int numPuertas;
 	private String color;
 	private String tipoGas;
 	private int fechamatriculacion;
-	private short cv;
+	private int cv;
 	
 	
-	public Vehiculo(String matricula, String marca, String modelo, byte numPuertas, String color, String tipoGas,
-			int anioMatriculacion, short cv) {
+	public Vehiculo(String matricula, String marca, String modelo, int numPuertas, String color, String tipoGas,
+			int anioMatriculacion, int cv) {
 		super();
 		this.matricula = matricula;
 		this.marca = marca;
@@ -69,12 +69,12 @@ public class Vehiculo {
 	}
 
 
-	public byte getNumPuertas() {
+	public int getNumPuertas() {
 		return numPuertas;
 	}
 
 
-	public void setNumPuertas(byte numPuertas) {
+	public void setNumPuertas(int numPuertas) {
 		this.numPuertas = numPuertas;
 	}
 
@@ -109,12 +109,12 @@ public class Vehiculo {
 	}
 
 
-	public short getCv() {
+	public int getCv() {
 		return cv;
 	}
 
 
-	public void setCv(short cv) {
+	public void setCv(int cv) {
 		this.cv = cv;
 	}
 
