@@ -37,6 +37,12 @@ public class Propietario {
 	private JLabel labelNombre;
 	private JLabel labelApellido;
 	private JLabel labelDNI;
+	
+	public JFrame getFrame6() {
+		return frame6;
+	}
+
+	
 	private JLabel labelTeléfono;
 	private JLabel labelEmail;
 	private JLabel labelDirección;
