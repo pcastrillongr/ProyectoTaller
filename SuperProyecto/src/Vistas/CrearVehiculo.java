@@ -1,4 +1,5 @@
 package Vistas;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -6,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
@@ -13,144 +15,157 @@ import javax.swing.SpinnerNumberModel;
 import Models.Cliente;
 import Models.Container;
 import Models.Vehiculo;
+import javax.swing.JList;
+import javax.swing.ListSelectionModel;
+import javax.swing.UIManager;
+import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.ScrollPane;
+import java.awt.List;
 
 public class CrearVehiculo {
 
 	private JFrame frame3;
 	private JLabel lblmatricula;
-	private  JLabel lblMarca ;
-	private JLabel lblModelo; 
-	private JLabel lblPuertas; 
-	private JLabel lbltipodiesel; 
-	private JLabel lblanio ;
-	private JLabel lblcv ;
+	private JLabel lblMarca;
+	private JLabel lblModelo;
+	private JLabel lblPuertas;
+	private JLabel lbltipodiesel;
+	private JLabel lblanio;
+	private JLabel lblcv;
 	private JTextField txtmatricula;
-	private JTextField txtmarca;
 	private JTextField txtmodelo;
-	private JTextField txtpuertas;
-	private JTextField txttipo;
 	private JTextField txtcv;
-
+	private JLabel foto;
 	private JButton btncrear;
-
+	private String[] marca;
+	private String[] tipo;
+	private String[] color;
 	private Vehiculo coche;
 	private JLabel lblColor;
-	private JTextField txtcolor;
 	private JSpinner spinner;
-	
-
+	private JList listmarca;
+	private JScrollPane scrollPanemarca;
+	private JList listtipo;
+	private JList listcolor;
+	private JScrollPane scrollPanecolor;
+	private JSpinner spinnerpuertas;
 
 	public CrearVehiculo() {
-		
-		frame3=new JFrame();
-		 lblmatricula = new JLabel("Matricula:");
-		 lblMarca = new JLabel("Marca:");
-		 lblModelo = new JLabel("Modelo:");
-		 lblPuertas = new JLabel("Puertas:");
-		 lbltipodiesel = new JLabel("Diesel o Gasolina:");
-		 lblanio = new JLabel("A\u00F1o Matriculacion:");
-		 lblcv = new JLabel("CV:");
-		 txtmarca = new JTextField();
-		 txtmodelo = new JTextField();
-		 txtpuertas = new JTextField();
-		 txttipo = new JTextField();
-		 txtcv = new JTextField();
-		 btncrear = new JButton("CREAR");
-			spinner = new JSpinner();
-		 txtmatricula = new JTextField();
+
+		frame3 = new JFrame();
+		lblmatricula = new JLabel("Matricula:");
+		lblmatricula.setBounds(24, 77, 90, 14);
+		lblmatricula.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		lblMarca = new JLabel("Marca:");
+		lblMarca.setBounds(24, 126, 72, 14);
+		lblMarca.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		lblModelo = new JLabel("Modelo:");
+		lblModelo.setBounds(25, 167, 90, 14);
+		lblModelo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		lblPuertas = new JLabel("Puertas:");
+		lblPuertas.setBounds(25, 214, 90, 14);
+		lblPuertas.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		lbltipodiesel = new JLabel("Diesel o Gasolina:");
+		lbltipodiesel.setBounds(200, 126, 133, 14);
+		lbltipodiesel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		lblanio = new JLabel("A\u00F1o Matriculacion:");
+		lblanio.setBounds(200, 77, 133, 14);
+		lblanio.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		lblcv = new JLabel("CV:");
+		lblcv.setBounds(200, 167, 66, 14);
+		lblcv.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		txtmodelo = new JTextField();
+		txtmodelo.setBounds(99, 162, 90, 26);
+		txtcv = new JTextField();
+		txtcv.setBounds(332, 161, 97, 26);
+		btncrear = new JButton("CREAR");
+		btncrear.setBounds(144, 261, 161, 64);
+		spinner = new JSpinner();
+		spinner.setBounds(332, 75, 107, 20);
+		txtmatricula = new JTextField();
+		txtmatricula.setBounds(99, 71, 90, 26);
+		tipo = new String[] { "Diesel", "Gasolina" };
+		marca = new String[] { "Peugeot", "Dacia", "Citroen", "Volkswagen", "Seat", "Audi", "BMW", "KIA", "Mercedes",
+				"Renault", "Ford", "Land Rover", "Mitsubishi", "Jaguar", "Range Rover" };
+		color = new String[] { "Rojo", "Azul", "Verde", "Marrón", "Negro", "Blanco", "Veige", "Amarillo", "Lila",
+				"Gris" };
+		foto = new JLabel("");
+		spinnerpuertas = new JSpinner();
+		listmarca = new JList(marca);
+		listcolor = new JList(color);
+		listtipo = new JList(tipo);
+		listtipo.setBounds(332, 111, 97, 39);
+		scrollPanemarca = new JScrollPane(listmarca);
+		scrollPanemarca.setBounds(94, 109, 95, 46);
+		scrollPanecolor = new JScrollPane(listcolor);
+		scrollPanecolor.setBounds(332, 212, 100, 46);
+
 		initialize();
-		
-	
+
 	}
 
 	private void initialize() {
-		
+
 		propiedades();
 		eventos();
 	}
-	
 
-	private void propiedades()
-	{
-		frame3.setBounds(100, 100, 450, 300);
+	private void propiedades() {
+		frame3.setBounds(100, 100, 450, 353);
 		frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame3.getContentPane().setLayout(null);
-		
-		lblmatricula.setBounds(25, 77, 90, 14);
 		frame3.getContentPane().add(lblmatricula);
-		
-		lblMarca.setBounds(25, 126, 72, 14);
 		frame3.getContentPane().add(lblMarca);
-		
-		lblModelo.setBounds(25, 167, 90, 14);
 		frame3.getContentPane().add(lblModelo);
-		
-		lblPuertas.setBounds(25, 214, 90, 14);
 		frame3.getContentPane().add(lblPuertas);
-		
-		lbltipodiesel.setBounds(201, 49, 120, 14);
 		frame3.getContentPane().add(lbltipodiesel);
-		
-		lblanio.setBounds(201, 89, 120, 14);
 		frame3.getContentPane().add(lblanio);
-		
-		lblcv.setBounds(221, 126, 66, 14);
 		frame3.getContentPane().add(lblcv);
-		
-
-		txtmatricula.setBounds(99, 71, 90, 26);
 		frame3.getContentPane().add(txtmatricula);
 		txtmatricula.setColumns(10);
-		
-		txtmarca.setBounds(99, 120, 90, 26);
-		frame3.getContentPane().add(txtmarca);
-		txtmarca.setColumns(10);
-		
-		txtmodelo.setBounds(99, 161, 90, 26);
 		frame3.getContentPane().add(txtmodelo);
 		txtmodelo.setColumns(10);
-		
-		txtpuertas.setBounds(99, 208, 90, 26);
-		frame3.getContentPane().add(txtpuertas);
-		txtpuertas.setColumns(10);
-		
-		txttipo.setBounds(310, 43, 97, 26);
-		frame3.getContentPane().add(txttipo);
-		txttipo.setColumns(10);
-		
-		
-		txtcv.setBounds(310, 120, 97, 26);
 		frame3.getContentPane().add(txtcv);
 		txtcv.setColumns(10);
-		
-		btncrear.setBounds(234, 189, 161, 64);
 		frame3.getContentPane().add(btncrear);
-		
-		
-		txtmatricula.setBounds(99, 71, 90, 26);
 		frame3.getContentPane().add(txtmatricula);
 		txtmatricula.setColumns(10);
-		
+
 		lblColor = new JLabel("Color:");
-		lblColor.setBounds(25, 34, 61, 16);
+		lblColor.setBounds(205, 213, 61, 16);
+		lblColor.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
 		frame3.getContentPane().add(lblColor);
+
+		spinner.setModel(new SpinnerNumberModel(2017, 1900, 2017, 1));
+		frame3.getContentPane().add(spinner);
+
+		listmarca.setBounds(99, 126, 89, 16);
+		frame3.getContentPane().add(scrollPanemarca);
+		frame3.getContentPane().add(listtipo);
+
+		listcolor.setBounds(430, 214, -101, 14);
+		frame3.getContentPane().add(scrollPanecolor);
 		
-		txtcolor = new JTextField();
-		txtcolor.setBounds(99, 29, 90, 26);
-		frame3.getContentPane().add(txtcolor);
-		txtcolor.setColumns(10);
+		
+		spinnerpuertas.setBounds(99, 208, 89, 28);
+		frame3.getContentPane().add(spinnerpuertas);
+		
+		
 		
 	
-		spinner.setModel(new SpinnerNumberModel(2017, 1900, 2017, 1));
-		spinner.setBounds(310, 86, 97, 20);
-		frame3.getContentPane().add(spinner);
 		
+		
+		foto.setIcon(new ImageIcon("/Users/cristinavilas/Desktop/taller3.png"));
+		foto.setBounds(47, 6, 444, 325);
+		frame3.getContentPane().add(foto);
+
 	}
+
 	public JFrame getFrame() {
 		return frame3;
 	}
-
-	
 
 	private void eventos()
 	{
@@ -158,7 +173,7 @@ public class CrearVehiculo {
 			 	@Override
 			 	public void mouseClicked(MouseEvent e) {
 			 		
-			 		boolean escorrecto = false;
+			 		boolean escorrecto = true;
 			 		int contador=0;
 			 		
 			 		
@@ -181,15 +196,17 @@ public class CrearVehiculo {
 			 		
 			 		//marca
 			 		
-			 		if(txtmarca.getText().isEmpty())
+			 		String marca=(String) listmarca.getSelectedValue();
+			 		if(marca==null)
 			 		{
+			 			JOptionPane.showMessageDialog(frame3, "ERROR: Seleccione una marca ");
 			 			
-			 			JOptionPane.showMessageDialog(frame3, "ERROR: Inserte una marca correcta");
-			 		}
-			 		else{
+			 		}else{
 			 			
 			 			contador+=1;
 			 		}
+			 		
+			 		
 			 		
 			 		
 			 		//modelo 
@@ -207,7 +224,7 @@ public class CrearVehiculo {
 			 		//puertas 
 			 		int numero=0;
 			 		try{
-						numero=Integer.parseInt(new String(txtpuertas.getText()));
+						numero=Integer.parseInt(new String((String) spinner.getValue()))s;
 						
 					}catch(Exception e2){
 						
@@ -220,7 +237,7 @@ public class CrearVehiculo {
 					if(escorrecto)
 					{
 						if(numero<2||numero>5){
-							JOptionPane.showMessageDialog(frame3, "ERROR: Introduzca un numero correcto");
+							JOptionPane.showMessageDialog(frame3, "ERROR: Introduzca un numero correcto de puertas");
 
 						}
 						else{
@@ -229,25 +246,18 @@ public class CrearVehiculo {
 					}
 					
 					//tipo gasoil
-					
-					if(txttipo.getText().isEmpty())
+					String tipo=(String) listtipo.getSelectedValue();
+					if(tipo==null)
 			 		{
 			 			
-			 			JOptionPane.showMessageDialog(frame3, "ERROR: Inserte tipo de combustible");
+			 			JOptionPane.showMessageDialog(frame3, "ERROR: Seleccione tipo de combustible");
 			 			escorrecto=false;
 			 		}
-					if(escorrecto){
-						
-						
-						if(txttipo.getText().toUpperCase().equals("GASOIL")||txttipo.getText().toUpperCase().equals("GASOLINA")){
-							
-							JOptionPane.showMessageDialog(frame3, "ERROR: Inserte Gasoil o Gasolina");
-						}
-						else{
+					{
 							
 							contador+=1;
 						}
-					}
+					
 					
 					
 					
@@ -281,11 +291,11 @@ public class CrearVehiculo {
 					}
 					
 					//color
-					
-					if(txtcolor.getText().isEmpty())
+					String color=(String) listcolor.getSelectedValue();
+					if(color==null)
 			 		{
 			 			
-			 			JOptionPane.showMessageDialog(frame3, "ERROR: Inserte un color ");
+			 			JOptionPane.showMessageDialog(frame3, "ERROR: Seleccione un color ");
 			 		}
 			 		else{
 			 			
@@ -298,10 +308,10 @@ public class CrearVehiculo {
 						coche=new Vehiculo();
 						
 						coche.setMatricula(txtmatricula.getText());
-						coche.setMarca(txtmarca.getText());
+						coche.setMarca(marca);
 						coche.setModelo(txtmodelo.getText());
 						coche.setNumPuertas((byte) numero);
-						coche.setTipoGas(txttipo.getText());
+						coche.setTipoGas(tipo);
 
 
 
@@ -310,9 +320,9 @@ public class CrearVehiculo {
 						coche.setCv((short) numero2);
 
 						coche.setAnioMatriculacion((short) numero);
-						coche.setCv((short) numero2);
+						
 
-						coche.setColor(txtcolor.getText());
+						coche.setColor(color);
 						
 
 						
@@ -323,7 +333,7 @@ public class CrearVehiculo {
 
 							JOptionPane.showMessageDialog(frame3, "VEHICULO ANHADIDO");
 						
-						Container.getListaVehiculos().add(coche);
+						
 
 							
 						
