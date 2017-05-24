@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
+import Models.Cliente;
+import Models.Container;
 import Models.Vehiculo;
 
 import java.awt.event.MouseAdapter;
@@ -31,8 +33,7 @@ public class CrearVehiculo {
 	private JTextField txtanio;
 	private JTextField txtcv;
 	private JToggleButton btncrear;
-	private Vehiculo ferrari;
-	private ArrayList<Vehiculo>arraisito;
+	private Vehiculo coche;
 	private JLabel lblColor;
 	private JTextField txtcolor;
 	
@@ -316,20 +317,19 @@ public class CrearVehiculo {
 					if(contador==8)
 					{
 						
-						ferrari=new Vehiculo();
-						arraisito=new ArrayList<Vehiculo>();
+						coche=new Vehiculo();
 						
-						ferrari.setMatricula(txtmatricula.getText());
-						ferrari.setMarca(txtmarca.getText());
-						ferrari.setModelo(txtmodelo.getText());
-						ferrari.setNumPuertas((byte) numero);
-						ferrari.setTipoGas(txttipo.getText());
-						ferrari.setAnioMatriculacion((short) numero);
-						ferrari.setCv((short) numero2);
-						ferrari.setColor(txtcolor.getText());
+						coche.setMatricula(txtmatricula.getText());
+						coche.setMarca(txtmarca.getText());
+						coche.setModelo(txtmodelo.getText());
+						coche.setNumPuertas((byte) numero);
+						coche.setTipoGas(txttipo.getText());
+						coche.setAnioMatriculacion((short) numero);
+						coche.setCv((short) numero2);
+						coche.setColor(txtcolor.getText());
 						
 						try{
-							arraisito.add(ferrari);
+							Container.getListaVehiculos().add(coche);
 							JOptionPane.showMessageDialog(frame3, "VEHICULO ANHADIDO");
 						}catch(Exception e2){
 							

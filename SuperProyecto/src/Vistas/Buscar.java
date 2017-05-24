@@ -1,5 +1,6 @@
 package Vistas;
 
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,6 +9,9 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JTextField;
+
+import Models.Container;
 
 public class Buscar {
 
@@ -17,6 +21,9 @@ public class Buscar {
 	private JButton btnFactura;
 	private JButton btnVolver;
 	private JLabel lblBuscar;
+	private JTextField textFieldDatos;
+	private JButton btnBuscar;
+	private JLabel lblBusqueda;
 	
 	
 	/**
@@ -50,7 +57,10 @@ public class Buscar {
 		btnDni = new JButton("DNI");
 		btnFactura = new JButton("FACTURA");
 		btnVolver = new JButton("VOLVER");
-		lblBuscar = new JLabel("BUSCAR VEH\u00CDCULO/CLIENTE/FACTURA");
+		lblBuscar = new JLabel("BUSCAR");
+		lblBusqueda = new JLabel("");
+		btnBuscar = new JButton("BUSCAR");
+		textFieldDatos = new JTextField();
 	}
 
 	private void propiedades() {
@@ -64,15 +74,29 @@ public class Buscar {
 		btnDni.setBounds(159, 71, 139, 114);
 		frame4.getContentPane().add(btnDni);
 		
-		btnFactura.setBounds(308, 71, 139, 114);
+		btnFactura.setBounds(309, 71, 139, 114);
 		frame4.getContentPane().add(btnFactura);
 		
-		btnVolver.setBounds(186, 221, 89, 23);
+		btnVolver.setBounds(187, 222, 89, 23);
 		frame4.getContentPane().add(btnVolver);
 		
 		lblBuscar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblBuscar.setBounds(70, 11, 360, 31);
+		lblBuscar.setBounds(187, 11, 66, 31);
 		frame4.getContentPane().add(lblBuscar);
+		
+		
+		lblBusqueda.setBounds(159, 71, 180, 14);
+		lblBusqueda.setVisible(false);
+		frame4.getContentPane().add(lblBusqueda);
+		
+		textFieldDatos.setBounds(62, 117, 172, 23);
+		textFieldDatos.setVisible(false);
+		frame4.getContentPane().add(textFieldDatos);
+		textFieldDatos.setColumns(10);
+		
+		btnBuscar.setBounds(266, 106, 89, 44);
+		btnBuscar.setVisible(false);
+		frame4.getContentPane().add(btnBuscar);
 	}
 
 	/**
@@ -85,12 +109,54 @@ public class Buscar {
 		btnMatrcula.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				ocultarComponentesPpales();
+				lblBusqueda.setText("BÚSQUEDA POR MATRÍCULA");
+				MostrarComponentesBusqueda();
 			}
-		});		
+		});	
+		
+		
+		btnDni.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				ocultarComponentesPpales();
+				lblBusqueda.setText("BÚSQUEDA POR DNI");
+				MostrarComponentesBusqueda();
+			}
+		});
+		
+		
+		btnFactura.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ocultarComponentesPpales();
+				lblBusqueda.setText("BÚSQUEDA POR FACTURA");
+				MostrarComponentesBusqueda();
+			}
+		});
+		
+		btnBuscar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 	}
 	
 	
 	public JFrame getFrame4() {
 		return frame4;
+	}
+	
+	private void ocultarComponentesPpales(){
+		btnMatrcula.setVisible(false);
+		btnDni.setVisible(false);
+		btnFactura.setVisible(false);
+	}
+	
+	private void MostrarComponentesBusqueda() {
+		btnBuscar.setVisible(true);
+		textFieldDatos.setVisible(true);
+		lblBusqueda.setVisible(true);
 	}
 }
