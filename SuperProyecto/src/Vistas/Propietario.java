@@ -11,6 +11,10 @@ import java.awt.BorderLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import Models.Cliente;
+import Models.Container;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -167,6 +171,7 @@ public class Propietario {
 				String letra = textLetra.getText();
 				int dni = 0;
 				int telefono;
+				String dni1="";
 				/**
 				 * Verificar Nombre
 				 *
@@ -263,10 +268,11 @@ public class Propietario {
 				for (int i = 0; i < letrasdni.length(); i++) {
 
 					if (letra.toUpperCase().equals(letrasdni.charAt(i))) {
-						escorrecto = true;
+						dni1 = dni + letra;
 
 					}
 				}
+				
 
 				/**
 				 * Direccion
@@ -307,6 +313,10 @@ public class Propietario {
 					escorrecto = false;
 				}
 
+				if(escorrecto){
+					Cliente cliente = new Cliente(dni1,textNombre.getText(),textApellido1.getText(),textDirección.getText(),textTeléfono.getText(),textEmail.getText());
+					Container.getListaClientes().add(cliente);
+				}
 			}
 
 		});
