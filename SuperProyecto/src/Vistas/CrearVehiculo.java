@@ -345,7 +345,7 @@ public class CrearVehiculo {
 			 			Propietario window=new Propietario();
 			 		window.getFrame6().setVisible(true);
 			 		frame3.setVisible(false);
-			 		//CREACION DE EMPLEADO
+			 		//CREACION 
 			 	}
 			 });
 
