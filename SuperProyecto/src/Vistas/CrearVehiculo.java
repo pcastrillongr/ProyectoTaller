@@ -1,17 +1,16 @@
 package Vistas;
-import java.awt.EventQueue;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
-import javax.swing.JToggleButton;
+import javax.swing.SpinnerNumberModel;
 
 import Models.Vehiculo;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 public class CrearVehiculo {
 
@@ -28,13 +27,12 @@ public class CrearVehiculo {
 	private JTextField txtmodelo;
 	private JTextField txtpuertas;
 	private JTextField txttipo;
-	private JTextField txtanio;
 	private JTextField txtcv;
-	private JToggleButton btncrear;
-	private Vehiculo ferrari;
-	private ArrayList<Vehiculo>arraisito;
+	private JButton btncrear;
+	private Vehiculo coche;
 	private JLabel lblColor;
 	private JTextField txtcolor;
+	private JSpinner spinner;
 	
 
 
@@ -52,10 +50,9 @@ public class CrearVehiculo {
 		 txtmodelo = new JTextField();
 		 txtpuertas = new JTextField();
 		 txttipo = new JTextField();
-		 txtanio = new JTextField();
 		 txtcv = new JTextField();
-		 btncrear = new JToggleButton("CREAR");
-		
+		 btncrear = new JButton("CREAR");
+			spinner = new JSpinner();
 		 txtmatricula = new JTextField();
 		initialize();
 		
@@ -113,13 +110,9 @@ public class CrearVehiculo {
 		frame3.getContentPane().add(txtpuertas);
 		txtpuertas.setColumns(10);
 		
-		txttipo.setBounds(323, 43, 97, 26);
+		txttipo.setBounds(310, 43, 97, 26);
 		frame3.getContentPane().add(txttipo);
 		txttipo.setColumns(10);
-		
-		txtanio.setBounds(312, 83, 97, 26);
-		frame3.getContentPane().add(txtanio);
-		txtanio.setColumns(10);
 		
 		
 		txtcv.setBounds(310, 120, 97, 26);
@@ -142,6 +135,11 @@ public class CrearVehiculo {
 		txtcolor.setBounds(99, 29, 90, 26);
 		frame3.getContentPane().add(txtcolor);
 		txtcolor.setColumns(10);
+		
+	
+		spinner.setModel(new SpinnerNumberModel(2017, 1900, 2017, 1));
+		spinner.setBounds(310, 86, 97, 20);
+		frame3.getContentPane().add(spinner);
 		
 	}
 	public JFrame getFrame() {
@@ -249,29 +247,8 @@ public class CrearVehiculo {
 					
 					//año
 					
-					int numero2=0;
-			 		try{
-						numero2=Integer.parseInt(new String(txtanio.getText()));
-						
-					}catch(Exception e2){
-						
-						JOptionPane.showMessageDialog(frame3, "ERROR: El anio deben ser numericas");
-						escorrecto=false;
-						
 					
-					}
-					
-					if(escorrecto)
-					{
-						if(numero2<1900||numero2>2017){
-							JOptionPane.showMessageDialog(frame3, "ERROR: Introduzca un anio valido");
-
-						}
-						else{
-							contador+=1;
-						}
-					}
-			 		
+				
 					
 					//CV
 					
@@ -313,29 +290,30 @@ public class CrearVehiculo {
 			 			contador+=1;
 			 		}
 					
-					if(contador==8)
+					if(contador==7)
 					{
 						
-						ferrari=new Vehiculo();
-						arraisito=new ArrayList<Vehiculo>();
+						coche=new Vehiculo();
 						
-						ferrari.setMatricula(txtmatricula.getText());
-						ferrari.setMarca(txtmarca.getText());
-						ferrari.setModelo(txtmodelo.getText());
-						ferrari.setNumPuertas((byte) numero);
-						ferrari.setTipoGas(txttipo.getText());
-						ferrari.setAnioMatriculacion((short) numero);
-						ferrari.setCv((short) numero2);
-						ferrari.setColor(txtcolor.getText());
+						coche.setMatricula(txtmatricula.getText());
+						coche.setMarca(txtmarca.getText());
+						coche.setModelo(txtmodelo.getText());
+						coche.setNumPuertas((byte) numero);
+						coche.setTipoGas(txttipo.getText());
+						coche.setAnioMatriculacion((int) spinner.getValue());
+						coche.setCv((short) numero3);
+						coche.setColor(txtcolor.getText());
 						
-						try{
-							arraisito.add(ferrari);
+						
+							//Container.getListaVehiculos().add(coche);
 							JOptionPane.showMessageDialog(frame3, "VEHICULO ANHADIDO");
-						}catch(Exception e2){
-							
-							JOptionPane.showMessageDialog(frame3, "VEHICULO IMPOSIBLE DE ANHADIR");
-						}
 						
+						
+						
+					}
+					else{
+						
+						JOptionPane.showMessageDialog(frame3, "el contador no vale");
 					}
 			 		
 					

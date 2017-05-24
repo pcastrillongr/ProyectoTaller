@@ -1,5 +1,7 @@
 package Models;
 
+import java.sql.Date;
+
 public class Vehiculo {
 	private String matricula;
 	private String marca;
@@ -7,12 +9,12 @@ public class Vehiculo {
 	private byte numPuertas;
 	private String color;
 	private String tipoGas;
-	private short anioMatriculacion;
+	private int fechamatriculacion;
 	private short cv;
 	
 	
 	public Vehiculo(String matricula, String marca, String modelo, byte numPuertas, String color, String tipoGas,
-			short anioMatriculacion, short cv) {
+			int anioMatriculacion, short cv) {
 		super();
 		this.matricula = matricula;
 		this.marca = marca;
@@ -20,7 +22,7 @@ public class Vehiculo {
 		this.numPuertas = numPuertas;
 		this.color = color;
 		this.tipoGas = tipoGas;
-		this.anioMatriculacion = anioMatriculacion;
+		this.fechamatriculacion = anioMatriculacion;
 		this.cv = cv;
 	}
 	
@@ -32,7 +34,7 @@ public class Vehiculo {
 		this.numPuertas = 0;
 		this.color = "";
 		this.tipoGas = "";
-		this.anioMatriculacion = 0;
+		this.fechamatriculacion=0;
 		this.cv = 0;
 	}
 
@@ -97,13 +99,13 @@ public class Vehiculo {
 	}
 
 
-	public short getAnioMatriculacion() {
-		return anioMatriculacion;
+	public int getAnioMatriculacion() {
+		return fechamatriculacion;
 	}
 
 
-	public void setAnioMatriculacion(short anioMatriculacion) {
-		this.anioMatriculacion = anioMatriculacion;
+	public void setAnioMatriculacion(int aniomatriculacion) {
+		this.fechamatriculacion = 0;
 	}
 
 
@@ -120,7 +122,7 @@ public class Vehiculo {
 	@Override
 	public String toString() {
 		return "Vehiculo [matricula=" + matricula + ", marca=" + marca + ", modelo=" + modelo + ", numPuertas="
-				+ numPuertas + ", color=" + color + ", tipoGas=" + tipoGas + ", anioMatriculacion=" + anioMatriculacion
+				+ numPuertas + ", color=" + color + ", tipoGas=" + tipoGas + ", anioMatriculacion=" + fechamatriculacion
 				+ ", cv=" + cv + "]";
 	}
 	
