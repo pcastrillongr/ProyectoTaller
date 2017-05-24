@@ -194,7 +194,7 @@ public class CrearVehiculo {
 			 			contador+=1;
 			 		}
 			 		
-			 		//marca
+			 	s	//marca
 			 		
 			 		String marca=(String) listmarca.getSelectedValue();
 			 		if(marca==null)
