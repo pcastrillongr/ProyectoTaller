@@ -25,6 +25,7 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.ScrollPane;
 import java.awt.List;
+import java.awt.Choice;
 
 public class CrearVehiculo {
 
@@ -39,7 +40,6 @@ public class CrearVehiculo {
 	private JTextField txtmatricula;
 	private JTextField txtmodelo;
 	private JTextField txtcv;
-	private JLabel foto;
 	private JButton btncrear;
 	private String[] marca;
 	private String[] tipo;
@@ -93,8 +93,8 @@ public class CrearVehiculo {
 				"Renault", "Ford", "Land Rover", "Mitsubishi", "Jaguar", "Range Rover" };
 		color = new String[] { "Rojo", "Azul", "Verde", "Marrón", "Negro", "Blanco", "Veige", "Amarillo", "Lila",
 				"Gris" };
-		foto = new JLabel("");
 		spinnerpuertas = new JSpinner();
+		spinnerpuertas.setModel(new SpinnerNumberModel(2, 2, 7, 1));
 		listmarca = new JList(marca);
 		listcolor = new JList(color);
 		listtipo = new JList(tipo);
@@ -153,15 +153,6 @@ public class CrearVehiculo {
 		
 		spinnerpuertas.setBounds(99, 208, 89, 28);
 		frame3.getContentPane().add(spinnerpuertas);
-		
-		
-		
-	
-		
-		
-		foto.setIcon(new ImageIcon("/Users/cristinavilas/Desktop/taller3.png"));
-		foto.setBounds(47, 6, 444, 325);
-		frame3.getContentPane().add(foto);
 
 	}
 
