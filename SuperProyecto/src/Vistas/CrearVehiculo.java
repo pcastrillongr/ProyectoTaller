@@ -224,7 +224,7 @@ public class CrearVehiculo {
 			 		//puertas 
 			 		int numero=0;
 			 		try{
-						numero=Integer.parseInt(new String((String) spinner.getValue()))s;
+						numero=Integer.parseInt(new String((String) spinner.getValue()));
 						
 					}catch(Exception e2){
 						
