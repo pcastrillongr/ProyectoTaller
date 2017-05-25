@@ -330,8 +330,8 @@ public class Propietario {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				CrearVehiculo windows = new CrearVehiculo();
-				windows.getFrame().setVisible(true);
+				Propietario1 windows = new Propietario1();
+				windows.getFrame6().setVisible(true);
 				frame7.setVisible(false);
 			
 			}

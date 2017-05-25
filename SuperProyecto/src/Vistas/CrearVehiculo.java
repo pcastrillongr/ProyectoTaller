@@ -348,7 +348,7 @@ public class CrearVehiculo {
 			 	@Override
 			 	public void mouseClicked(MouseEvent e) {
 			 		
-			 			Propietario window=new Propietario();
+			 			Propietario1 window=new Propietario1();
 			 		window.getFrame6().setVisible(true);
 			 		frame3.setVisible(false);
 			 		//CREACION 
