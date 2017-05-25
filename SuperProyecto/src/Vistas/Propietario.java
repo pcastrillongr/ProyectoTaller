@@ -26,7 +26,7 @@ import javax.swing.JList;
 
 public class Propietario {
 
-	private JFrame frame6;
+	private JFrame frame7;
 	private JTextField textNombre;
 	private JTextField textApellido1;
 	private JTextField textDNI;
@@ -38,8 +38,8 @@ public class Propietario {
 	private JLabel labelApellido;
 	private JLabel labelDNI;
 	
-	public JFrame getFrame6() {
-		return frame6;
+	public JFrame getFrame7() {
+		return frame7;
 	}
 
 	
@@ -60,7 +60,7 @@ public class Propietario {
 			public void run() {
 				try {
 					Propietario window = new Propietario();
-					window.frame6.setVisible(true);
+					window.frame7.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -90,7 +90,7 @@ public class Propietario {
 
 		buttonCrear = new JButton("CREAR");
 
-		frame6 = new JFrame();
+		frame7 = new JFrame();
 
 		initialize();
 	}
@@ -127,44 +127,44 @@ public class Propietario {
 		textDirección.setColumns(10);
 		buttonVolver.setBounds(281, 275, 94, 50);
 		buttonCrear.setBounds(83, 276, 94, 48);
-		frame6.setTitle("PROPIETARIO");
-		frame6.setBounds(100, 100, 465, 374);
-		frame6.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame7.setTitle("PROPIETARIO");
+		frame7.setBounds(100, 100, 465, 374);
+		frame7.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		frame6.getContentPane().setLayout(null);
-		frame6.getContentPane().add(labelPropietario);
-		frame6.getContentPane().add(labelNombre);
-		frame6.getContentPane().add(textNombre);
-		frame6.getContentPane().add(textApellido1);
-		frame6.getContentPane().add(labelApellido);
-		frame6.getContentPane().add(labelDNI);
-		frame6.getContentPane().add(textDNI);
-		frame6.getContentPane().add(labelTeléfono);
-		frame6.getContentPane().add(textTeléfono);
-		frame6.getContentPane().add(labelEmail);
-		frame6.getContentPane().add(textEmail);
-		frame6.getContentPane().add(labelDirección);
-		frame6.getContentPane().add(textDirección);
-		frame6.getContentPane().add(buttonVolver);
-		frame6.getContentPane().add(buttonCrear);
+		frame7.getContentPane().setLayout(null);
+		frame7.getContentPane().add(labelPropietario);
+		frame7.getContentPane().add(labelNombre);
+		frame7.getContentPane().add(textNombre);
+		frame7.getContentPane().add(textApellido1);
+		frame7.getContentPane().add(labelApellido);
+		frame7.getContentPane().add(labelDNI);
+		frame7.getContentPane().add(textDNI);
+		frame7.getContentPane().add(labelTeléfono);
+		frame7.getContentPane().add(textTeléfono);
+		frame7.getContentPane().add(labelEmail);
+		frame7.getContentPane().add(textEmail);
+		frame7.getContentPane().add(labelDirección);
+		frame7.getContentPane().add(textDirección);
+		frame7.getContentPane().add(buttonVolver);
+		frame7.getContentPane().add(buttonCrear);
 
 		textSApellido = new JTextField();
 		textSApellido.setBounds(9, 161, 123, 20);
-		frame6.getContentPane().add(textSApellido);
+		frame7.getContentPane().add(textSApellido);
 		textSApellido.setColumns(10);
 
 		JLabel lblSApelldio = new JLabel("Segundo Apellido");
 		lblSApelldio.setBounds(9, 145, 105, 14);
-		frame6.getContentPane().add(lblSApelldio);
+		frame7.getContentPane().add(lblSApelldio);
 
 		textLetra = new JTextField();
 		textLetra.setBounds(111, 206, 22, 20);
-		frame6.getContentPane().add(textLetra);
+		frame7.getContentPane().add(textLetra);
 		textLetra.setColumns(10);
 
 		lblLetra = new JLabel("Letra");
 		lblLetra.setBounds(111, 192, 46, 14);
-		frame6.getContentPane().add(lblLetra);
+		frame7.getContentPane().add(lblLetra);
 	}
 
 	public void eventos() {
@@ -184,14 +184,14 @@ public class Propietario {
 				 */
 				if (textNombre.getText().isEmpty()) {
 
-					JOptionPane.showMessageDialog(frame6, "Debes escribir un nombre");
+					JOptionPane.showMessageDialog(frame7, "Debes escribir un nombre");
 					escorrecto = false;
 				}
 				for (int i = 0; i < textNombre.getText().length(); i++) {
 					for (int j = 0; j < textNombre.getText().length(); i++) {
 						if (textNombre.getText().charAt(i) == c[j]) {
 
-							JOptionPane.showMessageDialog(frame6, "Debes escribir un nombre");
+							JOptionPane.showMessageDialog(frame7, "Debes escribir un nombre");
 							escorrecto = false;
 
 						}
@@ -206,14 +206,14 @@ public class Propietario {
 
 				if (textApellido1.getText().isEmpty()) {
 
-					JOptionPane.showMessageDialog(frame6, "Debes escribir un Apellido");
+					JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido");
 					escorrecto = false;
 				}
 				for (int i = 0; i < textApellido1.getText().length(); i++) {
 					for (int j = 0; j < textApellido1.getText().length(); i++) {
 						if (textApellido1.getText().charAt(i) == c[j]) {
 
-							JOptionPane.showMessageDialog(frame6, "Debes escribir un Apellido que no contenga numeros");
+							JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido que no contenga numeros");
 							escorrecto = false;
 
 						}
@@ -227,14 +227,14 @@ public class Propietario {
 
 				if (textSApellido.getText().isEmpty()) {
 
-					JOptionPane.showMessageDialog(frame6, "Debes escribir un Apellido");
+					JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido");
 					escorrecto = false;
 				}
 				for (int i = 0; i < textSApellido.getText().length(); i++) {
 					for (int j = 0; j < textSApellido.getText().length(); i++) {
 						if (textSApellido.getText().charAt(i) == c[j]) {
 
-							JOptionPane.showMessageDialog(frame6, "Debes escribir un Apellido que no contenga numeros");
+							JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido que no contenga numeros");
 							escorrecto = false;
 
 						}
@@ -246,19 +246,19 @@ public class Propietario {
 				 * Validar DNI
 				 */
 				if (textDNI.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame6, "Debes introducir un dni");
+					JOptionPane.showMessageDialog(frame7, "Debes introducir un dni");
 					escorrecto = false;
 				}
 				if (textDNI.getText().length() != 8) {
-					JOptionPane.showMessageDialog(frame6, "El dni debe contener 8 digitos");
+					JOptionPane.showMessageDialog(frame7, "El dni debe contener 8 digitos");
 					escorrecto = false;
 				}
 				if (textLetra.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame6, "El dni debe contener 9 digitos");
+					JOptionPane.showMessageDialog(frame7, "El dni debe contener 9 digitos");
 					escorrecto = false;
 				}
 				if (textLetra.getText().length() != 1) {
-					JOptionPane.showMessageDialog(frame6, "La letra debe ser 1 sola");
+					JOptionPane.showMessageDialog(frame7, "La letra debe ser 1 sola");
 					escorrecto = false;
 				}
 
@@ -267,7 +267,7 @@ public class Propietario {
 
 				} catch (Exception ee) {
 
-					JOptionPane.showMessageDialog(frame6, "El numero de dni debe ser numerico");
+					JOptionPane.showMessageDialog(frame7, "El numero de dni debe ser numerico");
 					escorrecto = false;
 				}
 
@@ -284,7 +284,7 @@ public class Propietario {
 				 * Direccion
 				 */
 				if (textDirección.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame6, "Debes introducir una Direccion");
+					JOptionPane.showMessageDialog(frame7, "Debes introducir una Direccion");
 					escorrecto = false;
 
 				}
@@ -294,7 +294,7 @@ public class Propietario {
 				 */
 
 				if (textEmail.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame6, "Debes introducir un Email");
+					JOptionPane.showMessageDialog(frame7, "Debes introducir un Email");
 					escorrecto = false;
 
 				}
@@ -303,11 +303,11 @@ public class Propietario {
 				 * Telefono
 				 */
 				if (textTeléfono.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame6, "Debes introducir un Telefono");
+					JOptionPane.showMessageDialog(frame7, "Debes introducir un Telefono");
 					escorrecto = false;
 				}
 				if (textTeléfono.getText().length() != 9) {
-					JOptionPane.showMessageDialog(frame6, "El Telefono debe disponer de 9 digitos");
+					JOptionPane.showMessageDialog(frame7, "El Telefono debe disponer de 9 digitos");
 					escorrecto = false;
 				}
 				try {
@@ -315,7 +315,7 @@ public class Propietario {
 
 				} catch (Exception ee) {
 
-					JOptionPane.showMessageDialog(frame6, "El numero de telefono debe ser numerico");
+					JOptionPane.showMessageDialog(frame7, "El numero de telefono debe ser numerico");
 					escorrecto = false;
 				}
 
@@ -332,7 +332,7 @@ public class Propietario {
 				
 				CrearVehiculo windows = new CrearVehiculo();
 				windows.getFrame().setVisible(true);
-				frame6.setVisible(false);
+				frame7.setVisible(false);
 			
 			}
 		});
