@@ -14,6 +14,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import Models.Cliente;
 import Models.Container;
+import Models.Vehiculo;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -38,6 +39,7 @@ public class Propietario {
 	private JLabel labelApellido;
 	private JLabel labelDNI;
 	
+	
 	public JFrame getFrame7() {
 		return frame7;
 	}
@@ -52,22 +54,7 @@ public class Propietario {
 	private JTextField textLetra;
 	private JLabel lblLetra;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Propietario window = new Propietario();
-					window.frame7.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the application.
 	 */
@@ -187,8 +174,8 @@ public class Propietario {
 					JOptionPane.showMessageDialog(frame7, "Debes escribir un nombre");
 					escorrecto = false;
 				}
-				for (int i = 0; i < textNombre.getText().length(); i++) {
-					for (int j = 0; j < textNombre.getText().length(); i++) {
+				for (int i = 0; i < textNombre.getText().length()-1; i++) {
+					for (int j = 0; j < textNombre.getText().length(); j++) {
 						if (textNombre.getText().charAt(i) == c[j]) {
 
 							JOptionPane.showMessageDialog(frame7, "Debes escribir un nombre");
@@ -209,8 +196,8 @@ public class Propietario {
 					JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido");
 					escorrecto = false;
 				}
-				for (int i = 0; i < textApellido1.getText().length(); i++) {
-					for (int j = 0; j < textApellido1.getText().length(); i++) {
+				for (int i = 0; i < textApellido1.getText().length()-1; i++) {
+					for (int j = 0; j < textApellido1.getText().length(); j++) {
 						if (textApellido1.getText().charAt(i) == c[j]) {
 
 							JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido que no contenga numeros");
@@ -231,7 +218,7 @@ public class Propietario {
 					escorrecto = false;
 				}
 				for (int i = 0; i < textSApellido.getText().length(); i++) {
-					for (int j = 0; j < textSApellido.getText().length(); i++) {
+					for (int j = 0; j < textSApellido.getText().length(); j++) {
 						if (textSApellido.getText().charAt(i) == c[j]) {
 
 							JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido que no contenga numeros");
@@ -320,8 +307,14 @@ public class Propietario {
 				}
 
 				if(escorrecto){
+					int numV;
 					Cliente cliente = new Cliente(dni1,textNombre.getText(),textApellido1.getText(),textDirección.getText(),textTeléfono.getText(),textEmail.getText());
 					Container.getListaClientes().add(cliente);
+					numV=Container.getListaVehiculos().size()-1;
+					Container.getListaVehiculos().get(numV).setDniCliente(dni1);
+					
+	
+					
 				}
 			}
 

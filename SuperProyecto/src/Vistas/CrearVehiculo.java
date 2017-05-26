@@ -120,7 +120,7 @@ public class CrearVehiculo {
 
 	private void propiedades() {
 
-		frame3.setBounds(100, 100, 450, 353);
+		frame3.setBounds(120, 120, 470, 33);
 		frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame3.getContentPane().setLayout(null);
 		frame3.getContentPane().add(lblmatricula);
@@ -183,7 +183,7 @@ public class CrearVehiculo {
 		frame3.getContentPane().add(btnempleado);
 		btnempleado.setVisible(false);
 
-		foto.setIcon(new ImageIcon("/Users/cristinavilas/Desktop/taller3.png"));
+	foto.setIcon(new ImageIcon("C:/Users/1dam.m/Desktop/TALLER.png"));
 		foto.setBounds(34, 6, 444, 319);
 		frame3.getContentPane().add(foto);
 
@@ -319,7 +319,7 @@ public class CrearVehiculo {
 					coche.setAnioMatriculacion((int) spinner.getValue());
 
 					coche.setColor(color);
-
+                    coche.setDniCliente("");
 					Container.getListaVehiculos().add(coche);
 
 					JOptionPane.showMessageDialog(frame3, "VEHICULO ANHADIDO");

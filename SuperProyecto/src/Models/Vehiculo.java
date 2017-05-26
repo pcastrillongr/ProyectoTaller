@@ -11,10 +11,11 @@ public class Vehiculo {
 	private String tipoGas;
 	private int fechamatriculacion;
 	private int cv;
+	private String dniCliente;
 	
 	
 	public Vehiculo(String matricula, String marca, String modelo, int numPuertas, String color, String tipoGas,
-			int anioMatriculacion, int cv) {
+			int anioMatriculacion, int cv,String dni) {
 		super();
 		this.matricula = matricula;
 		this.marca = marca;
@@ -24,9 +25,12 @@ public class Vehiculo {
 		this.tipoGas = tipoGas;
 		this.fechamatriculacion = anioMatriculacion;
 		this.cv = cv;
+		this.dniCliente=dni;
 	}
 	
 	
+	
+
 	public Vehiculo(){
 		this.matricula = "";
 		this.marca = "";
@@ -116,6 +120,15 @@ public class Vehiculo {
 
 	public void setCv(int cv) {
 		this.cv = cv;
+	}
+
+	public String getDniCliente() {
+		return dniCliente;
+	}
+
+
+	public void setDniCliente(String dniCliente) {
+		this.dniCliente = dniCliente;
 	}
 
 

@@ -24,10 +24,6 @@ public class Propietario1 {
 	private JLabel lblaux;
 	private JButton btnVolver2;
 
-	/**
-	 * Launch the application.
-	 */
-
 
 	/**
 	 * Create the application.
