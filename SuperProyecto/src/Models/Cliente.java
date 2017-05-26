@@ -3,19 +3,20 @@ package Models;
 public class Cliente {
 	private String nif;
 	private String nombre;
-	private String apellidos;
+	private String apellido1;
+	private String Apellido2;
 	private String direccion;
 	private String tlf;
-	private String emial;
+	private String emaill;
 	
 	
 	public Cliente(String nif, String nombre, String apellidos, String direccion, String tlf, String emial) {
 		this.nif = nif;
 		this.nombre = nombre;
-		this.apellidos = apellidos;
+		this.apellido1 = apellidos;
 		this.direccion = direccion;
 		this.tlf = tlf;
-		this.emial = emial;
+		this.emaill = emial;
 	}
 	
 	
@@ -23,10 +24,10 @@ public class Cliente {
 	public Cliente() {
 		this.nif = "";
 		this.nombre = "";
-		this.apellidos = "";
+		this.apellido1 = "";
 		this.direccion = "";
 		this.tlf = "";
-		this.emial = "";
+		this.emaill = "";
 	}
 
 
@@ -44,10 +45,10 @@ public class Cliente {
 		this.nombre = nombre;
 	}
 	public String getApellidos() {
-		return apellidos;
+		return apellido1;
 	}
 	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+		this.apellido1 = apellidos;
 	}
 	public String getDireccion() {
 		return direccion;
@@ -62,18 +63,18 @@ public class Cliente {
 		this.tlf = tlf;
 	}
 	public String getEmial() {
-		return emial;
+		return emaill;
 	}
 	public void setEmial(String emial) {
-		this.emial = emial;
+		this.emaill = emial;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return "Cliente [nif=" + nif + ", nombre=" + nombre + ", apellidos=" + apellidos + ", direccion=" + direccion
-				+ ", tlf=" + tlf + ", emial=" + emial + "]";
+		return "Cliente [nif=" + nif + ", nombre=" + nombre + ", apellidos=" + apellido1 + ", direccion=" + direccion
+				+ ", tlf=" + tlf + ", emial=" + emaill + "]";
 	}
 	
 	

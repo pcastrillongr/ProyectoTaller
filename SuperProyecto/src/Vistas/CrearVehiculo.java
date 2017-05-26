@@ -120,7 +120,7 @@ public class CrearVehiculo {
 
 	private void propiedades() {
 
-		frame3.setBounds(120, 120, 470, 33);
+		frame3.setBounds(120, 120, 470, 422);
 		frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame3.getContentPane().setLayout(null);
 		frame3.getContentPane().add(lblmatricula);
