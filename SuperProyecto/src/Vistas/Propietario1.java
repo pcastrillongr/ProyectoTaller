@@ -1,5 +1,5 @@
 package Vistas;
-
+//
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -27,18 +27,7 @@ public class Propietario1 {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Propietario1 window = new Propietario1();
-					window.frame6.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the application.
