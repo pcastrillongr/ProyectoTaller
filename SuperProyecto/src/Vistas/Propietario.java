@@ -255,8 +255,11 @@ public class Propietario {
 					
 					Cliente cliente = new Cliente(Dni, nombre, apellido1,apellido2,direccion,telefono,Email);
 					Container.getListaClientes().add(cliente);
-				
-					
+				    
+					Principal windows = new Principal();
+					windows.getFrame2().setVisible(true);
+					frame7.setVisible(false);
+					frame7.dispose();
 
 				}
 			}
