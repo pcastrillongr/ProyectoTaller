@@ -4,16 +4,17 @@ public class Cliente {
 	private String nif;
 	private String nombre;
 	private String apellido1;
-	private String Apellido2;
+	private String apellido2;
 	private String direccion;
 	private String tlf;
 	private String emaill;
 	
 	
-	public Cliente(String nif, String nombre, String apellidos, String direccion, String tlf, String emial) {
+	public Cliente(String nif, String nombre, String apellido1,String apellido2, String direccion, String tlf, String emial) {
 		this.nif = nif;
 		this.nombre = nombre;
-		this.apellido1 = apellidos;
+		this.apellido1 = apellido1;
+		this.apellido2=apellido2;
 		this.direccion = direccion;
 		this.tlf = tlf;
 		this.emaill = emial;

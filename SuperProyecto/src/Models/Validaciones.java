@@ -1,5 +1,8 @@
 package Models;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.swing.JOptionPane;
 
 public class Validaciones {
@@ -42,14 +45,14 @@ public class Validaciones {
 		char[] c = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 		if (apellido.isEmpty()) {
 
-			JOptionPane.showMessageDialog(null, "Debes escribir un Apellido");
+			JOptionPane.showMessageDialog(null, "Debes escribir un primer Apellido");
 			return "0";
 		}
 		for (int i = 0; i < apellido.length() - 1; i++) {
 			for (int j = 0; j < apellido.length(); j++) {
 				if (apellido.charAt(i) == c[j]) {
 
-					JOptionPane.showMessageDialog(null, "Debes escribir un Apellido que no contenga numeros");
+					JOptionPane.showMessageDialog(null, "Debes escribir un primer Apellido que no contenga numeros");
 					return "0";
 
 				}
@@ -70,14 +73,14 @@ public class Validaciones {
 		char[] c = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 		if (apellido.isEmpty()) {
 
-			JOptionPane.showMessageDialog(null, "Debes escribir un Apellido");
+			JOptionPane.showMessageDialog(null, "Debes escribir un segundo Apellido");
 			return "0";
 		}
 		for (int i = 0; i < apellido.length() - 1; i++) {
 			for (int j = 0; j < apellido.length(); j++) {
 				if (apellido.charAt(i) == c[j]) {
 
-					JOptionPane.showMessageDialog(null, "Debes escribir un Apellido que no contenga numeros");
+					JOptionPane.showMessageDialog(null, "Debes escribir el segundo Apellido que no contenga numeros");
 					return "0";
 
 				}
@@ -99,26 +102,25 @@ public class Validaciones {
 	 * @return el String dni si es correcto;
 	 */
 	static public String validarDni(String nDni, String letra) {
-		boolean escorrecto = true;
 		int dni = 0;
 		String dni1;
 		String letrasdni = "TRWAGMYFPDXBNJZSQVHLCKE";
 
 		if (nDni.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Debes introducir un dni");
-			escorrecto = false;
+			return "0";
 		}
 		if (nDni.length() != 8) {
 			JOptionPane.showMessageDialog(null, "El dni debe contener 8 digitos");
-			escorrecto = false;
+			return "0";
 		}
 		if (letra.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "El dni debe contener 9 digitos");
-			escorrecto = false;
+			return "0";
 		}
 		if (letra.length() != 1) {
 			JOptionPane.showMessageDialog(null, "La letra debe ser 1 sola");
-			escorrecto = false;
+			return "0";
 		}
 
 		try {
@@ -127,19 +129,79 @@ public class Validaciones {
 		} catch (Exception ee) {
 
 			JOptionPane.showMessageDialog(null, "El numero de dni debe ser numerico");
-			escorrecto = false;
+			return "0";
 		}
-
+        
 		for (int i = 0; i < letrasdni.length(); i++) {
 
-			if (letra.toUpperCase().equals(letrasdni.charAt(i))) {
+			if (letra.toUpperCase().charAt(0)==(letrasdni.charAt(i))) {
 				dni1 = dni + letra;
 				return dni1;
 			}
 		}
 
-		return "false";
+		return "0";
 
 	}
+	
+	/**
+	 * Verificar Direccion
+	 * @param direccion
+	 * @return
+	 */
+	static public String validarDireccion(String direccion){
+		
+		if (direccion.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Debes introducir un Email");
+			return direccion = "0";
+		}
+		return direccion;
+	}
+	
+	static public String validarEmail(String email){
 
+		if (email.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "Debes introducir un Email");
+			return email= "0";
+		}
+		 
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+         
+        Matcher mather = pattern.matcher(email);
+ 
+        if (mather.find() == false) {
+           JOptionPane.showMessageDialog(null, "El email ingresado es válido.");
+           return email="0";
+        } 
+    
+ 
+		return email;
+	}
+	
+	/**
+	 * Verificar telefono
+	 * @param telefono
+	 * @return
+	 */
+	static public String validarTelefono(String telefono) {
+		int telefone;
+	if (telefono.isEmpty()) {
+		JOptionPane.showMessageDialog(null, "Debes introducir un Telefono");
+		return telefono="0";
+	}
+	if (telefono.length() != 9) {
+		JOptionPane.showMessageDialog(null, "El Telefono debe disponer de 9 digitos");
+		return telefono="0";
+	}
+	try {
+		telefone = Integer.parseInt(telefono);
+
+	} catch (Exception ee) {
+
+		JOptionPane.showMessageDialog(null, "El numero de telefono debe ser numerico");
+		return telefono="0";
+	}
+	
+	return telefono;
+	}
 }

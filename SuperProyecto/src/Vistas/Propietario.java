@@ -188,9 +188,10 @@ public class Propietario {
 				String apellido1;
 				String apellido2;
 				String Dni;
+				String direccion;
+				String Email;
+				String telefono;
 
-				int telefono;
-				String dni1 = "";
 				/**
 				 * Verificar Nombre
 				 *
@@ -224,7 +225,7 @@ public class Propietario {
 				 */
 
 				Dni = Validaciones.validarDni(textDNI.getText(), textLetra.getText());
-				if (Dni.equals("false")) {
+				if (Dni.equals("0")) {
 					JOptionPane.showMessageDialog(frame7, "El dni es incorrecto");
 					escorrecto = false;
 				}
@@ -232,49 +233,30 @@ public class Propietario {
 				/**
 				 * Direccion
 				 */
-				if (textDirección.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame7, "Debes introducir una Direccion");
-					escorrecto = false;
-
+				direccion=Validaciones.validarDireccion(textDirección.getText());
+				if(direccion.equals("0")){
+					escorrecto=false;
 				}
 
 				/**
 				 * Email
 				 */
-
-				if (textEmail.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame7, "Debes introducir un Email");
-					escorrecto = false;
-
+                 Email=Validaciones.validarEmail(textEmail.getText());
+				if(Email.equals("0")){
+					escorrecto=false;
 				}
-
+                 
 				/**
 				 * Telefono
 				 */
-				if (textTeléfono.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame7, "Debes introducir un Telefono");
-					escorrecto = false;
-				}
-				if (textTeléfono.getText().length() != 9) {
-					JOptionPane.showMessageDialog(frame7, "El Telefono debe disponer de 9 digitos");
-					escorrecto = false;
-				}
-				try {
-					telefono = Integer.parseInt(textTeléfono.getText());
-
-				} catch (Exception ee) {
-
-					JOptionPane.showMessageDialog(frame7, "El numero de telefono debe ser numerico");
-					escorrecto = false;
-				}
-
+				telefono = Validaciones.validarTelefono(textTeléfono.getText());
+                 
 				if (escorrecto) {
-					int numV;
-					Cliente cliente = new Cliente(dni1, textNombre.getText(), textApellido1.getText(),
-							textDirección.getText(), textTeléfono.getText(), textEmail.getText());
+					
+					Cliente cliente = new Cliente(Dni, nombre, apellido1,apellido2,direccion,telefono,Email);
 					Container.getListaClientes().add(cliente);
-					numV = Container.getListaVehiculos().size() - 1;
-					Container.getListaVehiculos().get(numV).setDniCliente(dni1);
+				
+					
 
 				}
 			}
