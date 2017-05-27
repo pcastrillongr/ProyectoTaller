@@ -74,10 +74,15 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [nif=" + nif + ", nombre=" + nombre + ", apellidos=" + apellido1 + ", direccion=" + direccion
+		return "Cliente [nif=" + nif + ", nombre=" + nombre + ", apellidos=" + apellido1 + " " + apellido2 +" direccion=" + direccion
 				+ ", tlf=" + tlf + ", emial=" + emaill + "]";
 	}
 	
 	
+	static public void ClientePrueba(){
+		
+		Cliente c = new Cliente("78978198Q","alejandro","villalobos","trujillo","Malaga","952818280","ale@hotmail.es");
+		Container.getListaClientes().add(c);
+	}
 	
 }

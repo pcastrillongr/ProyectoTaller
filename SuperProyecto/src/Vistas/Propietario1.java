@@ -166,6 +166,7 @@ public class Propietario1 {
 		btnBuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Cliente.ClientePrueba();
 			    String dni;
 			    int decision=-1;
 			    
@@ -177,8 +178,8 @@ public class Propietario1 {
 				
 				
 				for (int i = 0; i < Container.getListaClientes().size(); i++) {
-					if (Container.getListaClientes().get(i).getNif().equals(textNDni.getText())) {
-						decision = JOptionPane.showConfirmDialog(frame6,"Quiere añadir este vehiculo a el cliente con dni: " + textNDni.getText());
+					if (Container.getListaClientes().get(i).getNif().toUpperCase().equals(dni.toUpperCase())) {
+						decision = JOptionPane.showConfirmDialog(frame6,"Quiere añadir este vehiculo a el cliente con dni: " + dni);
 						
 					}
 				}
@@ -210,6 +211,7 @@ public class Propietario1 {
 				frame6.setVisible(false);
 				CrearVehiculo ventana = new CrearVehiculo();
 				ventana.getFrame().setVisible(true);
+				
 			}
 		});
 		
