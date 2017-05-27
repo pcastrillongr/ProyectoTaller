@@ -16,6 +16,7 @@ import javax.swing.SpinnerNumberModel;
 
 import Models.Cliente;
 import Models.Container;
+import Models.Validaciones;
 import Models.Vehiculo;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
@@ -215,95 +216,53 @@ public class CrearVehiculo {
 				int contador = 0;
 
 				/**
-				 * Hacemos las validaciones ,y contamos con un contador los
-				 * aciertos, si llega al numero total de campos nos creara el
-				 * objeto con los atributos introducidos
+				 * Hacemos las validaciones ,desde las que tenemos en clase
+				 * 
 				 */
 
 				// matricula
-				Pattern pat = Pattern.compile("^[0-9]{4}[a-zA-Z]{3}$");
-				Matcher mat = pat.matcher(txtmatricula.getText());
-
-				if (txtmatricula.getText().isEmpty()) {
-
-					JOptionPane.showMessageDialog(frame3, "ERROR: Inserte una matricula correcta");
-				}
-				if (!mat.matches()) {
-					JOptionPane.showMessageDialog(frame3, "ERROR: Inserte una matricula correcta");
-				} else {
-					contador += 1;
+				
+				String matricula=Validaciones.validarmatricula(txtmatricula.getText());
+				if(matricula.equals("0")){
+					escorrecto=false;
 				}
 
 				// marca
 
-				String marca = (String) listmarca.getSelectedValue();
-				if (marca == null) {
-					JOptionPane.showMessageDialog(frame3, "ERROR: Seleccione una marca ");
-
-				} else {
-
-					contador += 1;
+				String marca = Validaciones.validarmarca((String) listmarca.getSelectedValue());
+				if(marca.equals("0"))
+				{
+					escorrecto=false;
 				}
 
 				// modelo
 
-				if (txtmodelo.getText().isEmpty()) {
-
-					JOptionPane.showMessageDialog(frame3, "ERROR: Inserte un modelo correcto");
-				} else {
-
-					contador += 1;
-				}
-
+				String modelo=Validaciones.validarmodelo(txtmodelo.getText());
+				
 				// puertas no necesita validacion
 
 				// anho matriculacion tampoco
 
 				// tipo gasoil
-				String tipo = (String) listtipo.getSelectedValue();
-				if (tipo == null) {
-
-					JOptionPane.showMessageDialog(frame3, "ERROR: Seleccione tipo de combustible");
-					escorrecto = false;
-				}
+				String tipo =Validaciones.validarcombustible((String) listtipo.getSelectedValue());
+				if(tipo.equals("0"))
 				{
-
-					contador += 1;
+					escorrecto=false;
 				}
 
 				// CV
 
-				int numero2 = 0;
-				try {
-					numero2 = Integer.parseInt(new String(txtcv.getText()));
-
-				} catch (Exception e2) {
-
-					JOptionPane.showMessageDialog(frame3, "ERROR: Los CV deben ser numericas");
-					escorrecto = false;
-
-				}
-
-				if (escorrecto) {
-					if (numero2 <= 0) {
-						JOptionPane.showMessageDialog(frame3, "ERROR: Los CV deben ser >0");
-
-					} else {
-						contador += 1;
-					}
+				int numero2 =Validaciones.validarcv(txtcv.getText());
+				if(numero2==0){
+					escorrecto=false;
 				}
 
 				// color
-				String color = (String) listcolor.getSelectedValue();
-				if (color == null) {
-
-					JOptionPane.showMessageDialog(frame3, "ERROR: Seleccione un color ");
-				} else {
-
-					contador += 1;
+				String color = Validaciones.validarcolor((String) listcolor.getSelectedValue());
+				if(color.equals("0")){
+					escorrecto=false;
 				}
-
-				if (contador == 6) {
+				if (escorrecto) {
 
 					coche = new Vehiculo();
 
