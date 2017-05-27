@@ -14,6 +14,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import Models.Cliente;
 import Models.Container;
+import Models.Validaciones;
 import Models.Vehiculo;
 
 import javax.swing.JTextField;
@@ -27,6 +28,9 @@ import javax.swing.JList;
 
 public class Propietario {
 
+	/**
+	 * Atributos
+	 */
 	private JFrame frame7;
 	private JTextField textNombre;
 	private JTextField textApellido1;
@@ -38,13 +42,6 @@ public class Propietario {
 	private JLabel labelNombre;
 	private JLabel labelApellido;
 	private JLabel labelDNI;
-	
-	
-	public JFrame getFrame7() {
-		return frame7;
-	}
-
-	
 	private JLabel labelTeléfono;
 	private JLabel labelEmail;
 	private JLabel labelDirección;
@@ -53,10 +50,21 @@ public class Propietario {
 	private JTextField textSApellido;
 	private JTextField textLetra;
 	private JLabel lblLetra;
+	
+	/**
+	 * Getter
+	 * @return frame7
+	 */
+	public JFrame getFrame7() {
+		return frame7;
+	}
+
+	
+	
 
 	
 	/**
-	 * Create the application.
+	 * Constructor
 	 */
 	public Propietario() {
 
@@ -83,14 +91,23 @@ public class Propietario {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * inicializacion del frame
 	 */
 
 	private void initialize() {
+		/**
+		 * Propiedades del frame
+		 */
 		propiedades();
+		/**
+		 * Eventos del frame
+		 */
 		eventos();
 	}
 
+	/**
+	 * Propiedades del frame
+	 */
 	public void propiedades() {
 
 		labelPropietario.setBounds(180, 11, 83, 26);
@@ -154,118 +171,63 @@ public class Propietario {
 		frame7.getContentPane().add(lblLetra);
 	}
 
+	/**
+	 * Eventos del frame
+	 */
 	public void eventos() {
+
+		/**
+		 * Boton crear Validara todos los datos requeridos por el programa si
+		 * son validos creara el cliente y lo introducira en la base de datos
+		 */
 		buttonCrear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				boolean escorrecto = true;
-				char[] c = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-				String letrasdni = "TRWAGMYFPDXBNJZSQVHLCKE";
-				String letra = textLetra.getText();
-				int dni = 0;
+				String nombre;
+				String apellido1;
+				String apellido2;
+				String Dni;
+
 				int telefono;
-				String dni1="";
+				String dni1 = "";
 				/**
 				 * Verificar Nombre
 				 *
 				 */
-				if (textNombre.getText().isEmpty()) {
 
-					JOptionPane.showMessageDialog(frame7, "Debes escribir un nombre");
+				nombre = Validaciones.validarNombre(textNombre.getText());
+				if (nombre.equals("0")) {
 					escorrecto = false;
-				}
-				for (int i = 0; i < textNombre.getText().length()-1; i++) {
-					for (int j = 0; j < textNombre.getText().length(); j++) {
-						if (textNombre.getText().charAt(i) == c[j]) {
-
-							JOptionPane.showMessageDialog(frame7, "Debes escribir un nombre");
-							escorrecto = false;
-
-						}
-
-					}
-
 				}
 
 				/**
 				 * Verificar apellido1
 				 */
 
-				if (textApellido1.getText().isEmpty()) {
-
-					JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido");
+				apellido1 = Validaciones.apellido1(textApellido1.getText());
+				if (apellido1.equals("0")) {
 					escorrecto = false;
-				}
-				for (int i = 0; i < textApellido1.getText().length()-1; i++) {
-					for (int j = 0; j < textApellido1.getText().length(); j++) {
-						if (textApellido1.getText().charAt(i) == c[j]) {
-
-							JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido que no contenga numeros");
-							escorrecto = false;
-
-						}
-
-					}
 				}
 
 				/**
 				 * Verificar Apellido2
 				 */
 
-				if (textSApellido.getText().isEmpty()) {
-
-					JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido");
+				apellido2 = Validaciones.apellido2(textSApellido.getText());
+				if (apellido2.equals("0")) {
 					escorrecto = false;
-				}
-				for (int i = 0; i < textSApellido.getText().length(); i++) {
-					for (int j = 0; j < textSApellido.getText().length(); j++) {
-						if (textSApellido.getText().charAt(i) == c[j]) {
-
-							JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido que no contenga numeros");
-							escorrecto = false;
-
-						}
-
-					}
 				}
 
 				/**
 				 * Validar DNI
 				 */
-				if (textDNI.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame7, "Debes introducir un dni");
+
+				Dni = Validaciones.validarDni(textDNI.getText(), textLetra.getText());
+				if (Dni.equals("false")) {
+					JOptionPane.showMessageDialog(frame7, "El dni es incorrecto");
 					escorrecto = false;
 				}
-				if (textDNI.getText().length() != 8) {
-					JOptionPane.showMessageDialog(frame7, "El dni debe contener 8 digitos");
-					escorrecto = false;
-				}
-				if (textLetra.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame7, "El dni debe contener 9 digitos");
-					escorrecto = false;
-				}
-				if (textLetra.getText().length() != 1) {
-					JOptionPane.showMessageDialog(frame7, "La letra debe ser 1 sola");
-					escorrecto = false;
-				}
-
-				try {
-					dni = Integer.parseInt(textDNI.getText());
-
-				} catch (Exception ee) {
-
-					JOptionPane.showMessageDialog(frame7, "El numero de dni debe ser numerico");
-					escorrecto = false;
-				}
-
-				for (int i = 0; i < letrasdni.length(); i++) {
-
-					if (letra.toUpperCase().equals(letrasdni.charAt(i))) {
-						dni1 = dni + letra;
-
-					}
-				}
-				
 
 				/**
 				 * Direccion
@@ -306,27 +268,30 @@ public class Propietario {
 					escorrecto = false;
 				}
 
-				if(escorrecto){
+				if (escorrecto) {
 					int numV;
-					Cliente cliente = new Cliente(dni1,textNombre.getText(),textApellido1.getText(),textDirección.getText(),textTeléfono.getText(),textEmail.getText());
+					Cliente cliente = new Cliente(dni1, textNombre.getText(), textApellido1.getText(),
+							textDirección.getText(), textTeléfono.getText(), textEmail.getText());
 					Container.getListaClientes().add(cliente);
-					numV=Container.getListaVehiculos().size()-1;
+					numV = Container.getListaVehiculos().size() - 1;
 					Container.getListaVehiculos().get(numV).setDniCliente(dni1);
-					
-	
-					
+
 				}
 			}
 
 		});
+
+		/**
+		 * Boton Volver volvera al frame anterior
+		 */
 		buttonVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				Propietario1 windows = new Propietario1();
 				windows.getFrame6().setVisible(true);
 				frame7.setVisible(false);
-			
+
 			}
 		});
 

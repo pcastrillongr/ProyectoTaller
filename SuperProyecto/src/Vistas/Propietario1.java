@@ -1,5 +1,5 @@
 package Vistas;
-//
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,9 +12,12 @@ import javax.swing.JTextField;
 
 import Models.Cliente;
 import Models.Container;
-
+import Models.Validaciones;
 public class Propietario1 {
 
+	/**
+	 * Atributos
+	 */
 	private JFrame frame6;
 	private JButton btnAsignar;
 	private JButton btnCrear;
@@ -26,7 +29,7 @@ public class Propietario1 {
 
 
 	/**
-	 * Create the application.
+	 * Constructor
 	 */
 	public Propietario1() {
 		frame6 = new JFrame();
@@ -45,14 +48,24 @@ public class Propietario1 {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Inicializacion de los contenidos del frame
 	 */
 	private void initialize() {
+		/**
+		 * Las propiedades del frame
+		 */
 		propiedades();
+		
+		/**
+		 * los eventos del frame
+		 */
 		eventos();
 
 	}
 
+	/**
+	 * Propiedades del frame
+	 */
 	public void propiedades() {
 		frame6.setBounds(100, 100, 450, 300);
 		frame6.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,7 +99,16 @@ public class Propietario1 {
 		btnVolver2.setVisible(false);
 	}
 
+	
+	/**
+	 * Eventos del frame
+	 */
 	public void eventos() {
+		/**
+		 * Boton Asignar
+		 * su funcion hace que cuando queremos asignar un vehiculo a un cliente ya existente
+		 * se lo asignaremos por el dni
+		 */
 		btnAsignar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -102,6 +124,10 @@ public class Propietario1 {
 			}
 		});
 
+		/**
+		 * Boton CrearCliente
+		 * su funcion es cuando le des te saltara a otro frame de creacion de cliente
+		 */
 		btnCrear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -112,14 +138,25 @@ public class Propietario1 {
 
 			}
 		});
+		
+		/**
+		 * Boton Buscar
+		 * Cuando le demos a buscar mirara si el dni esta introducido,
+		 * si existe clientes en el arrayList
+		 * y recorrera un for buscando si existe el dni. 
+		 */
 		btnBuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Cliente c = new Cliente();
-				Container.getListaClientes().add(c);
+			
 				if (textDni.getText().isEmpty()) {
 					JOptionPane.showConfirmDialog(frame6, "Introduzca dni");
 				}
+				if(Container.getListaClientes().isEmpty()){
+					JOptionPane.showMessageDialog(frame6, "No existen clientes en nuestra base de datos");
+				}
+				
+				
 				for (int i = 0; i < Container.getListaClientes().size(); i++) {
 					if (Container.getListaClientes().get(i).getNif().equals(textDni.getText())) {
 						JOptionPane.showConfirmDialog(frame6,
@@ -131,6 +168,10 @@ public class Propietario1 {
 
 		});
 
+		/**
+		 * boton volver 
+		 * Volvera al frame anterior
+		 */
 		btnVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -140,6 +181,10 @@ public class Propietario1 {
 			}
 		});
 		
+		/**
+		 * Boton volverAtras
+		 * Volvera a asignar y crear.
+		 * 		 */
 		btnVolver2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
