@@ -15,6 +15,9 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 public class MostrarVehiculo {
 
@@ -36,9 +39,15 @@ public class MostrarVehiculo {
 	private JLabel lblnpuertas2;
 	private JLabel lblcolor2;
 	private JLabel lblcombustible2;
-	
+	private JButton btnDatosClientes;
+	private JButton btnLeft;
+	private JButton btnEditar ;
 	private int id=0;
-	
+	private JButton btnRigth;
+	private JLabel lblNvehiculos;
+	private JButton btnFacturacion;
+	private JSpinner spinnerNP;
+	private JSpinner spinnerAM ;
 	public JFrame getFrame8() {
 		return frame8;
 	}
@@ -49,6 +58,12 @@ public class MostrarVehiculo {
 
 	private JLabel lblaniomatriculacion2;
 	private JLabel lblcv2;
+	private JTextField textMarca;
+	private JTextField textModelo;
+	private JTextField textColor;
+	private JTextField textComb;
+	private JTextField textCv;
+	private JTextField txtMatricula;
 
 	public MostrarVehiculo() {
 		frame8 = new JFrame();
@@ -80,7 +95,14 @@ public class MostrarVehiculo {
 		lblaniomatriculacion2 = new JLabel("");
 
 		lblcv2 = new JLabel("");
-		
+		btnDatosClientes = new JButton("Datos Cliente");
+		btnLeft = new JButton("");
+		btnEditar = new JButton("Editar");
+		btnRigth = new JButton("");
+		lblNvehiculos = new JLabel("");
+		btnFacturacion = new JButton("<html>Datos <br>Facturaci\u00F3n</html>");
+		spinnerNP = new JSpinner();
+		spinnerAM = new JSpinner();
 		//
 
 		initialize();
@@ -147,62 +169,108 @@ public class MostrarVehiculo {
 		btnatras.setBounds(18, 262, 73, 43);
 		frame8.getContentPane().add(btnatras);
 
-		lblmatricula2 = new JLabel("");
+		
 		lblmatricula2.setBounds(102, 105, 101, 16);
 		frame8.getContentPane().add(lblmatricula2);
 
-		lblmarca2 = new JLabel("");
+		
 		lblmarca2.setBounds(102, 153, 101, 16);
 		frame8.getContentPane().add(lblmarca2);
 
-		lblmodelo2 = new JLabel("");
+		
 		lblmodelo2.setBounds(103, 193, 100, 16);
 		frame8.getContentPane().add(lblmodelo2);
 
-		lblnpuertas2 = new JLabel("");
+		
 		lblnpuertas2.setBounds(102, 235, 101, 16);
 		frame8.getContentPane().add(lblnpuertas2);
 
-		lblcolor2 = new JLabel("");
 		lblcolor2.setBounds(332, 105, 101, 16);
 		frame8.getContentPane().add(lblcolor2);
 
-		lblcombustible2 = new JLabel("");
 		lblcombustible2.setBounds(335, 153, 98, 16);
 		frame8.getContentPane().add(lblcombustible2);
 
-		lblaniomatriculacion2 = new JLabel("");
-		lblaniomatriculacion2.setBounds(379, 193, 61, 16);
+		lblaniomatriculacion2.setBounds(372, 193, 68, 16);
 		frame8.getContentPane().add(lblaniomatriculacion2);
 
 		
 		lblcv2.setBounds(273, 235, 61, 16);
 		frame8.getContentPane().add(lblcv2);
 		
-		JButton btnLeft = new JButton("");
+		
 		btnLeft.setBounds(18, 66, 34, 23);
 		frame8.getContentPane().add(btnLeft);
 		
-		JButton btnRigth = new JButton("");
+		
 		btnRigth.setBounds(111, 66, 34, 23);
 		frame8.getContentPane().add(btnRigth);
 		
-		JLabel lblNvehiculos = new JLabel("");
+		
 		lblNvehiculos.setBounds(55, 66, 53, 23);
 		frame8.getContentPane().add(lblNvehiculos);
 		
-		JButton btnNewButton = new JButton("Editar");
 		
-		btnNewButton.setBounds(125, 263, 80, 41);
-		frame8.getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Datos Cliente");
-		btnNewButton_1.setBounds(355, 11, 101, 43);
-		frame8.getContentPane().add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("<html>Datos <br>Facturaci\u00F3n</html>");
-		btnNewButton_2.setBounds(355, 262, 99, 43);
-		frame8.getContentPane().add(btnNewButton_2);
+		btnEditar.setBounds(125, 263, 80, 41);
+		frame8.getContentPane().add(btnEditar);
+		
+		
+		btnDatosClientes.setBounds(355, 11, 101, 43);
+		frame8.getContentPane().add(btnDatosClientes);
+		
+		
+		btnFacturacion.setBounds(355, 262, 99, 43);
+		frame8.getContentPane().add(btnFacturacion);
+		
+		textMarca = new JTextField();
+		textMarca.setBounds(102, 152, 86, 20);
+		frame8.getContentPane().add(textMarca);
+		textMarca.setColumns(10);
+		
+		textModelo = new JTextField();
+		textModelo.setBounds(101, 192, 86, 20);
+		frame8.getContentPane().add(textModelo);
+		textModelo.setColumns(10);
+		
+		
+		spinnerNP.setBounds(102, 234, 61, 20);
+		frame8.getContentPane().add(spinnerNP);
+		
+		textColor = new JTextField();
+		textColor.setBounds(332, 104, 86, 20);
+		frame8.getContentPane().add(textColor);
+		textColor.setColumns(10);
+		
+		textComb = new JTextField();
+		textComb.setBounds(332, 152, 86, 20);
+		frame8.getContentPane().add(textComb);
+		textComb.setColumns(10);
+		
+		
+		spinnerAM.setModel(new SpinnerNumberModel(2017, 1900, 2017, 1));
+		spinnerAM.setBounds(372, 192, 61, 20);
+		frame8.getContentPane().add(spinnerAM);
+		
+		textCv = new JTextField();
+		textCv.setBounds(273, 234, 86, 20);
+		frame8.getContentPane().add(textCv);
+		textCv.setColumns(10);
+		
+		txtMatricula = new JTextField();
+		txtMatricula.setBounds(102, 104, 86, 20);
+		frame8.getContentPane().add(txtMatricula);
+		txtMatricula.setColumns(10);
+		
+		textColor.setVisible(false);
+		textComb.setVisible(false);
+		textCv.setVisible(false);
+		textMarca.setVisible(false);
+		textModelo.setVisible(false);
+		spinnerNP.setVisible(false);
+		spinnerAM.setVisible(false);
+		txtMatricula.setVisible(false);
 	}
 
 	private void eventos() {
@@ -214,6 +282,34 @@ public class MostrarVehiculo {
 				Principal window = new Principal();
 				window.getFrame2().setVisible(true);
 				frame8.dispose();
+			}
+		});
+		
+		btnEditar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			
+				txtMatricula.setVisible(true);
+				textColor.setVisible(true);
+				textComb.setVisible(true);
+				textCv.setVisible(true);
+				textMarca.setVisible(true);
+				textModelo.setVisible(true);
+				spinnerNP.setVisible(true);
+				spinnerAM.setVisible(true);
+				
+				
+				lblaniomatriculacion2.setVisible(false);
+				lblcolor2.setVisible(false);
+				lblcombustible2.setVisible(false);
+				lblcv2.setVisible(false);
+				lblmatricula2.setVisible(false);
+				lblmarca2.setVisible(false);
+				lblnpuertas2.setVisible(false);
+				lblmodelo2.setVisible(false);
+				
+				
+				
 			}
 		});
 	}
@@ -240,5 +336,4 @@ public class MostrarVehiculo {
     	   
    		
    	}
-
 }
