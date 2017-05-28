@@ -200,30 +200,39 @@ public class Buscar {
 	
 	
 	private void busquedaPorMatricula(String matricula) {
+		boolean escorrecto = false;
+		Vehiculo.CochePrueba();
 		for(Vehiculo c: Container.getListaVehiculos()){
 			if(c.getMatricula().equals(matricula)){
 			
 				MostrarVehiculo ventana = new MostrarVehiculo();
-				ventana.getFrame();
+				ventana.getFrame8().setVisible(true);
 				frame4.dispose();
+				escorrecto = true;
 			}
 		}
-		JOptionPane.showMessageDialog(frame4, "La matricula introducida no se encuentra en nuestra base de datos");
+		if(!escorrecto){
+			JOptionPane.showMessageDialog(frame4, "La matricula introducida no se encuentra en nuestra base de datos");
+			}
+		
 	}
 	
 	
 	private void busquedaPorDni(String dni) {
+		boolean escorrecto = false;
 		Vehiculo.CochePrueba();
+		
 		for(Vehiculo c: Container.getListaVehiculos()){
 			if(c.getDniCliente().equals(dni)){
 				MostrarVehiculo ventana = new MostrarVehiculo();
-				ventana.getFrame();
+				ventana.getFrame8().setVisible(true);
 				frame4.dispose();
-				
+				 escorrecto = true;
 			}
 		}
-		
+		if(!escorrecto){
 		JOptionPane.showMessageDialog(frame4, "El dni introducido no se encuentra en nuestra base de datos");
+		}
 	}
 
 	

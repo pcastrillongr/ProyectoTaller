@@ -29,6 +29,16 @@ public class MostrarVehiculo {
 	private JLabel lblnpuertas2;
 	private JLabel lblcolor2;
 	private JLabel lblcombustible2;
+	
+	
+	public JFrame getFrame8() {
+		return frame8;
+	}
+
+	public void setFrame8(JFrame frame8) {
+		this.frame8 = frame8;
+	}
+
 	private JLabel lblaniomatriculacion2;
 	private JLabel lblcv2;
 
@@ -79,7 +89,7 @@ public class MostrarVehiculo {
 
 	private void Propiedades() {
 
-		frame8.setBounds(100, 100, 450, 300);
+		frame8.setBounds(100, 100, 482, 355);
 		frame8.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame8.getContentPane().setLayout(null);
 
