@@ -14,6 +14,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 
 import Models.Container;
+import Models.Vehiculo;
 
 public class Buscar {
 
@@ -22,7 +23,6 @@ public class Buscar {
 	private JButton btnDni;
 	private JButton btnFactura;
 	private JButton btnVolver;
-	private JLabel lblBuscar;
 	private JTextField textFieldDatos;
 	private JButton btnBuscar;
 	private JLabel lblBusqueda;
@@ -59,7 +59,6 @@ public class Buscar {
 		btnDni = new JButton("DNI");
 		btnFactura = new JButton("FACTURA");
 		btnVolver = new JButton("VOLVER");
-		lblBuscar = new JLabel("BUSCAR");
 		lblBusqueda = new JLabel("");
 		btnBuscar = new JButton("BUSCAR");
 		textFieldDatos = new JTextField();
@@ -69,6 +68,7 @@ public class Buscar {
 		frame4.setBounds(100, 100, 474, 315);
 		frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame4.getContentPane().setLayout(null);
+		frame4.setTitle("BUSCAR VEHÍCULO");
 		
 		btnMatrcula.setBounds(10, 71, 139, 114);
 		frame4.getContentPane().add(btnMatrcula);
@@ -81,10 +81,6 @@ public class Buscar {
 		
 		btnVolver.setBounds(187, 222, 89, 23);
 		frame4.getContentPane().add(btnVolver);
-		
-		lblBuscar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblBuscar.setBounds(187, 11, 66, 31);
-		frame4.getContentPane().add(lblBuscar);
 		
 		
 		lblBusqueda.setBounds(159, 71, 180, 14);
@@ -140,13 +136,33 @@ public class Buscar {
 		btnBuscar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				try{
-					if(Container.getListaVehiculos().size() > 0)
-						JOptionPane.showMessageDialog(getFrame4(), "FUNCIONA. HABEMUS VEHÍCULOS");
-				}catch(Exception ListaVehículosVacia){
-					JOptionPane.showMessageDialog(getFrame4(), "LA LISTA DE VEHÍCULOS ESTÁ VACÍA");
-				}
+				String modo;
 				
+				modo = lblBusqueda.getText();
+				
+				switch(modo){
+				case "BÚSQUEDA POR MATRÍCULA": 
+					busquedaPorMatricula(textFieldDatos.getText());
+					break;
+				case "BÚSQUEDA POR DNI": 
+					busquedaPorDni(textFieldDatos.getText());
+					break;
+				case "BÚSQUEDA POR FACTURA": 
+					JOptionPane.showMessageDialog(getFrame4(), "BÚSQUEDA POR FACTURA");
+					break;
+				}
+			}
+
+			
+
+			
+		});
+		
+		btnVolver.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				mostrarComponentesPpales();
+				ocultarComponentesBusqueda();
 			}
 		});
 	}
@@ -155,6 +171,13 @@ public class Buscar {
 	public JFrame getFrame4() {
 		return frame4;
 	}
+	
+	private void mostrarComponentesPpales(){
+		btnMatrcula.setVisible(true);
+		btnDni.setVisible(true);
+		btnFactura.setVisible(true);
+	}
+	
 	
 	private void ocultarComponentesPpales(){
 		btnMatrcula.setVisible(false);
@@ -166,5 +189,28 @@ public class Buscar {
 		btnBuscar.setVisible(true);
 		textFieldDatos.setVisible(true);
 		lblBusqueda.setVisible(true);
+	}
+	
+	
+	private void ocultarComponentesBusqueda() {
+		btnBuscar.setVisible(false);
+		textFieldDatos.setVisible(false);
+		lblBusqueda.setVisible(false);
+	}
+	
+	
+	private void busquedaPorMatricula(String matricula) {
+		for(Vehiculo c: Container.getListaVehiculos()){
+			if(c.getMatricula().equals(matricula)){
+				JOptionPane.showMessageDialog(getFrame4(), "ENCONTRADOOOOO");
+			}
+		}
+	}
+	
+	
+	private void busquedaPorDni(String dni) {
+		for(Vehiculo c: Container.getListaVehiculos()){
+			JOptionPane.showMessageDialog(getFrame4(), c.getDniCliente());
+		}
 	}
 }
