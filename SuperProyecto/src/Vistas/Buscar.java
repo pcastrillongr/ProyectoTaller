@@ -207,7 +207,8 @@ public class Buscar {
 			
 				MostrarVehiculo ventana = new MostrarVehiculo();
 				ventana.getFrame8().setVisible(true);
-				frame4.dispose();
+				Container.getVehiculosAux().add(c);
+				frame4.setVisible(false);
 				escorrecto = true;
 			}
 		}
@@ -217,21 +218,24 @@ public class Buscar {
 		
 	}
 	
-	
 	private void busquedaPorDni(String dni) {
 		boolean escorrecto = false;
 		Vehiculo.CochePrueba();
 		
 		for(Vehiculo c: Container.getListaVehiculos()){
 			if(c.getDniCliente().equals(dni)){
-				MostrarVehiculo ventana = new MostrarVehiculo();
-				ventana.getFrame8().setVisible(true);
-				frame4.dispose();
-				 escorrecto = true;
+				Container.getVehiculosAux().add(c);
+				escorrecto = true;
 			}
 		}
 		if(!escorrecto){
 		JOptionPane.showMessageDialog(frame4, "El dni introducido no se encuentra en nuestra base de datos");
+		}
+		if(escorrecto){
+			MostrarVehiculo ventana = new MostrarVehiculo();
+			ventana.getFrame8().setVisible(true);
+			frame4.setVisible(false);
+			
 		}
 	}
 

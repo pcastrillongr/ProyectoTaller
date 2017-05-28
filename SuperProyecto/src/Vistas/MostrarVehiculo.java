@@ -4,10 +4,17 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import Models.Container;
+import Models.Vehiculo;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MostrarVehiculo {
 
@@ -30,6 +37,7 @@ public class MostrarVehiculo {
 	private JLabel lblcolor2;
 	private JLabel lblcombustible2;
 	
+	private int id=0;
 	
 	public JFrame getFrame8() {
 		return frame8;
@@ -72,6 +80,7 @@ public class MostrarVehiculo {
 		lblaniomatriculacion2 = new JLabel("");
 
 		lblcv2 = new JLabel("");
+		
 		//
 
 		initialize();
@@ -84,9 +93,11 @@ public class MostrarVehiculo {
 
 		Propiedades();
 		eventos();
-
+		Mostrar();
+		
 	}
 
+	
 	private void Propiedades() {
 
 		frame8.setBounds(100, 100, 482, 355);
@@ -97,7 +108,7 @@ public class MostrarVehiculo {
 		lblmatricula.setBounds(18, 105, 101, 16);
 		frame8.getContentPane().add(lblmatricula);
 
-		lblmarca.setFont(new Font("Lucida Calligraphy", Font.ITALIC, 13));
+		lblmarca.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
 		lblmarca.setBounds(18, 153, 61, 16);
 		frame8.getContentPane().add(lblmarca);
 
@@ -126,14 +137,14 @@ public class MostrarVehiculo {
 		frame8.getContentPane().add(lbcv);
 
 		lblDniCliente.setFont(new Font("Lucida Calligraphy", Font.BOLD | Font.ITALIC, 13));
-		lblDniCliente.setBounds(260, 20, 95, 16);
+		lblDniCliente.setBounds(173, 21, 95, 16);
 		frame8.getContentPane().add(lblDniCliente);
 
 		lblvehiculo.setFont(new Font("Lucida Calligraphy", Font.BOLD | Font.ITALIC, 19));
-		lblvehiculo.setBounds(70, 18, 145, 16);
+		lblvehiculo.setBounds(18, 18, 145, 16);
 		frame8.getContentPane().add(lblvehiculo);
 
-		btnatras.setBounds(377, 249, 73, 29);
+		btnatras.setBounds(18, 262, 73, 43);
 		frame8.getContentPane().add(btnatras);
 
 		lblmatricula2 = new JLabel("");
@@ -164,9 +175,34 @@ public class MostrarVehiculo {
 		lblaniomatriculacion2.setBounds(379, 193, 61, 16);
 		frame8.getContentPane().add(lblaniomatriculacion2);
 
-		lblcv2 = new JLabel("");
+		
 		lblcv2.setBounds(273, 235, 61, 16);
 		frame8.getContentPane().add(lblcv2);
+		
+		JButton btnLeft = new JButton("");
+		btnLeft.setBounds(18, 66, 34, 23);
+		frame8.getContentPane().add(btnLeft);
+		
+		JButton btnRigth = new JButton("");
+		btnRigth.setBounds(111, 66, 34, 23);
+		frame8.getContentPane().add(btnRigth);
+		
+		JLabel lblNvehiculos = new JLabel("");
+		lblNvehiculos.setBounds(55, 66, 53, 23);
+		frame8.getContentPane().add(lblNvehiculos);
+		
+		JButton btnNewButton = new JButton("Editar");
+		
+		btnNewButton.setBounds(125, 263, 80, 41);
+		frame8.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Datos Cliente");
+		btnNewButton_1.setBounds(355, 11, 101, 43);
+		frame8.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("<html>Datos <br>Facturaci\u00F3n</html>");
+		btnNewButton_2.setBounds(355, 262, 99, 43);
+		frame8.getContentPane().add(btnNewButton_2);
 	}
 
 	private void eventos() {
@@ -181,4 +217,28 @@ public class MostrarVehiculo {
 			}
 		});
 	}
+	
+	
+	
+       
+       
+       private void Mostrar() {
+    	   String nPuertas;
+    	   String Año;
+    	   String cv;
+   		lblmatricula2.setText(Container.getVehiculosAux().get(id).getMatricula());
+   		lblmarca2.setText(Container.getVehiculosAux().get(id).getMarca());
+   		lblmodelo2.setText(Container.getVehiculosAux().get(id).getModelo());
+   		nPuertas = String.valueOf(Container.getVehiculosAux().get(id).getNumPuertas());
+   		lblnpuertas2.setText(nPuertas);
+   		lblcolor2.setText(Container.getVehiculosAux().get(id).getColor());
+   		lblcombustible2.setText(Container.getVehiculosAux().get(id).getTipoGas());
+   		Año = String.valueOf(Container.getVehiculosAux().get(id).getAnioMatriculacion());
+   		lblaniomatriculacion2.setText(Año);
+   		cv = String.valueOf(Container.getVehiculosAux().get(id).getCv());
+   		lblcv2.setText(cv);
+    	   
+   		
+   	}
+
 }
