@@ -23,6 +23,14 @@ public class MostrarVehiculo {
 	private JButton btnatras;
 	private JLabel lbcv;
 	private JLabel lblvehiculo;
+	private JLabel lblmatricula2;
+	private JLabel lblmarca2;
+	private JLabel lblmodelo2;
+	private JLabel lblnpuertas2;
+	private JLabel lblcolor2;
+	private JLabel lblcombustible2;
+	private JLabel lblaniomatriculacion2;
+	private JLabel lblcv2;
 
 	public MostrarVehiculo() {
 		frame8 = new JFrame();
@@ -38,6 +46,22 @@ public class MostrarVehiculo {
 		btnatras = new JButton("Atras");
 		lbcv = new JLabel("CV:");
 		lblvehiculo = new JLabel("VEHICULO");
+
+		lblmatricula2 = new JLabel("");
+
+		lblmarca2 = new JLabel("");
+
+		lblmodelo2 = new JLabel("");
+
+		lblnpuertas2 = new JLabel("");
+
+		lblcolor2 = new JLabel("");
+
+		lblcombustible2 = new JLabel("");
+
+		lblaniomatriculacion2 = new JLabel("");
+
+		lblcv2 = new JLabel("");
 
 		initialize();
 	}
@@ -100,6 +124,38 @@ public class MostrarVehiculo {
 
 		btnatras.setBounds(377, 249, 73, 29);
 		frame8.getContentPane().add(btnatras);
+
+		lblmatricula2 = new JLabel("");
+		lblmatricula2.setBounds(102, 105, 101, 16);
+		frame8.getContentPane().add(lblmatricula2);
+
+		lblmarca2 = new JLabel("");
+		lblmarca2.setBounds(102, 153, 101, 16);
+		frame8.getContentPane().add(lblmarca2);
+
+		lblmodelo2 = new JLabel("");
+		lblmodelo2.setBounds(103, 193, 100, 16);
+		frame8.getContentPane().add(lblmodelo2);
+
+		lblnpuertas2 = new JLabel("");
+		lblnpuertas2.setBounds(102, 235, 101, 16);
+		frame8.getContentPane().add(lblnpuertas2);
+
+		lblcolor2 = new JLabel("");
+		lblcolor2.setBounds(332, 105, 101, 16);
+		frame8.getContentPane().add(lblcolor2);
+
+		lblcombustible2 = new JLabel("");
+		lblcombustible2.setBounds(335, 153, 98, 16);
+		frame8.getContentPane().add(lblcombustible2);
+
+		lblaniomatriculacion2 = new JLabel("");
+		lblaniomatriculacion2.setBounds(379, 193, 61, 16);
+		frame8.getContentPane().add(lblaniomatriculacion2);
+
+		lblcv2 = new JLabel("");
+		lblcv2.setBounds(273, 235, 61, 16);
+		frame8.getContentPane().add(lblcv2);
 	}
 
 	private void eventos() {
@@ -108,8 +164,7 @@ public class MostrarVehiculo {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				
-				Principal window=new Principal();
+				Principal window = new Principal();
 				window.getFrame2().setVisible(true);
 				frame8.dispose();
 			}
