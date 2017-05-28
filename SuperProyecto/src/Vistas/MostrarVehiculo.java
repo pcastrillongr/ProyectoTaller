@@ -62,6 +62,7 @@ public class MostrarVehiculo {
 		lblaniomatriculacion2 = new JLabel("");
 
 		lblcv2 = new JLabel("");
+		//
 
 		initialize();
 	}
