@@ -139,5 +139,10 @@ public class Vehiculo {
 				+ ", cv=" + cv + "]";
 	}
 	
+	static public void CochePrueba(){
+		
+		Vehiculo v = new Vehiculo("1234asd","ferrai","z",3,"Rojo","Gasolina",1993,123,"12345678Q");
+		Container.getListaVehiculos().add(v);
+	}
 	
 }

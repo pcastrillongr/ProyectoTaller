@@ -160,7 +160,7 @@ public class Buscar {
 		
 		btnVolver.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent e) {
 				mostrarComponentesPpales();
 				ocultarComponentesBusqueda();
 			}
@@ -202,15 +202,29 @@ public class Buscar {
 	private void busquedaPorMatricula(String matricula) {
 		for(Vehiculo c: Container.getListaVehiculos()){
 			if(c.getMatricula().equals(matricula)){
-				JOptionPane.showMessageDialog(getFrame4(), "ENCONTRADOOOOO");
+			
+				MostrarVehiculo ventana = new MostrarVehiculo();
+				ventana.getFrame();
+				frame4.dispose();
 			}
 		}
+		JOptionPane.showMessageDialog(frame4, "La matricula introducida no se encuentra en nuestra base de datos");
 	}
 	
 	
 	private void busquedaPorDni(String dni) {
+		Vehiculo.CochePrueba();
 		for(Vehiculo c: Container.getListaVehiculos()){
-			JOptionPane.showMessageDialog(getFrame4(), c.getDniCliente());
+			if(c.getDniCliente().equals(dni)){
+				MostrarVehiculo ventana = new MostrarVehiculo();
+				ventana.getFrame();
+				frame4.dispose();
+				
+			}
 		}
+		
+		JOptionPane.showMessageDialog(frame4, "El dni introducido no se encuentra en nuestra base de datos");
 	}
+
+	
 }
