@@ -135,8 +135,7 @@ public class Login {
 					
 				}
 				
-				String contraseña = String.valueOf(txtpassword.getPassword());
-				escorrecto=(LoginDAO.Login(txtusuario.getText(), contraseña));
+				
 				
 				
 				if(escorrecto){
@@ -150,6 +149,8 @@ public class Login {
 					
 				
 				}
+				String contraseña = String.valueOf(txtpassword.getPassword());
+				escorrecto=(LoginDAO.Login(txtusuario.getText(), contraseña));
 				
 				if(escorrecto)
 				{

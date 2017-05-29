@@ -15,7 +15,7 @@ public class LoginDAO {
 
 	      // Declare the JDBC objects. 
 	      boolean login =false;
-	      String sql=("SELECT * FROM Empleados WHERE Usuario='"+usuario+"' AND pin=('"+contraseña+"') ");  
+	      String sql=("SELECT * FROM Empleados WHERE Usuario='"+usuario+"' AND pin=('"+contraseña+"')");  
 	      Connection con = null;  
 	      Statement stmt = null;  
 	      ResultSet rs = null;  
