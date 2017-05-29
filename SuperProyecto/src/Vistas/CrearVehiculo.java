@@ -16,6 +16,7 @@ import javax.swing.SpinnerNumberModel;
 
 import Models.Cliente;
 import Models.Container;
+import Models.Validaciones;
 import Models.Vehiculo;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
@@ -29,6 +30,7 @@ import java.awt.List;
 import javax.swing.SwingConstants;
 
 import java.awt.Choice;
+
 public class CrearVehiculo {
 
 	private JFrame frame3;
@@ -102,11 +104,11 @@ public class CrearVehiculo {
 		scrollPanecolor = new JScrollPane(listcolor);
 
 		foto = new JLabel("");
-		
-		 btnempleado = new JButton("<html><br>CREAR PROPIETARIO<br></html>");
-		
-		 btnempleado.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
-		 btnempleado.setVerticalAlignment(SwingConstants.TOP);
+
+		btnempleado = new JButton("<html><br>CREAR PROPIETARIO<br></html>");
+
+		btnempleado.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
+		btnempleado.setVerticalAlignment(SwingConstants.TOP);
 
 		initialize();
 
@@ -120,7 +122,7 @@ public class CrearVehiculo {
 
 	private void propiedades() {
 
-		frame3.setBounds(100, 100, 450, 353);
+		frame3.setBounds(120, 120, 470, 422);
 		frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame3.getContentPane().setLayout(null);
 		frame3.getContentPane().add(lblmatricula);
@@ -177,13 +179,11 @@ public class CrearVehiculo {
 		spinnerpuertas.setBounds(99, 208, 89, 28);
 		frame3.getContentPane().add(spinnerpuertas);
 
-
-		
 		btnempleado.setBounds(9, 261, 123, 64);
 		frame3.getContentPane().add(btnempleado);
 		btnempleado.setVisible(false);
 
-		foto.setIcon(new ImageIcon("/Users/cristinavilas/Desktop/taller3.png"));
+		foto.setIcon(new ImageIcon("C:/Users/1dam.m/Desktop/TALLER.png"));
 		foto.setBounds(34, 6, 444, 319);
 		frame3.getContentPane().add(foto);
 
@@ -197,8 +197,6 @@ public class CrearVehiculo {
 
 		lblanio.setBounds(200, 77, 133, 14);
 		lblanio.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-
-
 
 	}
 
@@ -215,115 +213,59 @@ public class CrearVehiculo {
 				int contador = 0;
 
 				/**
-				 * Hacemos las validaciones ,y contamos con un contador los
-				 * aciertos, si llega al numero total de campos nos creara el
-				 * objeto con los atributos introducidos
+				 * Hacemos las validaciones ,desde las que tenemos en clase
+				 * 
 				 */
 
 				// matricula
-				Pattern pat = Pattern.compile("^[0-9]{4}[a-zA-Z]{3}$");
-				Matcher mat = pat.matcher(txtmatricula.getText());
 
-				if (txtmatricula.getText().isEmpty()) {
-
-					JOptionPane.showMessageDialog(frame3, "ERROR: Inserte una matricula correcta");
-				}
-				if (!mat.matches()) {
-					JOptionPane.showMessageDialog(frame3, "ERROR: Inserte una matricula correcta");
-				} else {
-					contador += 1;
+				String matricula = Validaciones.validarmatricula(txtmatricula.getText());
+				if (matricula.equals("0")) {
+					escorrecto = false;
 				}
 
 				// marca
 
-				String marca = (String) listmarca.getSelectedValue();
-				if (marca == null) {
-					JOptionPane.showMessageDialog(frame3, "ERROR: Seleccione una marca ");
-
-				} else {
-
-					contador += 1;
+				String marca = Validaciones.validarmarca((String) listmarca.getSelectedValue());
+				if (marca.equals("0")) {
+					escorrecto = false;
 				}
 
 				// modelo
 
-				if (txtmodelo.getText().isEmpty()) {
-
-					JOptionPane.showMessageDialog(frame3, "ERROR: Inserte un modelo correcto");
-				} else {
-
-					contador += 1;
-				}
+				String modelo = Validaciones.validarmodelo(txtmodelo.getText());
 
 				// puertas no necesita validacion
 
 				// anho matriculacion tampoco
 
 				// tipo gasoil
-				String tipo = (String) listtipo.getSelectedValue();
-				if (tipo == null) {
-
-					JOptionPane.showMessageDialog(frame3, "ERROR: Seleccione tipo de combustible");
+				String tipo = Validaciones.validarcombustible((String) listtipo.getSelectedValue());
+				if (tipo.equals("0")) {
 					escorrecto = false;
-				}
-				{
-
-					contador += 1;
 				}
 
 				// CV
 
-				int numero2 = 0;
-				try {
-					numero2 = Integer.parseInt(new String(txtcv.getText()));
-
-				} catch (Exception e2) {
-
-					JOptionPane.showMessageDialog(frame3, "ERROR: Los CV deben ser numericas");
+				int caballos = Validaciones.validarcv(txtcv.getText());
+				if (caballos == 0) {
 					escorrecto = false;
-
-				}
-
-				if (escorrecto) {
-					if (numero2 <= 0) {
-						JOptionPane.showMessageDialog(frame3, "ERROR: Los CV deben ser >0");
-
-					} else {
-						contador += 1;
-					}
 				}
 
 				// color
-				String color = (String) listcolor.getSelectedValue();
-				if (color == null) {
-
-					JOptionPane.showMessageDialog(frame3, "ERROR: Seleccione un color ");
-				} else {
-
-					contador += 1;
+				String color = Validaciones.validarcolor((String) listcolor.getSelectedValue());
+				if (color.equals("0")) {
+					escorrecto = false;
 				}
+				if (escorrecto) {
 
-				if (contador == 6) {
-
-					coche = new Vehiculo();
-
-					coche.setMatricula(txtmatricula.getText());
-					coche.setMarca(marca);
-					coche.setModelo(txtmodelo.getText());
-					coche.setNumPuertas((int) spinnerpuertas.getValue());
-					coche.setTipoGas(tipo);
-
-					coche.setAnioMatriculacion((int) spinner.getValue());
-					coche.setCv((short) numero2);
-
-					coche.setAnioMatriculacion((int) spinner.getValue());
-
-					coche.setColor(color);
+					coche = new Vehiculo(matricula, marca, modelo, (int) spinnerpuertas.getValue(), color, tipo,
+							(int) spinner.getValue(), caballos, "");
 
 					Container.getListaVehiculos().add(coche);
 
 					JOptionPane.showMessageDialog(frame3, "VEHICULO ANHADIDO");
-					
+
 					txtmatricula.setEnabled(false);
 					scrollPanemarca.setEnabled(false);
 					listmarca.setEnabled(false);
@@ -334,28 +276,26 @@ public class CrearVehiculo {
 					listcolor.setEnabled(false);
 					scrollPanecolor.setEnabled(false);
 					btncrear.setEnabled(false);
-					
+
 					btnempleado.setVisible(true);
 
 				}
 
 			}
 		});
-		
-		// Accion del boton crear empleado
-		
-		 btnempleado.addMouseListener(new MouseAdapter() {
-			 	@Override
-			 	public void mouseClicked(MouseEvent e) {
-			 		
-			 			Propietario1 window=new Propietario1();
-			 		window.getFrame6().setVisible(true);
-			 		frame3.setVisible(false);
-			 		//CREACION 
-			 	}
-			 });
 
-		
+		// Accion del boton crear empleado
+
+		btnempleado.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				Propietario1 window = new Propietario1();
+				window.getFrame6().setVisible(true);
+				frame3.setVisible(false);
+				// CREACION
+			}
+		});
 
 	}
 }

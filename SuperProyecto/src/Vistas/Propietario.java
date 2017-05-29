@@ -14,6 +14,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import Models.Cliente;
 import Models.Container;
+import Models.Validaciones;
+import Models.Vehiculo;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -26,6 +28,9 @@ import javax.swing.JList;
 
 public class Propietario {
 
+	/**
+	 * Atributos
+	 */
 	private JFrame frame7;
 	private JTextField textNombre;
 	private JTextField textApellido1;
@@ -37,12 +42,6 @@ public class Propietario {
 	private JLabel labelNombre;
 	private JLabel labelApellido;
 	private JLabel labelDNI;
-	
-	public JFrame getFrame7() {
-		return frame7;
-	}
-
-	
 	private JLabel labelTeléfono;
 	private JLabel labelEmail;
 	private JLabel labelDirección;
@@ -51,25 +50,21 @@ public class Propietario {
 	private JTextField textSApellido;
 	private JTextField textLetra;
 	private JLabel lblLetra;
-
+	
 	/**
-	 * Launch the application.
+	 * Getter
+	 * @return frame7
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Propietario window = new Propietario();
-					window.frame7.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public JFrame getFrame7() {
+		return frame7;
 	}
 
+	
+	
+
+	
 	/**
-	 * Create the application.
+	 * Constructor
 	 */
 	public Propietario() {
 
@@ -96,14 +91,23 @@ public class Propietario {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * inicializacion del frame
 	 */
 
 	private void initialize() {
+		/**
+		 * Propiedades del frame
+		 */
 		propiedades();
+		/**
+		 * Eventos del frame
+		 */
 		eventos();
 	}
 
+	/**
+	 * Propiedades del frame
+	 */
 	public void propiedades() {
 
 		labelPropietario.setBounds(180, 11, 83, 26);
@@ -167,173 +171,113 @@ public class Propietario {
 		frame7.getContentPane().add(lblLetra);
 	}
 
+	/**
+	 * Eventos del frame
+	 */
 	public void eventos() {
+
+		/**
+		 * Boton crear Validara todos los datos requeridos por el programa si
+		 * son validos creara el cliente y lo introducira en la base de datos
+		 */
 		buttonCrear.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				boolean escorrecto = true;
-				char[] c = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-				String letrasdni = "TRWAGMYFPDXBNJZSQVHLCKE";
-				String letra = textLetra.getText();
-				int dni = 0;
-				int telefono;
-				String dni1="";
+				String nombre;
+				String apellido1;
+				String apellido2;
+				String Dni;
+				String direccion;
+				String Email;
+				String telefono;
+
 				/**
 				 * Verificar Nombre
 				 *
 				 */
-				if (textNombre.getText().isEmpty()) {
 
-					JOptionPane.showMessageDialog(frame7, "Debes escribir un nombre");
+				nombre = Validaciones.validarNombre(textNombre.getText());
+				if (nombre.equals("0")) {
 					escorrecto = false;
-				}
-				for (int i = 0; i < textNombre.getText().length(); i++) {
-					for (int j = 0; j < textNombre.getText().length(); i++) {
-						if (textNombre.getText().charAt(i) == c[j]) {
-
-							JOptionPane.showMessageDialog(frame7, "Debes escribir un nombre");
-							escorrecto = false;
-
-						}
-
-					}
-
 				}
 
 				/**
 				 * Verificar apellido1
 				 */
 
-				if (textApellido1.getText().isEmpty()) {
-
-					JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido");
+				apellido1 = Validaciones.apellido1(textApellido1.getText());
+				if (apellido1.equals("0")) {
 					escorrecto = false;
-				}
-				for (int i = 0; i < textApellido1.getText().length(); i++) {
-					for (int j = 0; j < textApellido1.getText().length(); i++) {
-						if (textApellido1.getText().charAt(i) == c[j]) {
-
-							JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido que no contenga numeros");
-							escorrecto = false;
-
-						}
-
-					}
 				}
 
 				/**
 				 * Verificar Apellido2
 				 */
 
-				if (textSApellido.getText().isEmpty()) {
-
-					JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido");
+				apellido2 = Validaciones.apellido2(textSApellido.getText());
+				if (apellido2.equals("0")) {
 					escorrecto = false;
-				}
-				for (int i = 0; i < textSApellido.getText().length(); i++) {
-					for (int j = 0; j < textSApellido.getText().length(); i++) {
-						if (textSApellido.getText().charAt(i) == c[j]) {
-
-							JOptionPane.showMessageDialog(frame7, "Debes escribir un Apellido que no contenga numeros");
-							escorrecto = false;
-
-						}
-
-					}
 				}
 
 				/**
 				 * Validar DNI
 				 */
-				if (textDNI.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame7, "Debes introducir un dni");
+
+				Dni = Validaciones.validarDni(textDNI.getText(), textLetra.getText());
+				if (Dni.equals("0")) {
+					JOptionPane.showMessageDialog(frame7, "El dni es incorrecto");
 					escorrecto = false;
 				}
-				if (textDNI.getText().length() != 8) {
-					JOptionPane.showMessageDialog(frame7, "El dni debe contener 8 digitos");
-					escorrecto = false;
-				}
-				if (textLetra.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame7, "El dni debe contener 9 digitos");
-					escorrecto = false;
-				}
-				if (textLetra.getText().length() != 1) {
-					JOptionPane.showMessageDialog(frame7, "La letra debe ser 1 sola");
-					escorrecto = false;
-				}
-
-				try {
-					dni = Integer.parseInt(textDNI.getText());
-
-				} catch (Exception ee) {
-
-					JOptionPane.showMessageDialog(frame7, "El numero de dni debe ser numerico");
-					escorrecto = false;
-				}
-
-				for (int i = 0; i < letrasdni.length(); i++) {
-
-					if (letra.toUpperCase().equals(letrasdni.charAt(i))) {
-						dni1 = dni + letra;
-
-					}
-				}
-				
 
 				/**
 				 * Direccion
 				 */
-				if (textDirección.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame7, "Debes introducir una Direccion");
-					escorrecto = false;
-
+				direccion=Validaciones.validarDireccion(textDirección.getText());
+				if(direccion.equals("0")){
+					escorrecto=false;
 				}
 
 				/**
 				 * Email
 				 */
-
-				if (textEmail.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame7, "Debes introducir un Email");
-					escorrecto = false;
-
+                 Email=Validaciones.validarEmail(textEmail.getText());
+				if(Email.equals("0")){
+					escorrecto=false;
 				}
-
+                 
 				/**
 				 * Telefono
 				 */
-				if (textTeléfono.getText().isEmpty()) {
-					JOptionPane.showMessageDialog(frame7, "Debes introducir un Telefono");
-					escorrecto = false;
-				}
-				if (textTeléfono.getText().length() != 9) {
-					JOptionPane.showMessageDialog(frame7, "El Telefono debe disponer de 9 digitos");
-					escorrecto = false;
-				}
-				try {
-					telefono = Integer.parseInt(textTeléfono.getText());
-
-				} catch (Exception ee) {
-
-					JOptionPane.showMessageDialog(frame7, "El numero de telefono debe ser numerico");
-					escorrecto = false;
-				}
-
-				if(escorrecto){
-					Cliente cliente = new Cliente(dni1,textNombre.getText(),textApellido1.getText(),textDirección.getText(),textTeléfono.getText(),textEmail.getText());
+				telefono = Validaciones.validarTelefono(textTeléfono.getText());
+                 
+				if (escorrecto) {
+					
+					Cliente cliente = new Cliente(Dni, nombre, apellido1,apellido2,direccion,telefono,Email);
 					Container.getListaClientes().add(cliente);
+					Container.getListaVehiculos().get(Container.getListaVehiculos().size()-1).setDniCliente(Dni);
+				    
+					Principal windows = new Principal();
+					windows.getFrame2().setVisible(true);
+					frame7.setVisible(false);
+					frame7.dispose();
+
 				}
 			}
 
 		});
+
+		/**
+		 * Boton Volver volvera al frame anterior
+		 */
 		buttonVolver.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				Propietario1 windows = new Propietario1();
 				windows.getFrame6().setVisible(true);
 				frame7.setVisible(false);
-			
+
 			}
 		});
 
