@@ -7,6 +7,9 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import DAO.LoginDAO;
+
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
@@ -131,6 +134,9 @@ public class Login {
 					escorrecto=false;
 					
 				}
+				
+				String contraseña = String.valueOf(txtpassword.getPassword());
+				escorrecto=(LoginDAO.Login(txtusuario.getText(), contraseña));
 				
 				
 				if(escorrecto){
