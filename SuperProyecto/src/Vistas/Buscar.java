@@ -163,6 +163,10 @@ public class Buscar {
 			public void mouseClicked(MouseEvent e) {
 				mostrarComponentesPpales();
 				ocultarComponentesBusqueda();
+				
+				Principal window=new Principal();
+				window.getFrame2().setVisible(true);
+				frame4.dispose();
 			}
 		});
 	}

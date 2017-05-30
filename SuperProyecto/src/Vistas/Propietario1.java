@@ -18,6 +18,7 @@ public class Propietario1 {
 	/**
 	 * Atributos
 	 */
+	private JFrame frameaux;
 	private JFrame frame6;
 	private JButton btnAsignar;
 	private JButton btnCrear;
@@ -32,8 +33,9 @@ public class Propietario1 {
 
 	/**
 	 * Constructor
+	 * @param frame3 
 	 */
-	public Propietario1() {
+	public Propietario1(JFrame frame3) {
 		frame6 = new JFrame();
 		btnAsignar = new JButton("<html>Asignar<br>a<br> cliente</html>");
 		btnCrear = new JButton("<html>Crear <br> cliente</html>");
@@ -44,6 +46,7 @@ public class Propietario1 {
 		btnVolver2 = new JButton("Volver");
 		lblLetra = new JLabel("letra");
 		textLetra = new JTextField();
+		frameaux=frame3;
 		initialize();
 	}
 
@@ -150,7 +153,7 @@ public class Propietario1 {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				Propietario ventana = new Propietario();
+				Propietario ventana = new Propietario(frame6);
 				ventana.getFrame7().setVisible(true);
 				frame6.setVisible(false);
 
@@ -209,8 +212,8 @@ public class Propietario1 {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				frame6.setVisible(false);
-				CrearVehiculo ventana = new CrearVehiculo();
-				ventana.getFrame().setVisible(true);
+				frameaux.setVisible(true);
+				frame6.dispose();
 				
 			}
 		});

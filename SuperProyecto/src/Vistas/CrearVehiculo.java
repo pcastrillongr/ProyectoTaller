@@ -52,6 +52,7 @@ public class CrearVehiculo {
 	private JLabel lblColor;
 	private JSpinner spinner;
 	private JList listmarca;
+
 	private JScrollPane scrollPanemarca;
 	private JList listtipo;
 	private JList listcolor;
@@ -64,6 +65,7 @@ public class CrearVehiculo {
 	private String tipoaux;
 	private JLabel lblfoto;
 
+	
 	public CrearVehiculo(String vehiculoenviado) {
 
 		frame3 = new JFrame();
@@ -330,7 +332,7 @@ public class CrearVehiculo {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				Propietario1 window = new Propietario1();
+				Propietario1 window = new Propietario1(frame3);
 				window.getFrame6().setVisible(true);
 				frame3.setVisible(false);
 				// CREACION
