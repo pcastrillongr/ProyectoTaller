@@ -20,7 +20,7 @@ import javax.swing.ImageIcon;
 import java.awt.Color;
 
 public class Login {
-
+//
 	private JFrame frame;
 	private JTextField txtusuario;
 	private JPasswordField txtpassword;
@@ -168,6 +168,7 @@ public class Login {
 					
 				
 				}
+				
 				String contraseña = String.valueOf(txtpassword.getPassword());
 				escorrecto=(LoginDAO.Login(txtusuario.getText(), contraseña));
 				
@@ -177,6 +178,10 @@ public class Login {
 					window.getFrame2().setVisible(true);
 					frame.dispose();
 					
+				}
+				if(!escorrecto){
+					
+					JOptionPane.showMessageDialog(frame,"El usuario o contraseña son incorrectos" );
 				}
 				
 				

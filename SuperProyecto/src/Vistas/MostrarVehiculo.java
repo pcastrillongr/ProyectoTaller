@@ -4,8 +4,10 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import Models.Container;
+import Models.Validaciones;
 import Models.Vehiculo;
 
 import java.awt.Font;
@@ -46,6 +48,7 @@ public class MostrarVehiculo {
 	private JButton btnRigth;
 	private JLabel lblNvehiculos;
 	private JButton btnFacturacion;
+	private JButton btnGuardar;
 	private JSpinner spinnerNP;
 	private JSpinner spinnerAM ;
 	public JFrame getFrame8() {
@@ -64,6 +67,7 @@ public class MostrarVehiculo {
 	private JTextField textComb;
 	private JTextField textCv;
 	private JTextField txtMatricula;
+	private JButton btnCancelar;
 
 	public MostrarVehiculo() {
 		frame8 = new JFrame();
@@ -98,6 +102,8 @@ public class MostrarVehiculo {
 		btnDatosClientes = new JButton("Datos Cliente");
 		btnLeft = new JButton("");
 		btnEditar = new JButton("Editar");
+		btnGuardar = new JButton("Guardar");
+		btnCancelar = new JButton("Cancelar");
 		btnRigth = new JButton("");
 		lblNvehiculos = new JLabel("");
 		btnFacturacion = new JButton("<html>Datos <br>Facturaci\u00F3n</html>");
@@ -263,6 +269,16 @@ public class MostrarVehiculo {
 		frame8.getContentPane().add(txtMatricula);
 		txtMatricula.setColumns(10);
 		
+		
+		btnGuardar.setBounds(256, 262, 89, 43);
+		btnGuardar.setVisible(false);
+		frame8.getContentPane().add(btnGuardar);
+		
+		
+		btnCancelar.setBounds(140, 262, 89, 43);
+		btnCancelar.setVisible(false);
+		frame8.getContentPane().add(btnCancelar);
+		
 		textColor.setVisible(false);
 		textComb.setVisible(false);
 		textCv.setVisible(false);
@@ -309,8 +325,48 @@ public class MostrarVehiculo {
 				lblmodelo2.setVisible(false);
 				
 				
-				
+				ocultarBotones();
+				mostrarBotonesEdicion();
 			}
+
+		});
+		
+		
+		btnCancelar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				mostrarBotones();
+				ocultarBotonesEdicion();
+				
+				txtMatricula.setVisible(false);
+				textColor.setVisible(false);
+				textComb.setVisible(false);
+				textCv.setVisible(false);
+				textMarca.setVisible(false);
+				textModelo.setVisible(false);
+				spinnerNP.setVisible(false);
+				spinnerAM.setVisible(false);
+				
+				
+				lblaniomatriculacion2.setVisible(true);
+				lblcolor2.setVisible(true);
+				lblcombustible2.setVisible(true);
+				lblcv2.setVisible(true);
+				lblmatricula2.setVisible(true);
+				lblmarca2.setVisible(true);
+				lblnpuertas2.setVisible(true);
+				lblmodelo2.setVisible(true);
+			}
+		});
+		
+		
+		btnGuardar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				guardarCambios();
+			}
+
+			
 		});
 	}
 	
@@ -336,4 +392,143 @@ public class MostrarVehiculo {
     	   
    		
    	}
+       
+       
+       private void ocultarBotones() {
+    	   btnatras.setVisible(false);
+    	   btnEditar.setVisible(false);
+    	   btnDatosClientes.setVisible(false);
+    	   btnFacturacion.setVisible(false);
+    	   btnRigth.setVisible(false);
+    	   btnLeft.setVisible(false);
+		}
+       
+       private void mostrarBotones() {
+    	   btnatras.setVisible(true);
+    	   btnEditar.setVisible(true);
+    	   btnDatosClientes.setVisible(true);
+    	   btnFacturacion.setVisible(true);
+    	   btnRigth.setVisible(true);
+    	   btnLeft.setVisible(true);
+		}
+       
+       private void mostrarBotonesEdicion() {
+    	   btnGuardar.setVisible(true);
+    	   btnCancelar.setVisible(true);
+		}
+       
+       
+       private void ocultarBotonesEdicion() {
+    	   btnGuardar.setVisible(false);
+    	   btnCancelar.setVisible(false);
+		}
+       
+       
+       private void guardarCambios() {
+    	   String marca;
+    	   String matricula;
+    	   String color;
+    	   String combustible;
+    	   int caballos;
+    	   String modelo;
+    	   int contCambios = 0;
+			
+   
+			if(!textMarca.getText().equals("")){
+				
+				marca = Validaciones.validarmarca(textMarca.getText());
+				
+				if(marca != "0"){
+					Container.getListaVehiculos().get(id).setMarca(marca);
+					contCambios+=1;
+				}
+			}
+			
+			if(!txtMatricula.getText().equals("")){
+				
+				matricula = Validaciones.validarmatricula(txtMatricula.getText());
+				
+				if(matricula != "0"){
+					Container.getListaVehiculos().get(id).setMatricula(matricula);
+					contCambios+=1;
+				}
+			}
+			
+			if(!textColor.getText().equals("")){
+				
+				color = Validaciones.validarcolor(textColor.getText());
+				if(color != "0"){
+					Container.getListaVehiculos().get(id).setColor(color);
+					contCambios+=1;
+				}
+			}
+			
+			if(!textComb.getText().equals("")){
+				
+				combustible = Validaciones.validarcombustible(textComb.getText());
+				if(combustible != "0"){
+					Container.getListaVehiculos().get(id).setTipoGas(combustible);
+					contCambios+=1;
+				}
+			}
+			
+			
+			if(!textCv.getText().equals("")){
+				
+				caballos = Validaciones.validarcv(textCv.getText());
+				if(caballos != 0){
+					Container.getListaVehiculos().get(id).setCv(caballos);
+					contCambios+=1;
+				}
+			}
+			
+			
+			if(!textModelo.getText().equals("")){
+				
+				modelo = Validaciones.validarmodelo(textModelo.getText());
+				if(modelo != "0"){
+					Container.getListaVehiculos().get(id).setModelo(modelo);
+					contCambios+=1;
+				}
+			}
+			
+			if(contCambios > 0){
+				JOptionPane.showMessageDialog(getFrame8(), contCambios + " campos actualizados");
+			}
+			
+			actualizarDatos();
+		}
+
+	private void actualizarDatos() {
+		lblmatricula2.setText(Container.getVehiculosAux().get(id).getMatricula());
+   		lblmarca2.setText(Container.getVehiculosAux().get(id).getMarca());
+   		lblmodelo2.setText(Container.getVehiculosAux().get(id).getModelo());
+   		String nPuertas = String.valueOf(Container.getVehiculosAux().get(id).getNumPuertas());
+   		lblnpuertas2.setText(nPuertas);
+   		lblcolor2.setText(Container.getVehiculosAux().get(id).getColor());
+   		lblcombustible2.setText(Container.getVehiculosAux().get(id).getTipoGas());
+   		String Año = String.valueOf(Container.getVehiculosAux().get(id).getAnioMatriculacion());
+   		lblaniomatriculacion2.setText(Año);
+   		String cv = String.valueOf(Container.getVehiculosAux().get(id).getCv());
+   		lblcv2.setText(cv);	
+   		
+   		txtMatricula.setVisible(false);
+		textColor.setVisible(false);
+		textComb.setVisible(false);
+		textCv.setVisible(false);
+		textMarca.setVisible(false);
+		textModelo.setVisible(false);
+		spinnerNP.setVisible(false);
+		spinnerAM.setVisible(false);
+		
+		
+		lblaniomatriculacion2.setVisible(true);
+		lblcolor2.setVisible(true);
+		lblcombustible2.setVisible(true);
+		lblcv2.setVisible(true);
+		lblmatricula2.setVisible(true);
+		lblmarca2.setVisible(true);
+		lblnpuertas2.setVisible(true);
+		lblmodelo2.setVisible(true);
+	}
 }
