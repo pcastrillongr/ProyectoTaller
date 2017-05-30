@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.ImageIcon;
 
 public class MostrarVehiculo {
 
@@ -100,11 +101,16 @@ public class MostrarVehiculo {
 
 		lblcv2 = new JLabel("");
 		btnDatosClientes = new JButton("Datos Cliente");
+		
 		btnLeft = new JButton("");
+		
+		btnLeft.setIcon(new ImageIcon(MostrarVehiculo.class.getResource("/Imagenes/Arrow left-50.png")));
 		btnEditar = new JButton("Editar");
 		btnGuardar = new JButton("Guardar");
 		btnCancelar = new JButton("Cancelar");
 		btnRigth = new JButton("");
+		
+		btnRigth.setIcon(new ImageIcon(MostrarVehiculo.class.getResource("/Imagenes/Arrow Rigth.png")));
 		lblNvehiculos = new JLabel("");
 		btnFacturacion = new JButton("<html>Datos <br>Facturaci\u00F3n</html>");
 		spinnerNP = new JSpinner();
@@ -205,21 +211,21 @@ public class MostrarVehiculo {
 		frame8.getContentPane().add(lblcv2);
 		
 		
-		btnLeft.setBounds(18, 66, 34, 23);
+		btnLeft.setBounds(10, 51, 61, 43);
 		frame8.getContentPane().add(btnLeft);
 		
 		
-		btnRigth.setBounds(111, 66, 34, 23);
+		btnRigth.setBounds(139, 51, 64, 43);
 		frame8.getContentPane().add(btnRigth);
 		
 		
-		lblNvehiculos.setBounds(55, 66, 53, 23);
+		lblNvehiculos.setBounds(81, 64, 48, 30);
 		frame8.getContentPane().add(lblNvehiculos);
 		
 		
 		
 		
-		btnEditar.setBounds(125, 263, 80, 41);
+		btnEditar.setBounds(149, 263, 80, 41);
 		frame8.getContentPane().add(btnEditar);
 		
 		
@@ -368,6 +374,34 @@ public class MostrarVehiculo {
 
 			
 		});
+		
+		btnDatosClientes.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+				MostrarCliente ventana = new MostrarCliente();
+				ventana.getFrame9().setVisible(true);
+				frame8.setVisible(false);
+			}
+		});
+		
+		btnLeft.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if(id>0){
+					id-=1;
+				}
+			}
+		});
+		
+		btnRigth.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if(id < Container.getVehiculosAux().size()-1){
+					
+				}
+			}
+		});
 	}
 	
 	
@@ -389,7 +423,7 @@ public class MostrarVehiculo {
    		lblaniomatriculacion2.setText(Año);
    		cv = String.valueOf(Container.getVehiculosAux().get(id).getCv());
    		lblcv2.setText(cv);
-    	   
+    	lblNvehiculos.setText((id+1)+" de "+Container.getVehiculosAux().size());   
    		
    	}
        

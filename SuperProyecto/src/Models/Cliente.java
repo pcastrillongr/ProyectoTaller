@@ -26,6 +26,7 @@ public class Cliente {
 		this.nif = "";
 		this.nombre = "";
 		this.apellido1 = "";
+		this.apellido2="";
 		this.direccion = "";
 		this.tlf = "";
 		this.emaill = "";
@@ -45,12 +46,38 @@ public class Cliente {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getApellidos() {
+	public String getApellido1() {
 		return apellido1;
 	}
-	public void setApellidos(String apellidos) {
-		this.apellido1 = apellidos;
+	public void setApellido1(String apellido1) {
+		this.apellido1 = apellido1;
 	}
+	
+	
+	public String getApellido2() {
+		return apellido2;
+	}
+
+
+
+	public void setApellido2(String apellido2) {
+		this.apellido2 = apellido2;
+	}
+
+
+
+	public String getEmaill() {
+		return emaill;
+	}
+
+
+
+	public void setEmaill(String emaill) {
+		this.emaill = emaill;
+	}
+
+
+
 	public String getDireccion() {
 		return direccion;
 	}
@@ -81,8 +108,19 @@ public class Cliente {
 	
 	static public void ClientePrueba(){
 		
-		Cliente c = new Cliente("78978198Q","alejandro","villalobos","trujillo","Malaga","952818280","ale@hotmail.es");
+		Cliente c = new Cliente("12345678Q","alejandro","villalobos","trujillo","Malaga","952818280","ale@hotmail.es");
+		Cliente pepe=new Cliente("12345678g","pepe","da silva","gomez","calle del pozo","655789654","pepesilva@gmail.com");
+		Cliente manolo=new Cliente("987654321h","manolo","gomez","beltran","calle del barrio","544321167","manologomez@gmail.com");
+		Cliente juan=new Cliente("24578975f","juan","lopez","gomez","calle del rio","7883465762","juan@gmail.com");
+		Cliente lalo=new Cliente("23567806q","lalo","hernando","freire","calle del malecon","633764321","lalo@gmail.com");
+		Cliente alejandro=new Cliente("23987390q","alejandro","gomex","gomez","calle de montepinar","688754321","alejandro@gmail.com");
+		
 		Container.getListaClientes().add(c);
+		Container.getListaClientes().add(manolo);
+		Container.getListaClientes().add(pepe);
+		Container.getListaClientes().add(juan);
+		Container.getListaClientes().add(lalo);
+		Container.getListaClientes().add(alejandro);
 	}
 	
 }

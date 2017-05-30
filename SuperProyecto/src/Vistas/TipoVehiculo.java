@@ -21,9 +21,7 @@ public class TipoVehiculo {
 		
 		frame9 = new JFrame();
 		 btncoche = new JButton("");
-		 
-		
-		 
+
 		 btnmoto = new JButton("");
 	
 		 btncamion = new JButton("");

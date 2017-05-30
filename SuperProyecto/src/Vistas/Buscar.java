@@ -9,12 +9,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextField;
 
 import Models.Container;
 import Models.Vehiculo;
+import javax.swing.ImageIcon;
 
 public class Buscar {
 
@@ -26,6 +28,7 @@ public class Buscar {
 	private JTextField textFieldDatos;
 	private JButton btnBuscar;
 	private JLabel lblBusqueda;
+	private JLabel lblFoto;
 	
 	
 	/**
@@ -54,16 +57,16 @@ public class Buscar {
 		frame4.getContentPane().setLayout(null);
 		frame4.setTitle("BUSCAR VEHÍCULO");
 		
-		btnMatrcula.setBounds(10, 71, 139, 114);
+		btnMatrcula.setBounds(10, 151, 139, 114);
 		frame4.getContentPane().add(btnMatrcula);
 		
-		btnDni.setBounds(159, 71, 139, 114);
+		btnDni.setBounds(170, 151, 139, 114);
 		frame4.getContentPane().add(btnDni);
 		
-		btnFactura.setBounds(309, 71, 139, 114);
+		btnFactura.setBounds(319, 151, 139, 114);
 		frame4.getContentPane().add(btnFactura);
 		
-		btnVolver.setBounds(187, 222, 89, 23);
+		btnVolver.setBounds(184, 11, 89, 23);
 		frame4.getContentPane().add(btnVolver);
 		
 		
@@ -71,14 +74,22 @@ public class Buscar {
 		lblBusqueda.setVisible(false);
 		frame4.getContentPane().add(lblBusqueda);
 		
-		textFieldDatos.setBounds(62, 117, 172, 23);
+		textFieldDatos.setBounds(81, 197, 172, 23);
 		textFieldDatos.setVisible(false);
 		frame4.getContentPane().add(textFieldDatos);
 		textFieldDatos.setColumns(10);
 		
-		btnBuscar.setBounds(266, 106, 89, 44);
+		btnBuscar.setBounds(308, 186, 89, 44);
 		btnBuscar.setVisible(false);
 		frame4.getContentPane().add(btnBuscar);
+		
+		lblFoto = new JLabel("");
+		lblFoto.setIcon(new ImageIcon(Buscar.class.getResource("/Imagenes/lupa.jpg")));
+		lblFoto.setBounds(0, 0, 458, 276);
+		frame4.getContentPane().add(lblFoto);
+		Image img = new ImageIcon(Buscar.class.getResource("/Imagenes/lupa.jpg")).getImage();
+		Image newImg = img.getScaledInstance(lblFoto.getWidth(), lblFoto.getHeight(), java.awt.Image.SCALE_SMOOTH);
+		lblFoto.setIcon(new ImageIcon(newImg));
 	}
 
 	/**
@@ -193,23 +204,25 @@ public class Buscar {
 		for(Vehiculo c: Container.getListaVehiculos()){
 			if(c.getMatricula().equals(matricula)){
 			
-				MostrarVehiculo ventana = new MostrarVehiculo();
-				ventana.getFrame8().setVisible(true);
 				Container.getVehiculosAux().add(c);
-				frame4.setVisible(false);
 				escorrecto = true;
 			}
 		}
 		if(!escorrecto){
 			JOptionPane.showMessageDialog(frame4, "La matricula introducida no se encuentra en nuestra base de datos");
 			}
+		else{
+
+			MostrarVehiculo ventana = new MostrarVehiculo();
+			ventana.getFrame8().setVisible(true);
+			frame4.setVisible(false);
+		}
 		
 	}
 	
 	private void busquedaPorDni(String dni) {
 		boolean escorrecto = false;
-		Vehiculo.CochePrueba();
-		
+		Vehiculo.CochePrueba();		
 		for(Vehiculo c: Container.getListaVehiculos()){
 			if(c.getDniCliente().equals(dni)){
 				Container.getVehiculosAux().add(c);
