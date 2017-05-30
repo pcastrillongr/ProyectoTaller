@@ -218,7 +218,6 @@ public class Buscar {
 			if(escorrecto){
 				MostrarVehiculo ventana = new MostrarVehiculo();
 				ventana.getFrame8().setVisible(true);
-				
 				frame4.setVisible(false);
 			}
 		}

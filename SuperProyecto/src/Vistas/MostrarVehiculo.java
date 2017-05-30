@@ -368,6 +368,15 @@ public class MostrarVehiculo {
 
 			
 		});
+		
+		btnDatosClientes.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+				
+				
+			}
+		});
 	}
 	
 	
