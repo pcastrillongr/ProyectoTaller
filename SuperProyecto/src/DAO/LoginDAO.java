@@ -10,7 +10,7 @@ public class LoginDAO {
 	 public static boolean Login(String usuario,String contraseña) {  
           
 	      // Create a variable for the connection string.  
-	      String connectionUrl = "jdbc:sqlserver://PC102\\SQLALEJANDRO:1433;" +  
+	      String connectionUrl = "jdbc:sqlserver://172.16.100.36\\SQLALEJANDRO:1433;" +  
 	         "databaseName=Taller;user=Admin;password=1234";  
 
 	      // Declare the JDBC objects. 

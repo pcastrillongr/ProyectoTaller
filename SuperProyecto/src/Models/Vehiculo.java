@@ -12,10 +12,11 @@ public class Vehiculo {
 	private int fechamatriculacion;
 	private int cv;
 	private String dniCliente;
+	private String tipoVehiculo;
 	
 	
 	public Vehiculo(String matricula, String marca, String modelo, int numPuertas, String color, String tipoGas,
-			int anioMatriculacion, int cv,String dni) {
+			int anioMatriculacion, int cv,String dni,String tipoVehiculo) {
 		super();
 		this.matricula = matricula;
 		this.marca = marca;
@@ -26,6 +27,7 @@ public class Vehiculo {
 		this.fechamatriculacion = anioMatriculacion;
 		this.cv = cv;
 		this.dniCliente=dni;
+		this.tipoVehiculo=tipoVehiculo;
 	}
 	
 	
@@ -40,7 +42,36 @@ public class Vehiculo {
 		this.tipoGas = "";
 		this.fechamatriculacion=0;
 		this.cv = 0;
+		this.tipoVehiculo="";
 	}
+
+
+	public int getFechamatriculacion() {
+		return fechamatriculacion;
+	}
+
+
+
+
+	public void setFechamatriculacion(int fechamatriculacion) {
+		this.fechamatriculacion = fechamatriculacion;
+	}
+
+
+
+
+	public String getTipoVehiculo() {
+		return tipoVehiculo;
+	}
+
+
+
+
+	public void setTipoVehiculo(String tipoVehiculo) {
+		this.tipoVehiculo = tipoVehiculo;
+	}
+
+
 
 
 	public String getMatricula() {
