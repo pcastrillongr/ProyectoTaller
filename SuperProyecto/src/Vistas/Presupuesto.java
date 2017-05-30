@@ -38,21 +38,9 @@ public class Presupuesto {
 	private boolean inicio = false;
 	private Tiempo t = new Tiempo();
 	private JLabel lblTiempo;
+	private static int segundos;
 	private JLabel lblNewLabel;
 	private JLabel lblDineroTotal;
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Presupuesto window = new Presupuesto();
-					window.frame7.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.

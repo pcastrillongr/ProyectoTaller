@@ -29,22 +29,6 @@ public class Buscar {
 	
 	
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Buscar window = new Buscar();
-					window.frame4.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public Buscar() {
@@ -166,7 +150,6 @@ public class Buscar {
 				
 				Principal window=new Principal();
 				window.getFrame2().setVisible(true);
-				frame4.setVisible(false);
 				frame4.dispose();
 			}
 		});
@@ -209,19 +192,18 @@ public class Buscar {
 		Vehiculo.CochePrueba();
 		for(Vehiculo c: Container.getListaVehiculos()){
 			if(c.getMatricula().equals(matricula)){
-				Container.getVehiculosAux().add(c);
-				escorrecto = true;
-			}
-			if(!escorrecto){
-				JOptionPane.showMessageDialog(frame4, "La matricula introducido no se encuentra en nuestra base de datos");
-			}
-			if(escorrecto){
+			
 				MostrarVehiculo ventana = new MostrarVehiculo();
 				ventana.getFrame8().setVisible(true);
+				Container.getVehiculosAux().add(c);
 				frame4.setVisible(false);
+				escorrecto = true;
 			}
 		}
-			
+		if(!escorrecto){
+			JOptionPane.showMessageDialog(frame4, "La matricula introducida no se encuentra en nuestra base de datos");
+			}
+		
 	}
 	
 	private void busquedaPorDni(String dni) {
@@ -234,6 +216,7 @@ public class Buscar {
 				escorrecto = true;
 			}
 		}
+		
 		if(!escorrecto){
 		JOptionPane.showMessageDialog(frame4, "El dni introducido no se encuentra en nuestra base de datos");
 		}

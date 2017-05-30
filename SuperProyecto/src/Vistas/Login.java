@@ -18,7 +18,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import java.awt.Color;
-import Imagenes.*;
+
 public class Login {
 //
 	private JFrame frame;
@@ -29,8 +29,6 @@ public class Login {
 	private JLabel lblpassword;
 	private JButton btnentrar;
 	private JLabel lblfoto;
-	private Image img ;
-	private Image newImg;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -58,8 +56,8 @@ public class Login {
 		txtpassword = new JPasswordField();
 		lblfoto= new JLabel("");
 		lblfoto.setForeground(Color.WHITE);
-		img = new ImageIcon(Login.class.getResource("/SuperProyecto/src/Imagenes/logologin.jpg")).getImage();
-		newImg = img.getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), java.awt.Image.SCALE_SMOOTH);
+		
+		
 		initialize();
 	}
 
@@ -104,8 +102,8 @@ public class Login {
 		lblfoto.setBounds(0, 0, 434, 262);
 		
 		lblfoto.setIcon(new ImageIcon(Login.class.getResource("/Imagenes/logologin.jpg")));
-		
-		 
+		Image img = new ImageIcon(Login.class.getResource("/Imagenes/logologin.jpg")).getImage();
+		 Image newImg = img.getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), java.awt.Image.SCALE_SMOOTH);
 		lblfoto.setIcon(new ImageIcon(newImg));
 		frame.getContentPane().add(lblfoto);
 		

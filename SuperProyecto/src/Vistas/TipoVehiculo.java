@@ -20,13 +20,16 @@ public class TipoVehiculo {
 	public TipoVehiculo() {
 		
 		frame9 = new JFrame();
-		btncoche = new JButton("");
-
-		btnmoto = new JButton("");
-
-		btncamion = new JButton("");
-
-		btnbici = new JButton("");
+		 btncoche = new JButton("");
+		 
+		
+		 
+		 btnmoto = new JButton("");
+	
+		 btncamion = new JButton("");
+		
+		 btnbici = new JButton("");
+		 
 
 		initialize();
 	}
