@@ -149,6 +149,7 @@ public class Login {
 					
 				
 				}
+				
 				String contraseña = String.valueOf(txtpassword.getPassword());
 				escorrecto=(LoginDAO.Login(txtusuario.getText(), contraseña));
 				
@@ -158,6 +159,10 @@ public class Login {
 					window.getFrame2().setVisible(true);
 					frame.dispose();
 					
+				}
+				if(!escorrecto){
+					
+					JOptionPane.showMessageDialog(frame,"El usuario o contraseña son incorrectos" );
 				}
 				
 				
