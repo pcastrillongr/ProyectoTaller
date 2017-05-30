@@ -166,6 +166,7 @@ public class Buscar {
 				
 				Principal window=new Principal();
 				window.getFrame2().setVisible(true);
+				frame4.setVisible(false);
 				frame4.dispose();
 			}
 		});
@@ -208,18 +209,20 @@ public class Buscar {
 		Vehiculo.CochePrueba();
 		for(Vehiculo c: Container.getListaVehiculos()){
 			if(c.getMatricula().equals(matricula)){
-			
-				MostrarVehiculo ventana = new MostrarVehiculo();
-				ventana.getFrame8().setVisible(true);
 				Container.getVehiculosAux().add(c);
-				frame4.setVisible(false);
 				escorrecto = true;
 			}
-		}
-		if(!escorrecto){
-			JOptionPane.showMessageDialog(frame4, "La matricula introducida no se encuentra en nuestra base de datos");
+			if(!escorrecto){
+				JOptionPane.showMessageDialog(frame4, "La matricula introducido no se encuentra en nuestra base de datos");
 			}
-		
+			if(escorrecto){
+				MostrarVehiculo ventana = new MostrarVehiculo();
+				ventana.getFrame8().setVisible(true);
+				
+				frame4.setVisible(false);
+			}
+		}
+			
 	}
 	
 	private void busquedaPorDni(String dni) {

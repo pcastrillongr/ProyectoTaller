@@ -67,7 +67,7 @@ public class Principal {
 				
 				TipoVehiculo window=new TipoVehiculo();
 				window.getFrame9().setVisible(true);
-				frame2.dispose();
+				frame2.setVisible(false);
 				
 				
 			}
@@ -76,9 +76,10 @@ public class Principal {
 		
 		btnbuscar.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent e) {
 				Buscar window2 = new Buscar();
 				 window2.getFrame4().setVisible(true);
+				 frame2.setVisible(false);
 			}
 		});
 	}

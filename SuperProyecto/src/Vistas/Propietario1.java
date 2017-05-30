@@ -189,7 +189,12 @@ public class Propietario1 {
 				
 				if(decision==JOptionPane.YES_OPTION){
 					Container.getListaVehiculos().get(Container.getListaClientes().size()-1).setDniCliente(dni);
-					JOptionPane.showMessageDialog(frame6, "Se le ha asignado el cliente al vehiculo");	
+					JOptionPane.showMessageDialog(frame6, "Se le ha asignado el cliente al vehiculo");
+					frame6.setVisible(false);
+					frame6.dispose();
+					Principal p  = new Principal();
+					p.getFrame2().setVisible(true);
+					
 					}
 				if(decision == JOptionPane.NO_OPTION){
 					textLetra.setText("");
@@ -198,6 +203,8 @@ public class Propietario1 {
 				}
 				if(decision == JOptionPane.CANCEL_OPTION){
 					JOptionPane.showMessageDialog(frame6, "Cancelado");
+					textLetra.setText("");
+					textNDni.setText("");
 				}
 
 			}
@@ -213,7 +220,7 @@ public class Propietario1 {
 			public void mouseClicked(MouseEvent e) {
 				frame6.setVisible(false);
 				frameaux.setVisible(true);
-				frame6.dispose();
+				
 				
 			}
 		});

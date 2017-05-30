@@ -38,7 +38,6 @@ public class Presupuesto {
 	private boolean inicio = false;
 	private Tiempo t = new Tiempo();
 	private JLabel lblTiempo;
-	private static int segundos;
 	private JLabel lblNewLabel;
 	private JLabel lblDineroTotal;
 
