@@ -52,15 +52,21 @@ public class CrearVehiculo {
 	private JLabel lblColor;
 	private JSpinner spinner;
 	private JList listmarca;
+
 	private JScrollPane scrollPanemarca;
 	private JList listtipo;
 	private JList listcolor;
 	private JScrollPane scrollPanecolor;
 	private JSpinner spinnerpuertas;
-	private JLabel foto;
 	private JButton btnempleado;
+	private JLabel lbltipovehiculo ;
+	private String[]tipovehiculo;
+	private JList listtipovehiculo;
+	private String tipoaux;
+	private JLabel lblfoto;
 
-	public CrearVehiculo() {
+	
+	public CrearVehiculo(String vehiculoenviado) {
 
 		frame3 = new JFrame();
 		lblmatricula = new JLabel("Matricula:");
@@ -94,21 +100,25 @@ public class CrearVehiculo {
 		color = new String[] { "Rojo", "Azul", "Verde", "Marrón", "Negro", "Blanco", "Veige", "Amarillo", "Lila",
 				"Gris" };
 		spinnerpuertas = new JSpinner();
-		spinnerpuertas.setModel(new SpinnerNumberModel(2, 2, 7, 1));
+		spinnerpuertas.setModel(new SpinnerNumberModel(0, 0, 7, 1));
 		listmarca = new JList(marca);
 		listcolor = new JList(color);
 		listtipo = new JList(tipo);
+		tipovehiculo=new String[]{"Coche","Moto","Bicicleta","Camion"};
 
 		scrollPanemarca = new JScrollPane(listmarca);
 
 		scrollPanecolor = new JScrollPane(listcolor);
 
-		foto = new JLabel("");
-
 		btnempleado = new JButton("<html><br>CREAR PROPIETARIO<br></html>");
 
 		btnempleado.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
 		btnempleado.setVerticalAlignment(SwingConstants.TOP);
+		lbltipovehiculo = new JLabel("TipoVehiculo:");
+		 listtipovehiculo = new JList(tipovehiculo);
+		 tipoaux=vehiculoenviado;
+		 coche=new Vehiculo();
+		 
 
 		initialize();
 
@@ -136,28 +146,28 @@ public class CrearVehiculo {
 		txtmatricula.setColumns(10);
 		frame3.getContentPane().add(txtmodelo);
 		txtmodelo.setColumns(10);
-		txtmodelo.setBounds(99, 162, 90, 26);
+		txtmodelo.setBounds(100, 149, 90, 26);
 		frame3.getContentPane().add(txtcv);
 		txtcv.setColumns(10);
-		txtcv.setBounds(332, 161, 97, 26);
-		lblPuertas.setBounds(25, 214, 90, 14);
+		txtcv.setBounds(343, 141, 97, 26);
+		lblPuertas.setBounds(24, 200, 90, 14);
 		lblPuertas.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		lbltipodiesel.setBounds(200, 126, 133, 14);
+		lbltipodiesel.setBounds(200, 103, 133, 14);
 		lbltipodiesel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		lblModelo.setBounds(25, 167, 90, 14);
+		lblModelo.setBounds(24, 153, 90, 14);
 		lblModelo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		lblMarca.setBounds(24, 126, 72, 14);
+		lblMarca.setBounds(24, 103, 72, 14);
 		lblMarca.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
-		lblmatricula.setBounds(24, 77, 90, 14);
+		lblmatricula.setBounds(24, 54, 90, 14);
 		lblmatricula.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
 
 		frame3.getContentPane().add(btncrear);
 		frame3.getContentPane().add(txtmatricula);
 		txtmatricula.setColumns(10);
-		txtmatricula.setBounds(99, 71, 90, 26);
+		txtmatricula.setBounds(99, 50, 90, 26);
 
 		lblColor = new JLabel("Color:");
-		lblColor.setBounds(205, 213, 61, 16);
+		lblColor.setBounds(200, 190, 61, 16);
 		lblColor.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
 		frame3.getContentPane().add(lblColor);
 
@@ -171,32 +181,55 @@ public class CrearVehiculo {
 		listcolor.setBounds(430, 214, -101, 14);
 		frame3.getContentPane().add(scrollPanecolor);
 
-		listtipo.setBounds(332, 111, 97, 39);
+		listtipo.setBounds(343, 91, 97, 39);
 
-		lblcv.setBounds(200, 167, 66, 14);
+		lblcv.setBounds(200, 145, 66, 14);
 		lblcv.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
 
-		spinnerpuertas.setBounds(99, 208, 89, 28);
+		spinnerpuertas.setBounds(100, 195, 89, 28);
 		frame3.getContentPane().add(spinnerpuertas);
 
-		btnempleado.setBounds(9, 261, 123, 64);
+		btnempleado.setBounds(11, 309, 123, 64);
 		frame3.getContentPane().add(btnempleado);
 		btnempleado.setVisible(false);
 
-		foto.setIcon(new ImageIcon("C:/Users/1dam.m/Desktop/TALLER.png"));
-		foto.setBounds(34, 6, 444, 319);
-		frame3.getContentPane().add(foto);
+		scrollPanecolor.setBounds(340, 182, 100, 46);
 
-		scrollPanecolor.setBounds(332, 212, 100, 46);
+		scrollPanemarca.setBounds(99, 90, 95, 46);
 
-		scrollPanemarca.setBounds(94, 109, 95, 46);
+		spinner.setBounds(337, 53, 107, 20);
 
-		spinner.setBounds(332, 75, 107, 20);
+		btncrear.setBounds(148, 309, 161, 64);
 
-		btncrear.setBounds(144, 261, 161, 64);
-
-		lblanio.setBounds(200, 77, 133, 14);
+		lblanio.setBounds(200, 54, 133, 14);
 		lblanio.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		
+		
+		lbltipovehiculo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 14));
+		lbltipovehiculo.setBounds(200, 259, 133, 39);
+		frame3.getContentPane().add(lbltipovehiculo);
+		
+		
+		
+		
+		listtipovehiculo.setBounds(343, 239, 90, 78);
+		frame3.getContentPane().add(listtipovehiculo);
+		listtipovehiculo.setEnabled(false);
+		
+		lblfoto = new JLabel("");
+		lblfoto.setIcon(new ImageIcon(CrearVehiculo.class.getResource("/Imagenes/crearvehiculo.png")));
+		lblfoto.setBounds(59, -36, 470, 409);
+		frame3.getContentPane().add(lblfoto);
+		for(int i=0;i<tipovehiculo.length;i++)
+		{
+			if(tipoaux.equals(tipovehiculo[i])){
+				
+				listtipovehiculo.setSelectedIndex(i);
+				coche.setTipoVehiculo(tipovehiculo[i]);
+			}
+		}
+		
+		
 
 	}
 
@@ -259,9 +292,15 @@ public class CrearVehiculo {
 				}
 				if (escorrecto) {
 
-					coche = new Vehiculo(matricula, marca, modelo, (int) spinnerpuertas.getValue(), color, tipo,
-							(int) spinner.getValue(), caballos, "",0);
-
+					coche.setMatricula(matricula);
+					coche.setMarca(marca);
+					coche.setModelo(modelo);
+					coche.setNumPuertas((int)spinnerpuertas.getValue());
+					coche.setColor(color);
+					coche.setTipoGas(tipo);
+					coche.setFechamatriculacion((int)spinner.getValue());
+					coche.setCv(caballos);
+					coche.setDniCliente("");
 					Container.getListaVehiculos().add(coche);
 
 					JOptionPane.showMessageDialog(frame3, "VEHICULO ANHADIDO");
@@ -290,12 +329,25 @@ public class CrearVehiculo {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				Propietario1 window = new Propietario1();
+				Propietario1 window = new Propietario1(frame3);
 				window.getFrame6().setVisible(true);
 				frame3.setVisible(false);
 				// CREACION
 			}
 		});
+		
 
+		
+
+	}
+	public JFrame getFrame3() {
+		return frame3;
+	}
+	public JList getListtipovehiculo() {
+		return listtipovehiculo;
+	}
+
+	public void setListtipovehiculo(JList listtipovehiculo) {
+		this.listtipovehiculo = listtipovehiculo;
 	}
 }

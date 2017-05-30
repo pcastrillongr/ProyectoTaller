@@ -31,6 +31,7 @@ public class Propietario {
 	/**
 	 * Atributos
 	 */
+	private JFrame frameaux;
 	private JFrame frame7;
 	private JTextField textNombre;
 	private JTextField textApellido1;
@@ -65,8 +66,9 @@ public class Propietario {
 	
 	/**
 	 * Constructor
+	 * @param frame6 
 	 */
-	public Propietario() {
+	public Propietario(JFrame frame6) {
 
 		labelPropietario = new JLabel("PROPIETARIO");
 		labelNombre = new JLabel("Nombre");
@@ -84,7 +86,7 @@ public class Propietario {
 		buttonVolver = new JButton("VOLVER");
 
 		buttonCrear = new JButton("CREAR");
-
+		frameaux=frame6;
 		frame7 = new JFrame();
 
 		initialize();
@@ -274,8 +276,8 @@ public class Propietario {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				Propietario1 windows = new Propietario1();
-				windows.getFrame6().setVisible(true);
+				frameaux.setVisible(true);
+				
 				frame7.setVisible(false);
 
 			}

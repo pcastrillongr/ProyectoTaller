@@ -13,10 +13,11 @@ public class Vehiculo {
 	private int cv;
 	private String dniCliente;
 	private float precioReparacion;
+	private String tipoVehiculo;
 	
 	
 	public Vehiculo(String matricula, String marca, String modelo, int numPuertas, String color, String tipoGas,
-			int anioMatriculacion, int cv,String dni,float precioReparacion) {
+			int anioMatriculacion, int cv,String dni,float precioReparacion,String tipoVehiculo) {
 		super();
 		this.matricula = matricula;
 		this.marca = marca;
@@ -28,6 +29,7 @@ public class Vehiculo {
 		this.cv = cv;
 		this.dniCliente=dni;
 		this.precioReparacion=precioReparacion;
+		this.tipoVehiculo=tipoVehiculo;
 	}
 	
 	
@@ -43,6 +45,7 @@ public class Vehiculo {
 		this.fechamatriculacion=0;
 		this.cv = 0;
 		this.precioReparacion=0.0f;
+		this.tipoVehiculo="";
 	}
 
 
@@ -72,6 +75,17 @@ public class Vehiculo {
 	}
 
 
+
+	public String getTipoVehiculo() {
+		return tipoVehiculo;
+	}
+
+
+
+
+	public void setTipoVehiculo(String tipoVehiculo) {
+		this.tipoVehiculo = tipoVehiculo;
+	}
 
 
 	public String getMatricula() {
@@ -172,7 +186,7 @@ public class Vehiculo {
 	
 	static public void CochePrueba(){
 		
-		Vehiculo v = new Vehiculo("1234asd","ferrai","z",3,"Rojo","Gasolina",1993,123,"12345678Q",0);
+		Vehiculo v = new Vehiculo("1234asd","ferrai","z",3,"Rojo","Gasolina",1993,123,"12345678Q",0,"Coche");
 		Container.getListaVehiculos().add(v);
 	}
 	

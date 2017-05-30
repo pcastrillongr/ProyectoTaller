@@ -6,6 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTextField;
 
 import DAO.LoginDAO;
@@ -14,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class Login {
 //
@@ -24,6 +28,7 @@ public class Login {
 	private JLabel lblusuario;
 	private JLabel lblpassword;
 	private JButton btnentrar;
+	private JLabel lblfoto;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -43,10 +48,15 @@ public class Login {
 		frame = new JFrame();
 		lblnombre = new JLabel("REGISTRO DEL TALLER");
 		lblusuario = new JLabel("Usuario");
+		lblusuario.setForeground(Color.WHITE);
 		txtusuario = new JTextField();
 		lblpassword = new JLabel("Password");
+		lblpassword.setForeground(Color.WHITE);
 		btnentrar = new JButton("ENTRAR");
 		txtpassword = new JPasswordField();
+		lblfoto= new JLabel("");
+		lblfoto.setForeground(Color.WHITE);
+		
 		
 		initialize();
 	}
@@ -65,28 +75,37 @@ public class Login {
 		frame.getContentPane().setLayout(null);
 		
 		lblnombre.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 15));
-		lblnombre.setBounds(114, 29, 196, 14);
+		lblnombre.setBounds(114, 0, 196, 14);
 		frame.getContentPane().add(lblnombre);
 		
-		lblusuario.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblusuario.setBounds(60, 82, 60, 26);
+		lblusuario.setFont(new Font("Verdana", Font.BOLD | Font.ITALIC, 14));
+		lblusuario.setBounds(10, 50, 60, 26);
 		frame.getContentPane().add(lblusuario);
 		
-		txtusuario.setBounds(128, 81, 182, 30);
+		txtusuario.setBounds(93, 55, 85, 20);
 		frame.getContentPane().add(txtusuario);
 		txtusuario.setColumns(10);
 		
-		lblpassword.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblpassword.setBounds(60, 145, 70, 14);
+		lblpassword.setFont(new Font("Verdana", Font.BOLD | Font.ITALIC, 13));
+		lblpassword.setBounds(10, 104, 70, 14);
 		frame.getContentPane().add(lblpassword);
 		
 		
 		btnentrar.setFont(new Font("Tahoma", Font.BOLD, 12));
-		btnentrar.setBounds(175, 194, 89, 46);
+		btnentrar.setBounds(93, 158, 85, 64);
 		frame.getContentPane().add(btnentrar);
 		
-		txtpassword.setBounds(128, 139, 182, 30);
+		txtpassword.setBounds(93, 103, 85, 20);
 		frame.getContentPane().add(txtpassword);
+		
+		
+		lblfoto.setBounds(0, 0, 434, 262);
+		
+		lblfoto.setIcon(new ImageIcon(Login.class.getResource("/Imagenes/logologin.jpg")));
+		Image img = new ImageIcon(Login.class.getResource("/Imagenes/logologin.jpg")).getImage();
+		 Image newImg = img.getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), java.awt.Image.SCALE_SMOOTH);
+		lblfoto.setIcon(new ImageIcon(newImg));
+		frame.getContentPane().add(lblfoto);
 		
 		
 		
