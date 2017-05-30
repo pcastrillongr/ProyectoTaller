@@ -260,7 +260,7 @@ public class CrearVehiculo {
 				if (escorrecto) {
 
 					coche = new Vehiculo(matricula, marca, modelo, (int) spinnerpuertas.getValue(), color, tipo,
-							(int) spinner.getValue(), caballos, "");
+							(int) spinner.getValue(), caballos, "",0);
 
 					Container.getListaVehiculos().add(coche);
 
