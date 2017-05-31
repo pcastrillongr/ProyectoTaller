@@ -119,60 +119,60 @@ public class Login {
 				
 
 				boolean escorrecto=true;
-//				int pin;
-//				int contador = 0;
-//				
-//				
-//				if(txtusuario.getText().isEmpty())
-//				{
-//					
-//					JOptionPane.showMessageDialog(frame, "ERROR: El usuario esta vacio");
-//					escorrecto=false;
-//					
-//					
-//				}
-//			
-//				if(new String(txtpassword.getPassword()).isEmpty()){
-//					JOptionPane.showMessageDialog(frame, "ERROR: La contraseï¿½a esta vacia");
-//					escorrecto=false;
-//					
-//				}
-//				try{
-//					pin=Integer.parseInt(new String(txtpassword.getPassword()));
-//					
-//				}catch(Exception e){
-//					
-//					JOptionPane.showMessageDialog(frame, "ERROR: El pin debe ser numerico");
-//					escorrecto=false;
-//					
-//				
-//				}
-//				
-//				if(new String(txtpassword.getPassword()).length()!=4)
-//				{
-//					JOptionPane.showMessageDialog(frame, "ERROR: La longitud del PIN no coincide");
-//					escorrecto=false;
-//					
-//				}
-//				
-//				
-//				
-//				
-//				if(escorrecto){
-//				try{
-//					pin=Integer.parseInt(new String(txtpassword.getPassword()));
-//					
-//				}catch(Exception e){
-//					
-//					JOptionPane.showMessageDialog(frame, "ERROR: El pin debe ser numerico");
-//					escorrecto=false;
-//					
-//				
-//				}
-//				
-//				String contraseña = String.valueOf(txtpassword.getPassword());
-//				escorrecto=(LoginDAO.Login(txtusuario.getText(), contraseña));
-//				
+				int pin;
+				int contador = 0;
+				
+				
+				if(txtusuario.getText().isEmpty())
+				{
+					
+					JOptionPane.showMessageDialog(frame, "ERROR: El usuario esta vacio");
+					escorrecto=false;
+					
+					
+				}
+			
+				if(new String(txtpassword.getPassword()).isEmpty()){
+					JOptionPane.showMessageDialog(frame, "ERROR: La contraseï¿½a esta vacia");
+					escorrecto=false;
+					
+				}
+				try{
+					pin=Integer.parseInt(new String(txtpassword.getPassword()));
+					
+				}catch(Exception e){
+					
+					JOptionPane.showMessageDialog(frame, "ERROR: El pin debe ser numerico");
+					escorrecto=false;
+					
+				
+				}
+				
+				if(new String(txtpassword.getPassword()).length()!=4)
+				{
+					JOptionPane.showMessageDialog(frame, "ERROR: La longitud del PIN no coincide");
+					escorrecto=false;
+					
+				}
+				
+				
+				
+				
+				if(escorrecto){
+				try{
+					pin=Integer.parseInt(new String(txtpassword.getPassword()));
+					
+				}catch(Exception e){
+					
+					JOptionPane.showMessageDialog(frame, "ERROR: El pin debe ser numerico");
+					escorrecto=false;
+					
+				
+				}
+				
+				String contraseña = String.valueOf(txtpassword.getPassword());
+				escorrecto=(LoginDAO.Login(txtusuario.getText(), contraseña));
+				
 				if(escorrecto)
 				{
 					Principal window=new Principal();
@@ -192,7 +192,7 @@ public class Login {
 				
 				
 				
-	//		}
+			}
 		});
 
 	

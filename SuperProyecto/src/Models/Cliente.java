@@ -120,7 +120,7 @@ public class Cliente {
 		Container.getListaClientes().add(pepe);
 		Container.getListaClientes().add(juan);
 		Container.getListaClientes().add(lalo);
-		Container.getListaClientes().add(alejandro);
+	
 	}
 	
 }

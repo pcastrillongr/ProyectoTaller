@@ -264,7 +264,7 @@ public class MostrarCliente {
 	
 		for(Cliente c : Container.getListaClientes()){
 			
-			if(c.getNif().equals(Container.getVehiculosAux().get(Container.getListaClientes().size()-1).getDniCliente()))
+			if(c.getNif().equals(Container.getVehiculosAux().get(Container.getVehiculosAux().size()-1).getDniCliente()))
 		{
 				
 			lblDni.setText(c.getNif());

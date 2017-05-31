@@ -187,7 +187,25 @@ public class Vehiculo {
 	static public void CochePrueba(){
 		
 		Vehiculo v = new Vehiculo("1234asd","ferrai","z",3,"Rojo","Gasolina",1993,123,"12345678Q",0,"Coche");
+		Vehiculo c= new Vehiculo("1264asd","citroen","z",3,"Verde","Gasolina",1993,123,"12345678Q",0,"Coche");
+		Vehiculo h = new Vehiculo("1234asd","ferrai","z",3,"Rojo","Gasolina",1993,123,"12345678g",0,"Coche");
+		Vehiculo i = new Vehiculo("1234asd","ferrai","z",3,"Rojo","Gasolina",1993,123,"12345678Q",0,"Coche");
+		Vehiculo z = new Vehiculo("1294asd","chevroler","z",3,"azul","Gasolina",1993,123,"12345678g",0,"Coche");
+		Vehiculo d = new Vehiculo("2234asd","ferrai","z",3,"Rojo","Gasolina",1993,123,"24578975f",0,"Coche");
+		Vehiculo vp = new Vehiculo("1234asd","ferrai","z",3,"Rojo","Gasolina",1993,123,"24578975f",0,"Coche");
+		Vehiculo vc = new Vehiculo("4234asd","peugeot","z",3,"amarillo","Gasolina",1993,123,"12345678Q",0,"Coche");
+		Vehiculo ve= new Vehiculo("1934asd","ferrai","z",3,"Rojo","Gasolina",1993,123,"23567806q",0,"Coche");
 		Container.getListaVehiculos().add(v);
+		Container.getListaVehiculos().add(c);
+		Container.getListaVehiculos().add(h);
+		Container.getListaVehiculos().add(i);
+		Container.getListaVehiculos().add(z);
+		Container.getListaVehiculos().add(d);
+		Container.getListaVehiculos().add(vp);
+		Container.getListaVehiculos().add(vc);
+		Container.getListaVehiculos().add(ve);
+		
+		
 	}
 	
 }

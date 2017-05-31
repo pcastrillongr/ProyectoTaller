@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
 
+import Models.Container;
 import Models.Tiempo;
 import Models.Vehiculo;
 
@@ -22,6 +23,7 @@ import javax.swing.JOptionPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JSpinner;
+import java.awt.Font;
 
 public class Presupuesto {
 
@@ -42,21 +44,33 @@ public class Presupuesto {
 	private JLabel lblNewLabel;
 	private JLabel lblDineroTotal;
 
+	public JFrame getFrame7() {
+		return frame7;
+	}
+
+	
+
 	/**
 	 * Create the application.
 	 */
 	public Presupuesto() {
 		frame7 = new JFrame();
 		lblInicio = new JLabel("Tiempo");
+		lblInicio.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblCosteP = new JLabel("Coste Piezas");
+		lblCosteP.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblReparacion = new JLabel("Reparacion");
+		lblReparacion.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnFinalizar = new JButton("Finalizar");
 
 		btnVolver = new JButton("Volver");
+		
 		txtPrecioMateriales = new JTextField();
+		txtPrecioMateriales.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnInicio = new JButton("Iniciar");
 		textToal = new JTextField();
 		lblTiempo = new JLabel("");
+		lblTiempo.setFont(new Font("Tahoma", Font.BOLD, 13));
 		initialize();
 	}
 
@@ -74,13 +88,13 @@ public class Presupuesto {
 		frame7.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame7.getContentPane().setLayout(null);
 
-		lblInicio.setBounds(10, 100, 77, 14);
+		lblInicio.setBounds(10, 62, 77, 14);
 		frame7.getContentPane().add(lblInicio);
 
-		lblCosteP.setBounds(10, 124, 77, 14);
+		lblCosteP.setBounds(10, 99, 77, 14);
 		frame7.getContentPane().add(lblCosteP);
 
-		lblReparacion.setBounds(10, 11, 62, 14);
+		lblReparacion.setBounds(10, 11, 145, 14);
 		frame7.getContentPane().add(lblReparacion);
 
 		btnFinalizar.setBounds(333, 189, 89, 56);
@@ -88,7 +102,7 @@ public class Presupuesto {
 		btnVolver.setBounds(10, 184, 89, 67);
 		frame7.getContentPane().add(btnVolver);
 
-		txtPrecioMateriales.setBounds(134, 121, 86, 20);
+		txtPrecioMateriales.setBounds(134, 96, 86, 20);
 		frame7.getContentPane().add(txtPrecioMateriales);
 		txtPrecioMateriales.setColumns(10);
 
@@ -96,18 +110,20 @@ public class Presupuesto {
 		frame7.getContentPane().add(btnInicio);
 
 		JLabel lblManoObra = new JLabel("Mano de obra");
-		lblManoObra.setBounds(10, 159, 77, 14);
+		lblManoObra.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblManoObra.setBounds(10, 142, 114, 14);
 		frame7.getContentPane().add(lblManoObra);
 
-		textToal.setBounds(134, 152, 86, 20);
+		textToal.setBounds(134, 140, 86, 20);
 		frame7.getContentPane().add(textToal);
 		textToal.setColumns(10);
 
-		lblTiempo.setBounds(134, 100, 86, 14);
+		lblTiempo.setBounds(134, 62, 86, 14);
 		frame7.getContentPane().add(lblTiempo);
 
 		lblNewLabel = new JLabel("Total");
-		lblNewLabel.setBounds(109, 210, 46, 14);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel.setBounds(109, 210, 57, 14);
 		frame7.getContentPane().add(lblNewLabel);
 
 		lblDineroTotal = new JLabel("");
@@ -126,6 +142,18 @@ public class Presupuesto {
 					t.Contar(lblTiempo);
 
 				}
+			}
+		});
+		
+		btnVolver.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+				MostrarVehiculo ventana = new MostrarVehiculo();
+				ventana.getFrame8().setVisible(true);
+				frame7.setVisible(false);
+				frame7.dispose();
+				
 			}
 		});
 
@@ -168,6 +196,8 @@ public class Presupuesto {
 						lblDineroTotal.setText(String.format("%.2f Euros", dineroTotal));
 					}
                  
+				
+					Container.getListaVehiculos().get(MostrarVehiculo.getId()).setPrecioReparacion(dineroTotal);
 				}
 			}
 				else{

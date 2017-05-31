@@ -45,7 +45,14 @@ public class MostrarVehiculo {
 	private JButton btnDatosClientes;
 	private JButton btnLeft;
 	private JButton btnEditar ;
-	private int id=0;
+	private static  int id=0;
+	
+	static public int getId() {
+		return id;
+	}
+
+	
+
 	private JButton btnRigth;
 	private JLabel lblNvehiculos;
 	private JButton btnFacturacion;
@@ -113,6 +120,7 @@ public class MostrarVehiculo {
 		btnRigth.setIcon(new ImageIcon(MostrarVehiculo.class.getResource("/Imagenes/Arrow Rigth.png")));
 		lblNvehiculos = new JLabel("");
 		btnFacturacion = new JButton("<html>Datos <br>Facturaci\u00F3n</html>");
+		
 		spinnerNP = new JSpinner();
 		spinnerAM = new JSpinner();
 		//
@@ -142,7 +150,7 @@ public class MostrarVehiculo {
 		lblmatricula.setBounds(18, 105, 101, 16);
 		frame8.getContentPane().add(lblmatricula);
 
-		lblmarca.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 13));
+		lblmarca.setFont(new Font("DokChampa", Font.BOLD | Font.ITALIC, 13));
 		lblmarca.setBounds(18, 153, 61, 16);
 		frame8.getContentPane().add(lblmarca);
 
@@ -159,11 +167,11 @@ public class MostrarVehiculo {
 		frame8.getContentPane().add(lblcolor);
 
 		lblCombustible.setFont(new Font("Lucida Calligraphy", Font.BOLD | Font.ITALIC, 13));
-		lblCombustible.setBounds(228, 153, 95, 16);
+		lblCombustible.setBounds(228, 153, 106, 16);
 		frame8.getContentPane().add(lblCombustible);
 
 		lblAniomatriculacion.setFont(new Font("Lucida Calligraphy", Font.BOLD | Font.ITALIC, 13));
-		lblAniomatriculacion.setBounds(228, 193, 139, 16);
+		lblAniomatriculacion.setBounds(213, 193, 157, 16);
 		frame8.getContentPane().add(lblAniomatriculacion);
 
 		lbcv.setFont(new Font("Lucida Calligraphy", Font.BOLD | Font.ITALIC, 13));
@@ -182,7 +190,7 @@ public class MostrarVehiculo {
 		frame8.getContentPane().add(btnatras);
 
 		
-		lblmatricula2.setBounds(102, 105, 101, 16);
+		lblmatricula2.setBounds(129, 106, 101, 16);
 		frame8.getContentPane().add(lblmatricula2);
 
 		
@@ -194,7 +202,7 @@ public class MostrarVehiculo {
 		frame8.getContentPane().add(lblmodelo2);
 
 		
-		lblnpuertas2.setBounds(102, 235, 101, 16);
+		lblnpuertas2.setBounds(129, 236, 101, 16);
 		frame8.getContentPane().add(lblnpuertas2);
 
 		lblcolor2.setBounds(332, 105, 101, 16);
@@ -225,7 +233,7 @@ public class MostrarVehiculo {
 		
 		
 		
-		btnEditar.setBounds(149, 263, 80, 41);
+		btnEditar.setBounds(139, 263, 90, 41);
 		frame8.getContentPane().add(btnEditar);
 		
 		
@@ -247,7 +255,7 @@ public class MostrarVehiculo {
 		textModelo.setColumns(10);
 		
 		
-		spinnerNP.setBounds(102, 234, 61, 20);
+		spinnerNP.setBounds(127, 234, 61, 20);
 		frame8.getContentPane().add(spinnerNP);
 		
 		textColor = new JTextField();
@@ -271,7 +279,7 @@ public class MostrarVehiculo {
 		textCv.setColumns(10);
 		
 		txtMatricula = new JTextField();
-		txtMatricula.setBounds(102, 104, 86, 20);
+		txtMatricula.setBounds(132, 104, 86, 20);
 		frame8.getContentPane().add(txtMatricula);
 		txtMatricula.setColumns(10);
 		
@@ -391,6 +399,7 @@ public class MostrarVehiculo {
 				if(id>0){
 					id-=1;
 				}
+				Mostrar();
 			}
 		});
 		
@@ -398,8 +407,20 @@ public class MostrarVehiculo {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				if(id < Container.getVehiculosAux().size()-1){
-					
+					id+=1;
 				}
+				Mostrar();
+			}
+		});
+		
+		btnFacturacion.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+				Presupuesto ventana = new Presupuesto();
+				ventana.getFrame7().setVisible(true);
+				frame8.setVisible(false);
+				
 			}
 		});
 	}
