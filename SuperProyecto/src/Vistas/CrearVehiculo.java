@@ -52,7 +52,7 @@ public class CrearVehiculo {
 	private JLabel lblColor;
 	private JSpinner spinner;
 	private JList listmarca;
-
+	private JButton btnVolver;
 	private JScrollPane scrollPanemarca;
 	private JList listtipo;
 	private JList listcolor;
@@ -115,11 +115,12 @@ public class CrearVehiculo {
 		btnempleado.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 13));
 		btnempleado.setVerticalAlignment(SwingConstants.TOP);
 		lbltipovehiculo = new JLabel("TipoVehiculo:");
-		 listtipovehiculo = new JList(tipovehiculo);
-		 tipoaux=vehiculoenviado;
-		 coche=new Vehiculo();
+		listtipovehiculo = new JList(tipovehiculo);
+		tipoaux=vehiculoenviado;
+		coche=new Vehiculo();
 		 
-
+		btnVolver = new JButton("VOLVER");
+		
 		initialize();
 
 	}
@@ -218,8 +219,12 @@ public class CrearVehiculo {
 		
 		lblfoto = new JLabel("");
 		lblfoto.setIcon(new ImageIcon(CrearVehiculo.class.getResource("/Imagenes/crearvehiculo.png")));
-		lblfoto.setBounds(59, -36, 470, 409);
+		lblfoto.setBounds(49, -36, 470, 409);
 		frame3.getContentPane().add(lblfoto);
+		
+		
+		btnVolver.setBounds(344, 332, 89, 23);
+		frame3.getContentPane().add(btnVolver);
 		for(int i=0;i<tipovehiculo.length;i++)
 		{
 			if(tipoaux.equals(tipovehiculo[i])){
@@ -336,10 +341,19 @@ public class CrearVehiculo {
 			}
 		});
 		
-
-		
+		// Botón volver
+		btnVolver.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Principal window = new Principal();
+				window.getFrame2().setVisible(true);
+				frame3.dispose();
+			}
+		});
 
 	}
+	
+	
 	public JFrame getFrame3() {
 		return frame3;
 	}
