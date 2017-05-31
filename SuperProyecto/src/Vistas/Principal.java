@@ -14,7 +14,8 @@ import javax.swing.ImageIcon;
 
 public class Principal {
 
-	private JFrame frame2;
+	private static JFrame frame2;
+	
 	private JButton btnbuscar;
 	private JButton btncrear;
 	private JLabel lblfoto;
@@ -82,7 +83,7 @@ public class Principal {
 			}
 		});
 	}
-	public JFrame getFrame2() {
+	public static JFrame getFrame2() {
 		return frame2;
 	}
 	

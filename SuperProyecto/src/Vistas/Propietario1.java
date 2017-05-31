@@ -1,8 +1,10 @@
 package Vistas;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -13,6 +15,7 @@ import javax.swing.JTextField;
 import Models.Cliente;
 import Models.Container;
 import Models.Validaciones;
+import java.awt.Font;
 public class Propietario1 {
 
 	/**
@@ -29,6 +32,7 @@ public class Propietario1 {
 	private JButton btnVolver2;
 	private JTextField textLetra;
 	private JLabel lblLetra;
+	private JLabel lblfoto;
 
 
 	/**
@@ -38,13 +42,19 @@ public class Propietario1 {
 	public Propietario1(JFrame frame3) {
 		frame6 = new JFrame();
 		btnAsignar = new JButton("<html>Asignar<br>a<br> cliente</html>");
+		btnAsignar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		btnCrear = new JButton("<html>Crear <br> cliente</html>");
+		btnCrear.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		btnVolver = new JButton("Volver");
+		btnVolver.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		btnBuscar = new JButton("Buscar");
+		btnBuscar.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		lblNdni = new JLabel("numero dni");
+		lblNdni.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		textNDni = new JTextField();
 		btnVolver2 = new JButton("Volver");
 		lblLetra = new JLabel("letra");
+		lblLetra.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		textLetra = new JTextField();
 		frameaux=frame3;
 		initialize();
@@ -79,14 +89,14 @@ public class Propietario1 {
 		frame6.getContentPane().setLayout(null);
 		frame6.getContentPane().add(btnAsignar);
 
-		btnAsignar.setBounds(57, 76, 102, 95);
+		btnAsignar.setBounds(40, 156, 102, 95);
 		frame6.getContentPane().add(btnCrear);
-		btnCrear.setBounds(261, 76, 102, 95);
+		btnCrear.setBounds(283, 156, 102, 95);
 
 		btnVolver.setBounds(169, 206, 89, 45);
 		frame6.getContentPane().add(btnVolver);
 
-		lblNdni.setBounds(169, 76, 65, 14);
+		lblNdni.setBounds(157, 76, 89, 14);
 		frame6.getContentPane().add(lblNdni);
 		lblNdni.setVisible(false);
 
@@ -95,7 +105,7 @@ public class Propietario1 {
 		textNDni.setColumns(10);
 		textNDni.setVisible(false);
 		
-		btnBuscar.setBounds(169, 148, 82, 23);
+		btnBuscar.setBounds(169, 148, 82, 47);
 		frame6.getContentPane().add(btnBuscar);
 
 		
@@ -109,8 +119,15 @@ public class Propietario1 {
 		textLetra.setColumns(10);
 		
 		
-		lblLetra.setBounds(244, 76, 46, 14);
+		lblLetra.setBounds(252, 76, 46, 14);
 		frame6.getContentPane().add(lblLetra);
+		
+		lblfoto = new JLabel("");
+		lblfoto.setBounds(0, 0, 434, 262);
+		Image img = new ImageIcon(Propietario1.class.getResource("/Imagenes/propietario1.jpg")).getImage();
+		 Image newImg = img.getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), java.awt.Image.SCALE_SMOOTH);
+		lblfoto.setIcon(new ImageIcon(newImg));
+		frame6.getContentPane().add(lblfoto);
 		btnBuscar.setVisible(false);
 		btnVolver2.setVisible(false);
 		lblLetra.setVisible(false);
@@ -172,7 +189,7 @@ public class Propietario1 {
 				Cliente.ClientePrueba();
 			    String dni;
 			    int decision=-1;
-			    
+			    boolean escorrecto=false;
 			    if(Container.getListaClientes().isEmpty()){
 			    	JOptionPane.showMessageDialog(frame6,"No hay clientes en la base de datos");
 			    	
@@ -182,22 +199,32 @@ public class Propietario1 {
 				
 				for (int i = 0; i < Container.getListaClientes().size(); i++) {
 					if (Container.getListaClientes().get(i).getNif().toUpperCase().equals(dni.toUpperCase())) {
-						decision = JOptionPane.showConfirmDialog(frame6,"Quiere añadir este vehiculo a el cliente con dni: " + dni);
 						
+						escorrecto=true;
 					}
+					
 				}
+				if(escorrecto){
+				decision = JOptionPane.showConfirmDialog(frame6,"Quiere añadir este vehiculo a el cliente con dni: " + dni);
 				
 				if(decision==JOptionPane.YES_OPTION){
 					Container.getListaVehiculos().get(Container.getListaClientes().size()-1).setDniCliente(dni);
 					JOptionPane.showMessageDialog(frame6, "Se le ha asignado el cliente al vehiculo");	
-					}
+				    Principal.getFrame2().setVisible(true);
+					frame6.dispose();
+				
+				}
 				if(decision == JOptionPane.NO_OPTION){
 					textLetra.setText("");
 					textNDni.setText("");
-					JOptionPane.showMessageDialog(frame6, "usted a eligido no");
+					JOptionPane.showMessageDialog(frame6, "Usted ha eligido no");
 				}
 				if(decision == JOptionPane.CANCEL_OPTION){
 					JOptionPane.showMessageDialog(frame6, "Cancelado");
+				}
+				}
+				if(decision==-1){
+					JOptionPane.showMessageDialog(frame6, "El Cliente no existe");
 				}
 
 			}

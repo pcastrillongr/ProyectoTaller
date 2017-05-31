@@ -11,6 +11,8 @@ import java.awt.Image;
 import javax.swing.JTextField;
 
 import DAO.LoginDAO;
+import Models.Cliente;
+import Models.Vehiculo;
 
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
@@ -178,6 +180,8 @@ public class Login {
 					Principal window=new Principal();
 					window.getFrame2().setVisible(true);
 					frame.dispose();
+					Cliente.ClientePrueba();
+					Vehiculo.CochePrueba();
 					
 				}
 				if(!escorrecto){

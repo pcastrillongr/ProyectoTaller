@@ -200,9 +200,8 @@ public class Buscar {
 	
 	private void busquedaPorMatricula(String matricula) {
 		boolean escorrecto = false;
-		Vehiculo.CochePrueba();
 		for(Vehiculo c: Container.getListaVehiculos()){
-			if(c.getMatricula().equals(matricula)){
+			if(c.getMatricula().toUpperCase().equals(matricula.toUpperCase())){
 			
 				Container.getVehiculosAux().add(c);
 				escorrecto = true;
@@ -221,10 +220,9 @@ public class Buscar {
 	}
 	
 	private void busquedaPorDni(String dni) {
-		boolean escorrecto = false;
-		Vehiculo.CochePrueba();		
+		boolean escorrecto = false;	
 		for(Vehiculo c: Container.getListaVehiculos()){
-			if(c.getDniCliente().equals(dni)){
+			if(c.getDniCliente().toUpperCase().equals(dni.toUpperCase())){
 				Container.getVehiculosAux().add(c);
 				escorrecto = true;
 			}

@@ -1,6 +1,7 @@
 package Vistas;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -9,6 +10,7 @@ import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -51,6 +53,7 @@ public class Propietario {
 	private JTextField textSApellido;
 	private JTextField textLetra;
 	private JLabel lblLetra;
+	private JLabel lblfoto;
 	
 	/**
 	 * Getter
@@ -171,6 +174,13 @@ public class Propietario {
 		lblLetra = new JLabel("Letra");
 		lblLetra.setBounds(111, 192, 46, 14);
 		frame7.getContentPane().add(lblLetra);
+		
+		lblfoto = new JLabel("");
+		lblfoto.setBounds(0, 0, 449, 336);
+		Image img = new ImageIcon(Propietario.class.getResource("/Imagenes/propietario.jpg")).getImage();
+		 Image newImg = img.getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), java.awt.Image.SCALE_SMOOTH);
+		lblfoto.setIcon(new ImageIcon(newImg));
+		frame7.getContentPane().add(lblfoto);
 	}
 
 	/**

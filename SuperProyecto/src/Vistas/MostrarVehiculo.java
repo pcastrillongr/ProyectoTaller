@@ -322,6 +322,7 @@ public class MostrarVehiculo {
 				Principal window = new Principal();
 				window.getFrame2().setVisible(true);
 				frame8.dispose();
+				Container.getVehiculosAux().clear();
 			}
 		});
 		
