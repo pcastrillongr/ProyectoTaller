@@ -1,5 +1,6 @@
 package Vistas;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -79,7 +80,10 @@ public class MostrarVehiculo {
 
 	public MostrarVehiculo() {
 		frame8 = new JFrame();
-
+		frame8.getContentPane().setBackground(Color.ORANGE);
+		frame8.getContentPane().setForeground(Color.LIGHT_GRAY);
+		frame8.getBackground();
+         
 		lblmatricula = new JLabel("Matricula:");
 		lblmarca = new JLabel("Marca:");
 		lblmodelo = new JLabel("Modelo:");
@@ -89,6 +93,7 @@ public class MostrarVehiculo {
 		lblAniomatriculacion = new JLabel("AnioMatriculacion:");
 		lblDniCliente = new JLabel("DNI Cliente:");
 		btnatras = new JButton("Atras");
+		btnatras.setBackground(Color.LIGHT_GRAY);
 		lbcv = new JLabel("CV:");
 		lblvehiculo = new JLabel("VEHICULO");
 
@@ -108,18 +113,22 @@ public class MostrarVehiculo {
 
 		lblcv2 = new JLabel("");
 		btnDatosClientes = new JButton("Datos Cliente");
+		btnDatosClientes.setBackground(Color.LIGHT_GRAY);
 		
 		btnLeft = new JButton("");
 		
 		btnLeft.setIcon(new ImageIcon(MostrarVehiculo.class.getResource("/Imagenes/Arrow left-50.png")));
 		btnEditar = new JButton("Editar");
+		btnEditar.setBackground(Color.LIGHT_GRAY);
 		btnGuardar = new JButton("Guardar");
+		btnGuardar.setBackground(Color.LIGHT_GRAY);
 		btnCancelar = new JButton("Cancelar");
 		btnRigth = new JButton("");
 		
 		btnRigth.setIcon(new ImageIcon(MostrarVehiculo.class.getResource("/Imagenes/Arrow Rigth.png")));
 		lblNvehiculos = new JLabel("");
 		btnFacturacion = new JButton("<html>Datos <br>Facturaci\u00F3n</html>");
+		btnFacturacion.setBackground(Color.LIGHT_GRAY);
 		
 		spinnerNP = new JSpinner();
 		spinnerAM = new JSpinner();
@@ -145,6 +154,7 @@ public class MostrarVehiculo {
 		frame8.setBounds(100, 100, 482, 355);
 		frame8.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame8.getContentPane().setLayout(null);
+		
 
 		lblmatricula.setFont(new Font("Lucida Calligraphy", Font.BOLD | Font.ITALIC, 13));
 		lblmatricula.setBounds(18, 105, 101, 16);
@@ -237,11 +247,11 @@ public class MostrarVehiculo {
 		frame8.getContentPane().add(btnEditar);
 		
 		
-		btnDatosClientes.setBounds(355, 11, 101, 43);
+		btnDatosClientes.setBounds(332, 11, 124, 43);
 		frame8.getContentPane().add(btnDatosClientes);
 		
 		
-		btnFacturacion.setBounds(355, 262, 99, 43);
+		btnFacturacion.setBounds(355, 262, 101, 43);
 		frame8.getContentPane().add(btnFacturacion);
 		
 		textMarca = new JTextField();

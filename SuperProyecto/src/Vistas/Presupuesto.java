@@ -24,6 +24,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JSpinner;
 import java.awt.Font;
+import java.awt.Color;
 
 public class Presupuesto {
 
@@ -55,6 +56,7 @@ public class Presupuesto {
 	 */
 	public Presupuesto() {
 		frame7 = new JFrame();
+		frame7.getContentPane().setBackground(Color.ORANGE);
 		lblInicio = new JLabel("Tiempo");
 		lblInicio.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblCosteP = new JLabel("Coste Piezas");
@@ -62,12 +64,15 @@ public class Presupuesto {
 		lblReparacion = new JLabel("Reparacion");
 		lblReparacion.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnFinalizar = new JButton("Finalizar");
+		btnFinalizar.setBackground(Color.LIGHT_GRAY);
 
 		btnVolver = new JButton("Volver");
+		btnVolver.setBackground(Color.LIGHT_GRAY);
 		
 		txtPrecioMateriales = new JTextField();
 		txtPrecioMateriales.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnInicio = new JButton("Iniciar");
+		btnInicio.setBackground(Color.LIGHT_GRAY);
 		textToal = new JTextField();
 		lblTiempo = new JLabel("");
 		lblTiempo.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -97,7 +102,7 @@ public class Presupuesto {
 		lblReparacion.setBounds(10, 11, 145, 14);
 		frame7.getContentPane().add(lblReparacion);
 
-		btnFinalizar.setBounds(333, 189, 89, 56);
+		btnFinalizar.setBounds(321, 189, 101, 56);
 		frame7.getContentPane().add(btnFinalizar);
 		btnVolver.setBounds(10, 184, 89, 67);
 		frame7.getContentPane().add(btnVolver);
@@ -106,7 +111,7 @@ public class Presupuesto {
 		frame7.getContentPane().add(txtPrecioMateriales);
 		txtPrecioMateriales.setColumns(10);
 
-		btnInicio.setBounds(333, 122, 89, 56);
+		btnInicio.setBounds(321, 122, 101, 56);
 		frame7.getContentPane().add(btnInicio);
 
 		JLabel lblManoObra = new JLabel("Mano de obra");

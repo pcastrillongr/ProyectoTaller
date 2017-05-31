@@ -1,6 +1,8 @@
 package Vistas;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,6 +17,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class MostrarCliente {
 
@@ -44,13 +48,19 @@ public class MostrarCliente {
 	public MostrarCliente() {
 		frame9 = new JFrame();
 		 lblNombre = new JLabel("Nombre");
+		 lblNombre.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		 lblPrimerApellido = new JLabel("Primer Apellido");
+		 lblPrimerApellido.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		 lblSegundoApellido = new JLabel("Segundo Apellido");
+		 lblSegundoApellido.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		 lblCliente = new JLabel("Cliente");
 		 lblDni = new JLabel("");
 		 lblDireccion = new JLabel("Direccion");
+		 lblDireccion.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		 lblTelefono = new JLabel("Telefono");
+		 lblTelefono.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		 lblEmail = new JLabel("Email");
+		 lblEmail.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		 textNombre = new JTextField();
 		 textApellido1 = new JTextField();
 		 textApellido2 = new JTextField();
@@ -58,7 +68,9 @@ public class MostrarCliente {
 		 textTelefono = new JTextField();
 		 textEmail = new JTextField();
 		 btnVolver = new JButton("Volver");
+		 btnVolver.setBackground(Color.LIGHT_GRAY);
 		btnEditar = new JButton("Editar");
+		btnEditar.setBackground(Color.LIGHT_GRAY);
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -92,7 +104,7 @@ public class MostrarCliente {
 		textNombre.setColumns(10);
 		
 		
-		lblPrimerApellido.setBounds(10, 92, 70, 14);
+		lblPrimerApellido.setBounds(10, 92, 96, 14);
 		frame9.getContentPane().add(lblPrimerApellido);
 		
 		
@@ -106,7 +118,7 @@ public class MostrarCliente {
 		textApellido2.setColumns(10);
 		
 		
-		lblSegundoApellido.setBounds(10, 118, 96, 14);
+		lblSegundoApellido.setBounds(10, 118, 120, 14);
 		frame9.getContentPane().add(lblSegundoApellido);
 		
 		
@@ -153,6 +165,7 @@ public class MostrarCliente {
 		frame9.getContentPane().add(btnEditar);
 		
 		btnGuardar = new JButton("Guardar");
+		btnGuardar.setBackground(Color.LIGHT_GRAY);
 		
 		btnGuardar.setBounds(269, 227, 89, 23);
 		frame9.getContentPane().add(btnGuardar);
@@ -161,6 +174,16 @@ public class MostrarCliente {
 		
 		btnCancelar.setBounds(141, 227, 89, 23);
 		frame9.getContentPane().add(btnCancelar);
+		
+		JLabel lblfoto = new JLabel("");
+	
+		
+		lblfoto.setBounds(-111, 0, 633, 283);
+		Image img = new ImageIcon(MostrarCliente.class.getResource("/Imagenes/cliente.png")).getImage();
+		 Image newImg = img.getScaledInstance(lblfoto.getWidth(), lblfoto.getHeight(), java.awt.Image.SCALE_SMOOTH);
+		lblfoto.setIcon(new ImageIcon(newImg));
+		
+		frame9.getContentPane().add(lblfoto);
 		btnCancelar.setVisible(false);
 		btnGuardar.setVisible(false);
 	
